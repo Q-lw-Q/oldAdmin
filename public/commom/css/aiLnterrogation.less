@@ -1,0 +1,521 @@
+html{
+  font-size: 20px;
+  body {
+    width: 100%;
+    overflow: hidden;
+ 
+    header {
+      height: 1.5rem;
+      line-height: 1.5rem;
+      color: #fff;
+      background-color: #2CCACD;
+      position: relative;
+      width: 100%;
+      padding: 0;
+      text-align: center;
+      z-index: 1000;
+      font-size: .8rem;
+      >a{
+        color: #FFF;
+        position: absolute;
+        font-size: .6rem;
+        left: .2rem;
+      }
+    }
+  
+    .declare_content {
+      display: block;
+      width: 100%;
+      background-color: #fff;
+      padding: 15px;
+  
+      span {
+        line-height: .5rem;
+        color: #666;
+        font-size: .5rem;
+      }
+    }
+  
+    .hidden {
+      display: none;
+    }
+  
+    .shoppingList {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 5000;
+  
+      .shoppingListContent {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        // padding-top: 20px;
+        // border-top-left-radius: 20px;
+        // border-top-right-radius: 20px;
+        background: #fff;
+  
+        .detailClose {
+          position: absolute;
+          background-color: #eff2f7;
+          height: 40px;
+          width: 40px;
+          line-height: 40px;
+          text-align: center;
+          border-radius: 50%;
+          top: -20px;
+          right: 32px;
+          cursor: pointer;
+  
+          .iconfont {
+            font-size: 4vh;
+          }
+        }
+  
+        .listBox {
+          overflow: auto;
+          height: 100%;
+          padding-bottom: 2rem;
+          .panel-body {
+            .item-list {
+              display: flex;
+              padding: 5px 10px;
+              border-bottom: 1px solid #e5e9f2;
+  
+              .item-icon {
+                width: 3.5rem;
+                height: 3.5rem;
+  
+                img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+  
+              .flex1 {
+                flex: 1;
+                padding: .373333333333333rem 0 .32rem .426666666666667rem;
+                overflow: hidden;
+                color: #222;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                .title {
+                  height: .8rem;
+                  font-size: .6rem;
+                  line-height: .8rem;
+                  margin-bottom: .053333333333333rem;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+  
+                p {
+                  height: .6rem;
+                  font-size: .4rem;
+                  line-height: .6rem;
+                  margin-bottom: 0.1rem;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  &.money{
+                    color: #FF0000;
+                    display: flex;
+                    align-items: center;
+                    span{
+                      color: black;
+                      margin-left: 5px;
+                    }
+                  }
+                  &.symptomatic{
+                    display: flex;
+                    align-items: center;
+                  }
+                }
+                .otc{
+                  padding: 0.1rem 0.2rem;
+                  background: #FFCC33;
+                  margin-left: .4rem;
+                  font-size: 0.3rem;
+                  border-radius: .2rem;
+                  // color: #fff;
+                }
+              }
+
+              .flex2 {
+                display: flex;
+                align-items: center;
+                // height: .8rem;
+                // line-height: .8rem;
+                // height: 4rem;
+                p{
+                  font-size: .4rem;
+                  padding: .2rem .4rem;
+                  background-color: #2CCACD !important;
+                  border-radius: .2rem;
+                  color: #fff;
+                }
+              }
+
+            }
+          }
+          .topTips{
+            #topTips{
+              .znxy-questions-view {
+                display: flex;
+                .znxy-questions-main{
+                  max-width: 100%;
+                  .znxy-questions-bubble{
+                    background: #fafafa;
+                    .refalsh{
+                      color: #3399CC;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .titleTips{
+            font-size: .6rem;
+            padding: 5px 0 5px 10px;
+          }
+
+          .panel-center{
+            padding: 0 15px;
+            padding-bottom: .4rem;
+            .topList,.contentList >ul >li{
+              display: grid;
+              grid-template-columns: 15% 35% 15% 15% 20%;
+              border: 1px solid #ccc;
+              list-style: none;
+              li,p{
+                font-size: .6rem;
+                border-right: 1px solid #ccc;
+                padding: .2rem 0 .2rem 3px;
+                &:last-child{
+                  border-right: none;
+                }
+              }
+            }
+            .contentList{
+              ul{
+                li{
+                  border-top: none;
+                  p{
+                    font-size: .4rem;
+                    &.edit{
+                      display: flex;
+                      align-items: center;
+                      span{
+                        flex: 1;
+                        text-align: center;
+                        &.editjian,&.editadd{
+                          font-weight: bold;
+                          font-size: .6rem;
+                          cursor: pointer;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          
+          .panel-bottom{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #eee;
+            height: 2rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            .goHome{
+              position: absolute;
+              left: .2rem;
+              font-size: .6rem;
+              color: black;
+            }
+            .moneyBox{
+              font-size: .6rem;
+              line-height: 2rem;
+              height: 2rem;
+              .money{
+                color: #FF0000;
+              }
+            }
+            .quesionOrder{
+              font-size: .6rem;
+              height: 1.2rem;
+              padding: .2rem .8rem;
+              background: #FF9933;
+              border-radius: .1rem;
+              color: #fff;
+              margin: 0 .4rem 0 1rem;
+            }
+          }
+        }
+      }
+  
+      // display: flex;
+  
+    }
+  
+    .shoppingDetail {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 5001;
+      .detailClose {
+        position: absolute;
+        background-color: #eff2f7;
+        height: 2rem;
+        width: 2rem;
+        line-height: 2rem;
+        text-align: center;
+        border-radius: 50%;
+        top: 7%;
+        right: 0.5rem;
+        cursor: pointer;
+        z-index: 22222;
+
+        .iconfont {
+          font-size: 1.5rem;
+        }
+      }
+      .shoppingDetailContent {
+        position: absolute;
+        width: 100%;
+        height: 90%;
+        bottom: 0;
+        left: 0;
+        padding-top: .4rem;
+        border-top-left-radius: .4rem;
+        border-top-right-radius: .4rem;
+        background: #fff;
+        overflow: scroll;
+
+        .pictrue{
+          height: 7.52rem;
+          padding: .266666666666667rem;
+          border-bottom: 1px solid #e5e9f2;
+          text-align: center;
+          img{
+            width: 6.88rem;
+          }
+        }
+        .detailsContent{
+          padding-bottom: .5rem;
+          .shoppingName{
+            font-size: 1rem;
+            padding: .5rem 0 .5rem .3rem;
+          }
+          .item{
+            .title{
+              font-size: .6rem;
+              padding: .4rem 0 .4rem .4rem;
+              &:last-child{
+                padding-top: 0;
+              }
+            }
+            .item_content{
+              font-size: .3rem;
+              padding: 0 .5rem 0 .8rem;
+            }
+          }
+        }
+      }
+      
+    }
+    // color xiugai
+    .znxy-questions-symptom,.znxy-questions-submit-button,.znxy-answers-bubble,.znxy-modals-symptom-btn-d,.znxy-modals-symptom-user-options-text-active,.znxy-modals-symptom-cancel,.znxy-modals-symptom-footer-btn,.znxy-views .znxy-questions-option-active,.znxy-modals-symptom-symptom-txt-active,.znxy-questions-skip-submit-button{
+      background-color: #2CCACD !important;
+      font-size: .6rem;
+      span{
+        font-size: .6rem;
+      }
+    }
+    .znxy-questions-submit-button,.znxy-modals-symptom-btn-d,.znxy-views .znxy-questions-option-active,.znxy-questions-skip-submit-button{
+      border-color: #2CCACD !important;
+      font-size: .6rem;
+      span{
+        font-size: .6rem;
+      }
+    }
+    .znxy-modals-symptom-footer-btn-c{
+      background-color: #fff !important;
+      font-size: .6rem;
+      span{
+        font-size: .6rem;
+      }
+    }
+
+    .znxy-modals-symptom-li {
+      li{
+      }
+    }
+
+    .audioMute{
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: .5rem;
+      right: .5rem;
+      border-radius: 50%;
+      background: rgba(255,153,51, 1);
+      font-size: .4rem;
+      z-index: 999999999;
+      color: #fff;
+    }
+
+    .znxy-questions-bubble{
+      padding: .16rem;
+      .znxy-questions-title-view-title{
+        font-size: .7rem;
+      }
+    }
+
+    .znxy-questions-symptom{
+      padding: .11rem .16rem;
+      margin-bottom: .16rem;
+    }
+
+    .lz-pagination span, .znxy-views .znxy-questions-title-fluidunit .znxy-questions-bubble{
+      padding: .16rem;
+      .znxy-questions-title-view-title{
+        line-height: 0.7rem;
+      }
+    }
+
+    .znxy-views .znxy-questions-view input[type=number], .znxy-views .znxy-questions-view input[type=text]{
+      margin: .3rem 0 .3rem .3rem;
+      // padding: .1rem .16rem;
+    }
+
+    .znxy-views .znxy-questions-skip-submit-button, .znxy-views .znxy-questions-submit-button{
+      margin: .3rem .3rem .3rem 0;
+      padding: 0.4rem;
+      border-radius: .6rem;
+    }
+
+    .znxy-questions-symptom-view .znxy-questions-symptom .icon-add{
+      font-size: .6rem;
+    }
+
+  }
+  .znxy-modals-symptom-li li{
+    font-size: .4rem;
+  }
+}
+
+.znxy-modals-symptom-cancel{
+  height: .42rem;
+  line-height: .42rem;
+}
+
+html body .znxy-modals-symptom-symptom-txt-active{
+
+}
+
+.znxy-modals-symptom-symptom-txt{
+  padding: .1rem .2rem;
+  font-size: .4rem !important;
+}
+// .znxy-modals-symptom-symptom-txt
+
+html body .znxy-modals-symptom-img{
+  height: calc(100% - 1.7rem);
+}
+
+html body .znxy-modals-symptom-cancel{
+  height: 1.7rem;
+  line-height: 1.7rem;
+  font-size: 1rem;
+  span{
+    font-size: .8rem;
+  }
+}
+.znxy-modals-symptom-li li{
+  font-size: .4rem;
+  padding: .26rem 0 .26rem .32rem;
+}
+
+html body{
+  .znxy-modals-symptom-sym-box{
+    height: calc(100% - 2.8rem);
+    .znxy-modals-symptom-no-tips-input-tips{
+      height: .8rem;
+      line-height: .8rem;
+    }
+    .znxy-modals-symptom-footer{
+      height: 2rem;
+      .znxy-modals-symptom-footer-counter{
+        padding: 0;
+        line-height: 2rem;
+        font-size: .6rem;
+        span{
+          font-size: .6rem;
+        }
+      }
+    }
+  }
+  .znxy-modals-symptom-footer-btn{
+    font-size: .6rem;
+    padding: 0 0.8rem;
+    line-height: 1rem;
+  }
+}
+
+html body .znxy-views .znxy-questions-option-active{
+  font-size: 16px;
+}
+
+.znxy-interact .znxy-opt-views-d-btn,.znxy-interact .znxy-opt-views-d-cle{
+  font-size: 16px;
+  margin: 0.2rem 0 !important;
+  border-radius: 0.3rem !important;
+  padding: 0 !important;
+}
+
+.znxy-modals-symptom-ctrls{
+  top: 1rem !important;
+  right: .9rem !important;
+  .znxy-modals-symptom-btn-ctrl{
+    i{
+      font-size: 1rem;
+    }
+  }
+  .znxy-modals-symptom-ctrl-txt{
+    text-align: center;
+  }
+}
+
+.znxy-modals-symptom-img-item {
+  &::before{
+    content: "请点击人体图像选择症状";
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    font-size: 0.4rem;
+  }
+}
+
+.znxy-views .znxy-ui-select{
+  height: 2rem;
+  line-height: 2rem;
+}
+.znxy-views .znxy-views-age-view .znxy-questions-form .znxy-questions-age-input{
+  height: 2rem;
+}

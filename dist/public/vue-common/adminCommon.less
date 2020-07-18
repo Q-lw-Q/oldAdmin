@@ -1,0 +1,322 @@
+// @import "./../element/element.css";
+@media screen and (max-width: 750px) {
+  body {
+    .sidebar{
+      .sidebar-menu{
+        li{
+          .nav-title{
+            width: 0;
+          }
+        }
+      }
+    }
+    .center-content{  
+      padding-left: 77px;
+    }
+  }
+}
+
+body {
+  li{
+    list-style: none;
+  }
+  #sidebar {
+    .sidebar-menu {
+      li {
+        .helodao {
+          li {
+            &.active {
+              background: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #page {
+    padding: 20px 0;
+    color: #666;
+    display: block;
+    text-align: center;
+    background: #fff;
+    li {
+      display: inline-block;
+      min-width: 30px;
+      height: 28px;
+      cursor: pointer;
+      color: #666;
+      font-size: 13px;
+      line-height: 28px;
+      background-color: #f9f9f9;
+      border: 1px solid #dce0e0;
+      text-align: center;
+      margin: 0 4px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    .xl-disabled {
+      opacity: .5;
+      cursor: no-drop;
+    }
+    .xl-active {
+      background-color: #31c17b;
+      border-color: #31c17b;
+      color: #FFF
+    }
+    .xl-nextPage,
+    .xl-prevPage {
+      width: 60px;
+      color: #0073A9;
+      height: 28px;
+    }
+  }
+
+  #rowlength {
+    th:first-child{
+      width: auto;
+    }
+  }
+  .memberlistactive{
+    table{
+      th{
+        &.button_box{
+          // text-align: center;
+        }
+      }
+      tbody{
+        tr{
+          td{
+            &.button_box{
+              display: flex;
+              a{
+                // flex: 1;
+                // width: ;
+                padding-right: 15px;
+                // text-align: center;
+              }
+            }
+            &.edit_box{
+              display: flex;
+              a{
+                // flex: 1;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        tr:last-child{
+          border-bottom: 1px solid #e5e5e5 !important;
+        }
+      }
+    }
+  }
+
+  // 头部
+  #HeaderBackgroundColor{
+    section{
+      #smalllogoimg{
+        display: flex;
+        align-items: center;
+        padding: 0;
+        color: #fff;
+        font-size: 16px;
+        &::before{
+          content: "";
+          width: 25px;
+          height: 25px;
+          background: url(../commom/img/admin_homt.svg) no-repeat center center / cover;
+          margin-right: 10px;
+        }
+      }
+      .usercenter{
+        ul{
+          li{
+            a{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              i{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &::before{
+                  content: "";
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+              &.handover_hide{
+                i{
+                  &::before{
+                    background: url(./img/change.svg) no-repeat center center / cover;
+                  }
+                }
+              }
+              &#userLogOut{
+                i{
+                  &::before{
+                    background: url(./img/loginout.svg) no-repeat center center / cover;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .topAllMessage{
+        line-height:  46px;
+        color: #fff;
+        em{
+          font-style: normal;
+          margin-right: 10px;
+        }
+      }
+      .el-alert--error{
+        width: 60%;
+        display: flex;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .topSelectShowZeor{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 46px;
+        margin: 0;
+        line-height: 46px;
+        color: #fff;
+        cursor: pointer;
+        input{
+          margin: 0 2px;
+          &:checked{
+            background: #ccc url(../static/images/checkinputbg.png) no-repeat center/100%;
+            border-color: #ccc;
+          }
+        }
+        p{
+          line-height: 46px;
+          margin: 0;
+        }
+      }
+    }
+  }
+  #bill_content{
+    max-height: 350px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    .title{
+      width: 100%;
+      line-height: 20px;
+      padding: 5px 0;
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+    }
+    .bill_detail{
+      border-top:1px #aaa dashed;
+      font-size: 14px;
+      color: #666;
+      padding: 0 20px;
+      .item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px dashed #ccc;
+        &:last-child{
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  .btnf{
+    margin-left: 0 !important;
+    &:hover{
+      background: #0ea849;
+    }
+  }
+  .whiteList{
+    padding: 20px 25px;
+    background-color: #fff;
+    height: auto;
+    padding-bottom: 30px;
+    .savabtnbox{
+      padding-left: 15px;
+      .savebtn{
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: #31c17b;
+        color: #fff;
+      }
+    }
+  }
+  // 头部选择栏
+  .decerpindex{
+    .content-Secondary-nav{
+      justify-content: space-between;
+      .btn{
+        margin-top: 0;
+      }
+      &.flex{
+        .search-input{
+          margin-top: 0;
+        }
+      }
+      .select_type{
+        display: flex;
+        >div{
+          margin-left: 5px;
+          &:first-child{
+            margin-left: 0;
+          }
+        }
+        .el-range-separator{
+          width: 10%;  
+        }
+        .memberlistnav{
+          
+        }
+      }
+    } 
+  }
+  .rightButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    .select_input{
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin: 0;
+      input{
+        margin: 0 5px 0 0;
+        position: relative;
+      }
+    }
+    button{
+      margin: 0;
+      color: #fff !important;
+      background: #409eff;
+      margin-left: 20px !important;
+      &:hover{
+  
+      }
+      &.stop{
+        background-color: #e6a23c;
+        border-color: #e6a23c;
+      }
+    }
+  }
+}
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

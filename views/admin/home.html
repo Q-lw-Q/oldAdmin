@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>店铺概况</title>
+    <link href="../../static/css/takeawayorder.css" rel="stylesheet" />
+    <link href="../../static/css/system-lib.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../vue-common/adminCommon.css">
+    <link rel="stylesheet" href="../../element/element.css">
+</head>
+
+<body>
+    <div id="vueTemplate">
+        <header class="today-summarize " id="HeaderBackgroundColor">
+            <Topnav></Topnav>
+        </header>
+        <div id="Leftcard">
+            <Leftcard></Leftcard>
+        </div>
+        <commomtemplate></commomtemplate>
+    </div>
+    <div class="decerp-content decerpindex">
+        <div class="center-content" id="index-content">
+
+            <!--decerpindex-->
+            <div class="content container-fluid">
+                <!-- 店铺概况 -->
+                <div class="content-title-nav">
+                    <div class="fl">
+                        <span class="titleleft">店铺概况</span>
+                    </div>
+                    <div class="fr titleright titleright_N4">
+                        <ul class="row" id="selectDate">
+                            <li data-type="1" class="col-xs-4 active">今天</li>
+                            <li data-type="7" class="col-xs-4">本周</li>
+                            <li data-type="30" class="col-xs-4">本月</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 数据选项卡 -->
+                <div class="content-info &quot;home_chart_module&quot;" bzid="A">
+                    <ul class="infolist infolistnew4">
+                        <li class="nav1">
+                            <div class="centertext_4">
+                                <p class="user-analysis">总收入</p>
+                                <div class="user-amount amountcolor1 Consolidated_Income">￥<i id="allMoney">0.00</i>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav3">
+                            <div class="centertext_4">
+                                <p class="user-analysis">总现金收入</p>
+                                <div class="user-amount amountcolor4 OrderTransaction_Number">￥<i
+                                id="presentMoney">0</i>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav4">
+                            <div class="centertext_4">
+                                <p class="user-analysis">总收钱吧收入</p>
+                                <div class="user-amount amountcolor3 Preferential_Amount">￥<i id="shouMoney">0.00</i>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav2">
+                            <div class="centertext_4">
+                                <p class="user-analysis">总成交笔数</p>
+                                <div class="user-amount amountcolor1 Individual_Consume"><i id="expense_other">0.00</i>笔
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav5">
+                            <div class="centertext_4">
+                                <p class="user-analysis">总退款金额</p>
+                                <div class="user-amount amountcolor2 Member_Consume">￥<i id="expense_member">0.00</i>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- <li class="nav6">
+                            <div class="centertext_4">
+                                <p class="user-analysis">退款</p>
+                                <div class="user-amount amountcolor5 Refund_Money">￥<i id="refund">0.00</i>
+                                </div>
+                                <div class="user-amount amountcolor1 Refund_Money_authority" style="display:none">
+                                    ￥<i>*******</i></div>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- canvas 数据表格 -->
+                <ul class="cakesfr-ul vakelist-ulli">
+                    <!--数据统计id=""-->
+                    <!-- 总收入 -->
+                    <li class="cakesfr-ul &quot;home_chart_module&quot; Sales_Analysis" bzid="B">
+                        <div class="cakes-chart ">
+                            <ol class="cakes-ul">
+                                <li class="cakes-ul-li">
+                                    <p style="float:left;"><i class="icon-bar-chart shopchart"></i>总收入<i
+                                            class="loadDate loadDateb"></i></p>
+                                    <div class="fr persontitleright">
+                                        <ol class="row persontitl" id="selectDateg">
+                                            <li data-flag="b" data-type="1" class="col-xs-4">今天</li>
+                                            <li data-flag="b" data-type="7" class="col-xs-4">本周</li>
+                                            <li data-flag="b" data-type="30" class="col-xs-4 active">本月</li>
+                                        </ol>
+                                    </div>
+                                    <div class="chartcontent" id="recentSevenDaySalesData" style="margin-top: 30px;">
+
+                                    </div>
+
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <!--    支付方式    -->
+                    <li class="&quot;home_chart_module&quot; Member_Analysis" bzid="E">
+                        <div class="cakes-chart ">
+                            <ol class="cakes-ul">
+                                <li class="cakes-ul-li">
+                                    <p style="float:left;"><i class="icon-bar-chart shopchart"></i>支付方式</p>
+                                    <div class="fr persontitleright">
+                                        <ol class="row persontitl" id="selectDatef">
+                                            <li data-flag="f" data-type="1" class="col-xs-4">今天</li>
+                                            <li data-flag="f" data-type="7" class="col-xs-4">本周</li>
+                                            <li data-flag="f" data-type="30" class="col-xs-4 active">本月</li>
+                                        </ol>
+                                    </div>
+                                    <div class="chartcontent" id="payType" style="margin-top: 30px;">
+
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                    <!--    成交笔数     -->
+                    <li class="cakesfr-ul &quot;home_chart_module&quot; Member_Consume_Ranking" bzid="F">
+                        <div class="cakes-chart ">
+                            <ol class="cakes-ul">
+                                <li class="cakes-ul-li">
+                                    <p style="float:left;"><i class="icon-bar-chart shopchart"></i>总成交笔数<i
+                                            class="loadDate loadDate6"></i></p>
+                                    <div class="fr persontitleright">
+                                        <ol class="row persontitl" id="selectsuccess">
+                                            <li data-flag="f" data-type="1" class="col-xs-4">今天</li>
+                                            <li data-flag="f" data-type="7" class="col-xs-4">本周</li>
+                                            <li data-flag="f" data-type="30" class="col-xs-4 active">本月</li>
+                                        </ol>
+                                    </div>
+                                    <div class="chartcontent" id="menberAnalysi" style="margin-top: 30px;">
+
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+
+                    <!--    退款金额   -->
+                    <li class="cakesfr-ul &quot;home_chart_module&quot; Expenditure_Analysis" bzid="C4">
+                        <div class="cakes-chart ">
+                            <ol class="cakes-ul">
+                                <li class="cakes-ul-li">
+                                    <p style="float:left;"><i class="icon-bar-chart shopchart"></i>退款金额<i
+                                            class="loadDate loadDate4"></i></p>
+                                    <div class="fr persontitleright">
+                                        <ol class="row persontitl" id="selectDateC4">
+                                            <li data-flag="c4" data-type="1" class="col-xs-4">今天</li>
+                                            <li data-flag="c4" data-type="7" class="col-xs-4">本周</li>
+                                            <li data-flag="c4" data-type="30" class="col-xs-4 active">本月</li>
+                                        </ol>
+                                    </div>
+                                    <div class="chartcontent" id="expenditureAnalysis" style="margin-top: 30px;">
+
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<!-- jQuery 2.2.3 -->
+<script src="../../jquery/dist/jquery.min.js"></script>
+<script src="../../vue-common/js/vue.js"></script>
+<script src="../../element/element.js"></script>
+<script src="../../vue-common/topLeft.js"></script>
+<script src="../../vue-common/topNav.js"></script>
+<script src="../../commom/js/admincommom.js"></script>
+<script src="../../vender/echarts/echarts.js"></script>
+<script src="../../commom/js/home.js"></script>
+
+</html>

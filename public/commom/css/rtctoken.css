@@ -1,0 +1,32 @@
+#pay_ul li {
+  display: flex;
+  align-items: center;
+  margin: 30px 0 20px;
+}
+#pay_ul li .labelinfo {
+  width: 90px;
+  text-align: right;
+  margin-right: 20px;
+}
+#pay_ul li .inputtext {
+  max-width: 400px;
+}
+.savabtnbox {
+  margin: 50px 0 0 10px;
+}
+.boxrtclist {
+  margin-top: 10px;
+}
+.boxrtclist:first-child {
+  margin-top: 0;
+}
+.boxrtclist .content-title-nav {
+  margin-bottom: 5px;
+}
+.integralRules ul li label {
+  display: flex;
+  align-items: center;
+}
+.integralRules ul li label input {
+  margin: 0 5px 0 0;
+}

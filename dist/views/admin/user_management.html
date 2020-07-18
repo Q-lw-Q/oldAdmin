@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>账号管理</title><link href="../../static/css/takeawayorder.css" rel="stylesheet"><link href="../../static/css/system-lib.min.css" rel="stylesheet"><link rel="stylesheet" href="../../element/element.css"><link rel="stylesheet" href="../../vue-common/adminCommon.css"><link rel="stylesheet" href="../../commom/css/user_management.css"></head><body><div id="vueTemplate"><header class="today-summarize" id="HeaderBackgroundColor"><topnav></topnav></header><div id="Leftcard"><leftcard></leftcard></div><commomtemplate></commomtemplate><div class="decerp-content decerpindex"><div class="center-content" id="index-content"><div class="content container-fluid"><div class="share-container"><div class="content-Secondary-nav"><div class="fl rightButton"><button type="button" id="addNewProduct" class="btn donwbtn fl btnf">添加账号</button></div></div><div class="memberlist table-responsive inventorytable memberlistactive"><tablelisttemplate v-bind:arraydata="tableListdata"></tablelisttemplate><div id="page"></div></div></div></div></div></div><el-dialog title="添加账号" :visible.sync="dialogFormVisible"><el-form ref="messageform" :model="messageform" :rules="formrules"><el-form-item label="账号" :label-width="formLabelWidth" prop="account"><el-input v-model="messageform.account" autocomplete="off" placeholder="请输入4-10位数字或者字母"></el-input></el-form-item><el-form-item label="昵称" :label-width="formLabelWidth" prop="fullName"><el-input v-model="messageform.fullName" autocomplete="off"></el-input></el-form-item><el-form-item label="密码" :label-width="formLabelWidth" prop="password"><el-input v-model="messageform.password" autocomplete="off"></el-input></el-form-item><el-form-item label="手机号" :label-width="formLabelWidth" prop="cellphone"><el-input v-model="messageform.cellphone" autocomplete="off"></el-input></el-form-item><el-form-item label="性别" :label-width="formLabelWidth" prop="sex"><el-select v-model="messageform.sex" placeholder="请选择性别"><el-option label="男" value="1"></el-option><el-option label="女" value="2"></el-option></el-select></el-form-item><el-form-item label="用户类型" :label-width="formLabelWidth" prop="type"><el-select v-model="messageform.type" placeholder="请选择用户类型"><el-option label="管理员" value="2"></el-option><el-option label="子账号" value="3"></el-option><el-option label="自助收银机(商户内终端)" value="4"></el-option><el-option label="自助收银机(商户外终端)" value="5"></el-option><el-option label="平板终端" value="6"></el-option></el-select></el-form-item><el-form-item label="邮箱地址" :label-width="formLabelWidth" prop="email"><el-input v-model="messageform.email" autocomplete="off"></el-input></el-form-item></el-form><div slot="footer" class="dialog-footer"><el-button @click="closedialogFrom()">取 消</el-button><el-button type="primary" @click="checkFrom()">确 定</el-button></div></el-dialog></div></body><script src="../../jquery/dist/jquery.min.js"></script><script src="../../javascripts/xlPaging.js"></script><script src="../../vue-common/js/vue.js"></script><script src="../../element/element.js"></script><script src="../../vue-common/topLeft.js"></script><script src="../../vue-common/topNav.js"></script><script src="../../commom/js/admincommom.js"></script><script type="text/x-template" id="listtemplate"><table class="table memberlistheade table-hover">
+    <thead>
+      <tr id="rowlength">
+        <th>账号</th>
+        <th>姓名</th>
+        <th>手机</th>
+        <th>性别</th>
+        <th>用户类型</th>
+        <th>用户状态</th>
+        <th>创建时间</th>
+        <th class="button_box">操作</th>
+      </tr>
+    </thead>
+    <tbody id="ProductModifyPricelists">
+
+      <tr v-for="(value, key) in arraydata" v-show="arraydata" >
+        <td v-html="value.account"></td>
+        <td v-html="value.fullName"></td>
+        <td v-html="value.cellphone"></td>
+        <td v-html="value.sexString"></td>
+        <td v-html="value.typeString"></td>
+        <td v-html="value.statusString"></td>
+        <td v-html="value.password"></td>
+        <td class="button_box">
+          <!-- 0 1 2 -->
+          <a class="fl refundmoney" @click="editPassword(value.memberId,value.type)"  v-if="value.status != 3" href="javascript: void(0);">修改密码</a>
+          <!-- 0 1 2  -->
+          <a class="fl seedetails" @click="deleteUser(value.memberId)" v-if="(value.type == 3) && (value.status != 3) && ( userType != 3 )" href="javascript: void(0);">删除帐号</a>
+          
+          <a class="fl seedetails" @click="editEmail(value.memberId,value.receiverEmail)" v-html="(value.receiverEmail == 1 ? '取消推送邮箱' : '异常推送邮箱' )" href="javascript: void(0);">删除帐号</a>
+        </td>
+      </tr>
+      <tr v-if="(arraydata.length == 0 )">
+        <td class="text-center sad" style="text-align:center" colspan="9"><i class="padd0">暂无数据</i></td>
+      </tr>
+    </tbody>
+  </table></script><script src="../../commom/js/user_management.js"></script></html>

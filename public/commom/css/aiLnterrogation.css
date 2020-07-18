@@ -1,0 +1,479 @@
+html {
+  font-size: 20px;
+}
+html body {
+  width: 100%;
+  overflow: hidden;
+}
+html body header {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  color: #fff;
+  background-color: #2CCACD;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+  z-index: 1000;
+  font-size: 0.8rem;
+}
+html body header > a {
+  color: #FFF;
+  position: absolute;
+  font-size: 0.6rem;
+  left: 0.2rem;
+}
+html body .declare_content {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  padding: 15px;
+}
+html body .declare_content span {
+  line-height: 0.5rem;
+  color: #666;
+  font-size: 0.5rem;
+}
+html body .hidden {
+  display: none;
+}
+html body .shoppingList {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 5000;
+}
+html body .shoppingList .shoppingListContent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+}
+html body .shoppingList .shoppingListContent .detailClose {
+  position: absolute;
+  background-color: #eff2f7;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  top: -20px;
+  right: 32px;
+  cursor: pointer;
+}
+html body .shoppingList .shoppingListContent .detailClose .iconfont {
+  font-size: 4vh;
+}
+html body .shoppingList .shoppingListContent .listBox {
+  overflow: auto;
+  height: 100%;
+  padding-bottom: 2rem;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list {
+  display: flex;
+  padding: 5px 10px;
+  border-bottom: 1px solid #e5e9f2;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .item-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .item-icon img {
+  width: 100%;
+  height: 100%;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex1 {
+  flex: 1;
+  padding: 0.37333333rem 0 0.32rem 0.42666667rem;
+  overflow: hidden;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex1 .title {
+  height: 0.8rem;
+  font-size: 0.6rem;
+  line-height: 0.8rem;
+  margin-bottom: 0.05333333rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex1 p {
+  height: 0.6rem;
+  font-size: 0.4rem;
+  line-height: 0.6rem;
+  margin-bottom: 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex1 p.money {
+  color: #FF0000;
+  display: flex;
+  align-items: center;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex1 p.money span {
+  color: black;
+  margin-left: 5px;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex1 p.symptomatic {
+  display: flex;
+  align-items: center;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex1 .otc {
+  padding: 0.1rem 0.2rem;
+  background: #FFCC33;
+  margin-left: 0.4rem;
+  font-size: 0.3rem;
+  border-radius: 0.2rem;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex2 {
+  display: flex;
+  align-items: center;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-body .item-list .flex2 p {
+  font-size: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  background-color: #2CCACD !important;
+  border-radius: 0.2rem;
+  color: #fff;
+}
+html body .shoppingList .shoppingListContent .listBox .topTips #topTips .znxy-questions-view {
+  display: flex;
+}
+html body .shoppingList .shoppingListContent .listBox .topTips #topTips .znxy-questions-view .znxy-questions-main {
+  max-width: 100%;
+}
+html body .shoppingList .shoppingListContent .listBox .topTips #topTips .znxy-questions-view .znxy-questions-main .znxy-questions-bubble {
+  background: #fafafa;
+}
+html body .shoppingList .shoppingListContent .listBox .topTips #topTips .znxy-questions-view .znxy-questions-main .znxy-questions-bubble .refalsh {
+  color: #3399CC;
+}
+html body .shoppingList .shoppingListContent .listBox .titleTips {
+  font-size: 0.6rem;
+  padding: 5px 0 5px 10px;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center {
+  padding: 0 15px;
+  padding-bottom: 0.4rem;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .topList,
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList > ul > li {
+  display: grid;
+  grid-template-columns: 15% 35% 15% 15% 20%;
+  border: 1px solid #ccc;
+  list-style: none;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .topList li,
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList > ul > li li,
+html body .shoppingList .shoppingListContent .listBox .panel-center .topList p,
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList > ul > li p {
+  font-size: 0.6rem;
+  border-right: 1px solid #ccc;
+  padding: 0.2rem 0 0.2rem 3px;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .topList li:last-child,
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList > ul > li li:last-child,
+html body .shoppingList .shoppingListContent .listBox .panel-center .topList p:last-child,
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList > ul > li p:last-child {
+  border-right: none;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList ul li {
+  border-top: none;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList ul li p {
+  font-size: 0.4rem;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList ul li p.edit {
+  display: flex;
+  align-items: center;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList ul li p.edit span {
+  flex: 1;
+  text-align: center;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList ul li p.edit span.editjian,
+html body .shoppingList .shoppingListContent .listBox .panel-center .contentList ul li p.edit span.editadd {
+  font-weight: bold;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #eee;
+  height: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-bottom .goHome {
+  position: absolute;
+  left: 0.2rem;
+  font-size: 0.6rem;
+  color: black;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-bottom .moneyBox {
+  font-size: 0.6rem;
+  line-height: 2rem;
+  height: 2rem;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-bottom .moneyBox .money {
+  color: #FF0000;
+}
+html body .shoppingList .shoppingListContent .listBox .panel-bottom .quesionOrder {
+  font-size: 0.6rem;
+  height: 1.2rem;
+  padding: 0.2rem 0.8rem;
+  background: #FF9933;
+  border-radius: 0.1rem;
+  color: #fff;
+  margin: 0 0.4rem 0 1rem;
+}
+html body .shoppingDetail {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5001;
+}
+html body .shoppingDetail .detailClose {
+  position: absolute;
+  background-color: #eff2f7;
+  height: 2rem;
+  width: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  border-radius: 50%;
+  top: 7%;
+  right: 0.5rem;
+  cursor: pointer;
+  z-index: 22222;
+}
+html body .shoppingDetail .detailClose .iconfont {
+  font-size: 1.5rem;
+}
+html body .shoppingDetail .shoppingDetailContent {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  bottom: 0;
+  left: 0;
+  padding-top: 0.4rem;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  background: #fff;
+  overflow: scroll;
+}
+html body .shoppingDetail .shoppingDetailContent .pictrue {
+  height: 7.52rem;
+  padding: 0.26666667rem;
+  border-bottom: 1px solid #e5e9f2;
+  text-align: center;
+}
+html body .shoppingDetail .shoppingDetailContent .pictrue img {
+  width: 6.88rem;
+}
+html body .shoppingDetail .shoppingDetailContent .detailsContent {
+  padding-bottom: 0.5rem;
+}
+html body .shoppingDetail .shoppingDetailContent .detailsContent .shoppingName {
+  font-size: 1rem;
+  padding: 0.5rem 0 0.5rem 0.3rem;
+}
+html body .shoppingDetail .shoppingDetailContent .detailsContent .item .title {
+  font-size: 0.6rem;
+  padding: 0.4rem 0 0.4rem 0.4rem;
+}
+html body .shoppingDetail .shoppingDetailContent .detailsContent .item .title:last-child {
+  padding-top: 0;
+}
+html body .shoppingDetail .shoppingDetailContent .detailsContent .item .item_content {
+  font-size: 0.3rem;
+  padding: 0 0.5rem 0 0.8rem;
+}
+html body .znxy-questions-symptom,
+html body .znxy-questions-submit-button,
+html body .znxy-answers-bubble,
+html body .znxy-modals-symptom-btn-d,
+html body .znxy-modals-symptom-user-options-text-active,
+html body .znxy-modals-symptom-cancel,
+html body .znxy-modals-symptom-footer-btn,
+html body .znxy-views .znxy-questions-option-active,
+html body .znxy-modals-symptom-symptom-txt-active,
+html body .znxy-questions-skip-submit-button {
+  background-color: #2CCACD !important;
+  font-size: 0.6rem;
+}
+html body .znxy-questions-symptom span,
+html body .znxy-questions-submit-button span,
+html body .znxy-answers-bubble span,
+html body .znxy-modals-symptom-btn-d span,
+html body .znxy-modals-symptom-user-options-text-active span,
+html body .znxy-modals-symptom-cancel span,
+html body .znxy-modals-symptom-footer-btn span,
+html body .znxy-views .znxy-questions-option-active span,
+html body .znxy-modals-symptom-symptom-txt-active span,
+html body .znxy-questions-skip-submit-button span {
+  font-size: 0.6rem;
+}
+html body .znxy-questions-submit-button,
+html body .znxy-modals-symptom-btn-d,
+html body .znxy-views .znxy-questions-option-active,
+html body .znxy-questions-skip-submit-button {
+  border-color: #2CCACD !important;
+  font-size: 0.6rem;
+}
+html body .znxy-questions-submit-button span,
+html body .znxy-modals-symptom-btn-d span,
+html body .znxy-views .znxy-questions-option-active span,
+html body .znxy-questions-skip-submit-button span {
+  font-size: 0.6rem;
+}
+html body .znxy-modals-symptom-footer-btn-c {
+  background-color: #fff !important;
+  font-size: 0.6rem;
+}
+html body .znxy-modals-symptom-footer-btn-c span {
+  font-size: 0.6rem;
+}
+html body .audioMute {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  border-radius: 50%;
+  background: #ff9933;
+  font-size: 0.4rem;
+  z-index: 999999999;
+  color: #fff;
+}
+html body .znxy-questions-bubble {
+  padding: 0.16rem;
+}
+html body .znxy-questions-bubble .znxy-questions-title-view-title {
+  font-size: 0.7rem;
+}
+html body .znxy-questions-symptom {
+  padding: 0.11rem 0.16rem;
+  margin-bottom: 0.16rem;
+}
+html body .lz-pagination span,
+html body .znxy-views .znxy-questions-title-fluidunit .znxy-questions-bubble {
+  padding: 0.16rem;
+}
+html body .lz-pagination span .znxy-questions-title-view-title,
+html body .znxy-views .znxy-questions-title-fluidunit .znxy-questions-bubble .znxy-questions-title-view-title {
+  line-height: 0.7rem;
+}
+html body .znxy-views .znxy-questions-view input[type=number],
+html body .znxy-views .znxy-questions-view input[type=text] {
+  margin: 0.3rem 0 0.3rem 0.3rem;
+}
+html body .znxy-views .znxy-questions-skip-submit-button,
+html body .znxy-views .znxy-questions-submit-button {
+  margin: 0.3rem 0.3rem 0.3rem 0;
+  padding: 0.4rem;
+  border-radius: 0.6rem;
+}
+html body .znxy-questions-symptom-view .znxy-questions-symptom .icon-add {
+  font-size: 0.6rem;
+}
+html .znxy-modals-symptom-li li {
+  font-size: 0.4rem;
+}
+.znxy-modals-symptom-cancel {
+  height: 0.42rem;
+  line-height: 0.42rem;
+}
+.znxy-modals-symptom-symptom-txt {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.4rem !important;
+}
+html body .znxy-modals-symptom-img {
+  height: calc(100% - 1.7rem);
+}
+html body .znxy-modals-symptom-cancel {
+  height: 1.7rem;
+  line-height: 1.7rem;
+  font-size: 1rem;
+}
+html body .znxy-modals-symptom-cancel span {
+  font-size: 0.8rem;
+}
+.znxy-modals-symptom-li li {
+  font-size: 0.4rem;
+  padding: 0.26rem 0 0.26rem 0.32rem;
+}
+html body .znxy-modals-symptom-sym-box {
+  height: calc(100% - 2.8rem);
+}
+html body .znxy-modals-symptom-sym-box .znxy-modals-symptom-no-tips-input-tips {
+  height: 0.8rem;
+  line-height: 0.8rem;
+}
+html body .znxy-modals-symptom-sym-box .znxy-modals-symptom-footer {
+  height: 2rem;
+}
+html body .znxy-modals-symptom-sym-box .znxy-modals-symptom-footer .znxy-modals-symptom-footer-counter {
+  padding: 0;
+  line-height: 2rem;
+  font-size: 0.6rem;
+}
+html body .znxy-modals-symptom-sym-box .znxy-modals-symptom-footer .znxy-modals-symptom-footer-counter span {
+  font-size: 0.6rem;
+}
+html body .znxy-modals-symptom-footer-btn {
+  font-size: 0.6rem;
+  padding: 0 0.8rem;
+  line-height: 1rem;
+}
+html body .znxy-views .znxy-questions-option-active {
+  font-size: 16px;
+}
+.znxy-interact .znxy-opt-views-d-btn,
+.znxy-interact .znxy-opt-views-d-cle {
+  font-size: 16px;
+  margin: 0.2rem 0 !important;
+  border-radius: 0.3rem !important;
+  padding: 0 !important;
+}
+.znxy-modals-symptom-ctrls {
+  top: 1rem !important;
+  right: 0.9rem !important;
+}
+.znxy-modals-symptom-ctrls .znxy-modals-symptom-btn-ctrl i {
+  font-size: 1rem;
+}
+.znxy-modals-symptom-ctrls .znxy-modals-symptom-ctrl-txt {
+  text-align: center;
+}
+.znxy-modals-symptom-img-item::before {
+  content: "请点击人体图像选择症状";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.4rem;
+}
+.znxy-views .znxy-ui-select {
+  height: 2rem;
+  line-height: 2rem;
+}
+.znxy-views .znxy-views-age-view .znxy-questions-form .znxy-questions-age-input {
+  height: 2rem;
+}

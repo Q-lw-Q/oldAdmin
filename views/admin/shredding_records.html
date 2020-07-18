@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>交接班记录</title>
+  <link href="../../static/css/takeawayorder.css" rel="stylesheet" />
+  <link href="../../static/css/system-lib.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../element/element.css">
+  <link rel="stylesheet" href="../../vue-common/adminCommon.css">
+  <link rel="stylesheet" href="../../commom/css/user_management.css">
+</head>
+
+<body>
+  <div id="vueTemplate">
+    <header class="today-summarize " id="HeaderBackgroundColor">
+      <Topnav></Topnav>
+    </header>
+    <div id="Leftcard">
+      <Leftcard></Leftcard>
+    </div>
+    <commomtemplate></commomtemplate>
+
+    <div class="decerp-content decerpindex">
+      <!--decerpindex-->
+      <div class="center-content" id="index-content">
+        <div class="content container-fluid">
+          <!--导航栏-->
+          <div class="share-container">
+            <!--操作信息栏-->
+            <div class="content-Secondary-nav">
+              <!--搜索栏-->
+              <!-- <div class="fr search-input">
+                <i class="icon-search positionicon"></i>
+                <input type="text" name="" id="contextval" placeholder="输入单据编号进行查询">
+                <a href="javascript: void(0);" id="query_filter_btn2" class="positionicontype">搜索</a>
+              </div> -->
+              <!--搜索栏-->
+            </div>
+            <!--操作信息栏-->
+            <!--会员列表1-->
+            <div class="memberlist table-responsive inventorytable memberlistactive">
+              <!-- <td class="text-center sad" style="text-align:center" colspan="8"><img
+                    src="../../vue-common/img/sad.png"><i class="padd0">暂无数据</i></td> -->
+              <tablelisttemplate v-bind:arraydata=tableListdata></tablelisttemplate>
+              <div id="page"></div>
+            </div>
+            <!--会员列表1-->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+
+<!-- jQuery 2.2.3 -->
+<script src="../../jquery/dist/jquery.min.js"></script>
+<script src="../../javascripts/xlPaging.js"></script>
+<script src="../../vue-common/js/vue.js"></script>
+<script src="../../element/element.js"></script>
+<script src="../../vue-common/topLeft.js"></script>
+<script src="../../vue-common/topNav.js"></script>
+<script src="../../commom/js/admincommom.js"></script>
+<script type="text/x-template" id="listtemplate">
+  <table class="table memberlistheade table-hover">
+    <thead>
+      <tr id="rowlength">
+        <th>账号</th>
+        <th>现金收入</th>
+        <th>收钱吧收入</th>
+        <th>退款金额</th>
+        <th>总成交次数</th>
+        <th>总收入</th>
+        <th>时间</th>
+      </tr>
+    </thead>
+    <tbody id="ProductModifyPricelists">
+
+      <tr v-for="(value, key) in arraydata" v-show="arraydata" >
+        <td v-html="value.name"></td>
+        <td v-html="value.cashMoney / 100 || 0"></td>
+        <td v-html="value.sqbMoney / 100 || 0"></td>
+        <td v-html="value.refund / 100 || 0"></td>
+        <td v-html="value.number"></td>
+        <td v-html="value.money / 100 || 0"></td>
+        <td v-html="value.start+' - '+value.end"></td>      </tr>
+      <tr v-if="(arraydata.length == 0 )">
+        <td class="text-center sad" style="text-align:center" colspan="9"><i class="padd0">暂无数据</i></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+<script src="../../commom/js/shredding_records.js"></script>
+
+</html>

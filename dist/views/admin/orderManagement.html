@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>订单管理</title><link href="../../static/css/takeawayorder.css" rel="stylesheet"><link href="../../static/css/system-lib.min.css" rel="stylesheet"><link rel="stylesheet" href="../../element/element.css"><link rel="stylesheet" href="../../vue-common/adminCommon.css"><link rel="stylesheet" href="../../public/commom/css/orderManagement.css"></head><body><div id="vueTemplate"><header class="today-summarize" id="HeaderBackgroundColor"><topnav></topnav></header><div id="Leftcard"><leftcard></leftcard></div><commomtemplate></commomtemplate><div class="decerp-content decerpindex"><div class="center-content" id="index-content"><div class="content container-fluid"><div class="content-title-nav"><div class="content-title-navlist fl"><div class="select_type"><el-date-picker v-model="timer" type="datetimerange" size="mini" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :clearable="false" value-format="yyyy-MM-dd HH:mm:ss" @change="pickerNumber"></el-date-picker><el-select v-model="selectTypeValue" placeholder="请选择" size="mini" @change="changeSelect"><el-option v-for="item in selectType" :key="item.value" :label="item.label" :value="item.value"></el-option></el-select><el-select v-model="selectPayValue" placeholder="请选择" size="mini" @change="changePaySelect"><el-option v-for="item in selectPay" :key="item.value" :label="item.label" :value="item.value"></el-option></el-select></div></div></div><div class="share-container"><div class="content-Secondary-nav flex"><div class="select_type"><div class="memberlistnav"><span class="titleleft bordercolor">汇总金额：</span> <span id="allmoney">0元</span></div></div><div class="right_type"><div class="fr search-input"><i class="icon-search positionicon"></i> <input type="text" name="" id="contextval" placeholder="输入订单号进行查询"> <a href="javascript: void(0);" id="query_filter_btn2" class="positionicontype">搜索</a></div></div></div><div class="memberlist table-responsive inventorytable memberlistactive"><tablelisttemplate v-bind:arraydata="tableListdata"></tablelisttemplate><div id="page"></div></div></div></div></div></div><el-dialog title="商品详情" :visible.sync="dialogTableVisible"><el-table :data="gridData"><el-table-column property="name" label="商品名"></el-table-column><el-table-column property="barcode" label="条码"></el-table-column><el-table-column property="money" label="单价"></el-table-column><el-table-column property="num" label="数量"></el-table-column><el-table-column property="outQuantity" label="已出货数量"></el-table-column><el-table-column property="allmoney" label="总计"></el-table-column></el-table></el-dialog></div></body><script src="../../jquery/dist/jquery.min.js"></script><script src="../../javascripts/xlPaging.js"></script><script src="../../vue-common/js/vue.js"></script><script src="../../element/element.js"></script><script src="../../vue-common/topLeft.js"></script><script src="../../vue-common/topNav.js"></script><script src="../../commom/js/admincommom.js"></script><script type="text/x-template" id="listtemplate"><table class="table memberlistheade table-hover">
+    <thead>
+      <tr id="rowlength">
+        <!-- <th>网点</th> -->
+        <th>操作人</th>
+        <th>订单号</th>
+        <th>支付来源</th>
+        <th>订单状态</th>
+        <th>总金额</th>
+        <th>支付方式</th>
+        <th>订单备注</th>
+        <th>销售时间</th>
+        <th>出货状态</th>
+        <th class="button_box">操作</th>
+      </tr>
+    </thead>
+    <tbody id="ProductModifyPricelists">
+      <tr v-for="(value, key) in arraydata" v-show="arraydata" >
+        <!-- <td v-html="value.storeName"></td> -->
+        <td v-html="value.name"></td>
+        <td v-html="value.ordersNum"></td>
+        <td v-html="value.sqbSn"></td>
+        <td v-html="value.payStatushtml"></td>
+        <td v-html="value.totalAmount / 100"></td>
+        <td v-html="value.paymoneytype"></td>
+        <td v-html="value.remark"></td>
+        <td v-html="value.datatime"></td>
+        <td v-html="value.finished == true ? '已出货' : '未出货'"></td>
+        <td class="button_box">
+            <a class="fl refundmoney"  @click="openMessage(value.ordersId,value.totalAmount / 100)" href="javascript: void(0);">发起退款</a>
+            <a class="fl seedetails" @click="seeDetail(value.ordersId,value.ordersNum)" href="javascript: void(0);">查看详情</a>
+          <a class="fl chuhuo" v-if="(value.payStatus == 'PAID') && (value.shipment == 0)" @click="openshipment(value.ordersNum,value.payType)" href="javascript: void(0);" >确认出货</a>
+        </td>
+      </tr>
+      <tr v-if="(arraydata.length == 0 )">
+        <td class="text-center sad" style="text-align
+        :center" colspan="11"><i class="padd0">暂无数据</i></td>
+      </tr>
+    </tbody>
+  </table></script><script src="../../commom/js/orderManagement.js"></script></html>

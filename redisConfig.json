@@ -1,0 +1,7 @@
+{
+    "host": "127.0.0.1",
+    "port": 6379,
+    "max_clients": 50,
+    "perform_checks": false,
+    "database": 1
+}

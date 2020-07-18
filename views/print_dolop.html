@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>收银界面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style type="text/css" id="style1">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      /* width: 188px;
+      overflow: hidden; */
+    }
+
+    h1 {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 16px;
+      opacity: 0;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    .clearfix {
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .print_container {
+      padding: 20px 20px 20px 0;
+      width: 188px;
+    }
+
+    .section1 {
+      margin-top: 5px;
+      padding-bottom: 2px;
+      border-top: 1px dotted #000;
+    }
+
+    .p5 {
+      padding: 5px 0;
+    }
+
+    .p10 {
+      padding: 10px 0;
+    }
+
+    .section2 label {
+      display: block;
+    }
+
+    .section3 {
+      padding-bottom: 5px;
+    }
+
+    .section3 label {
+      display: block;
+    }
+
+    .section2 label:first-child {
+      padding-top: 0;
+    }
+
+    .section2 label,
+    .section3 label {
+      /* font-size: 14px; */
+      padding-top: 5px;
+      font-size: 12px;
+    }
+
+    .section2 label .num,
+    .section3 label .num {}
+
+    .section2 label span,
+    .section3 label span {
+      display: inline-block;
+    }
+
+    .section4 {}
+
+    .section4>div {
+      /* border-bottom: 1px solid #ccc; */
+    }
+
+    .section4 .total label {
+      display: block;
+    }
+
+    .section4 .other_fee {
+      border-bottom: 1px dotted #000;
+      margin-bottom: 10px;
+    }
+
+    .section4 .other_fee>div {
+      padding: 0 0 5px 0;
+    }
+
+    .section5 {
+      padding-bottom: 40px;
+    }
+
+    .section5 label {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      margin: 0 0 5px 0;
+      border-bottom: 1px dotted #000;
+      font-size: 12px;
+      table-layout: fixed;
+    }
+
+    .tbody {
+      border-collapse: collapse;
+    }
+
+    thead {
+      border-bottom: 1px solid #DADADA;
+    }
+
+
+    tr {
+      display: flex;
+      width: 188px;
+      max-width: 188px;
+    }
+
+    thead tr {
+      height: 40px;
+    }
+
+    thead tr td {
+      padding-left: 1%;
+    }
+
+    .tbody tr {
+      /* height: 30px; */
+      /* display: block; */
+      /* height: 40px; */
+      /* line-height: 20px; */
+      /* padding: 8px 0; */
+    }
+
+    .tbody tr td {
+      padding: 7px 0;
+      overflow: hidden;
+      padding-left: 1%;
+    }
+
+    .tbody tr td p {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .tbody tr td p:first-child {}
+
+    #bottom {
+      padding-top: 40px;
+      font-size: 5px;
+    }
+
+    td:nth-child(1) {
+      /* width: 39% */
+    }
+
+    td:nth-child(2) {
+      /* width: 28% */
+    }
+
+    td:nth-child(3) {
+      /* width: 30% */
+    }
+
+    .borderxing {
+      width: 188px;
+      font-size: 12px;
+      line-height: 12px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .total {
+      display: flex;
+    }
+
+    .total_left {
+      font-size: 16px;
+      color: #000;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    label {
+      display: flex;
+      font-size: 12px;
+    }
+
+    label span {
+      white-space: nowrap;
+    }
+
+    label span:first-child {
+      /* margin-right: 5px; */
+    }
+
+    label .first {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+
+<body style="background-color:#fff;" id="body">
+
+  <div class="print_container" id="print_container">
+    <!-- <h1 style="font-size: 18px;text-align: center;">极客药店</h1> -->
+    <h1 style="font-size: 18px;text-align: center;"></h1>
+    <div class="section1">
+    </div>
+    <!-- <div class="section2">
+      <label>期望送达时间：5678</label>
+      <label>订单备注：实打实大撒飒飒倒萨撒</label>
+    </div> -->
+    <div class="section3">
+      <label>
+        <span id="adress">国药乐仁堂文化路店</span>
+      </label>
+      <label id="">
+        <span>收银员:</span>
+        <span class="num" id="idName"></span>
+      </label>
+      <label id="">
+        <span>流水号:</span>
+        <span class="num" id="idNum"></span>
+      </label>
+      <!-- <label id="">
+        <span>网点名称:</span>
+        <span class="num" id="adress"></span>
+      </label> -->
+      <!-- <label id="">
+        <span>日期:</span>
+        <span class="num" id="idTime"></span>
+      </label> -->
+    </div>
+
+    <p class="borderxing" style="border-top:1px dotted #000;margin-top: 3px;margin-bottom: 3px;"></p>
+
+    <div class="section3">
+      <!-- <table style="width: 100%;"> -->
+      <!-- <thead>
+            <tr>
+              <td>
+                货号 <br />
+                数量 <br />
+                品名 <br />
+              </td>
+              <td>
+                原价 <br />
+                小计 <br />
+                规格 <br />
+              </td>
+              <td>
+                会员 <br />
+                批号 <br />
+                产家 <br />
+              </td>
+            </tr>
+          </thead> -->
+      <!-- <tbody class="tbody" id="tbody"> -->
+      <div id="listContent">
+        
+      </div>
+      <!-- <label id="">
+        <span>名称:</span>
+        <span class="num" id="goodsName">复方甘草口服溶液</span>
+      </label>
+      <label id="">
+        <span>产商:</span>
+        <span class="num" id="manufa">马应龙药业集团股份有限公司</span>
+      </label>
+      <label id="">
+        <span>规格:</span>
+        <span class="num" id="spec">100ml</span>
+      </label>
+      <label id="">
+        <span>批号:</span>
+        <span class="num" id="approvalNumber"></span>
+      </label>
+      <label id="">
+        <span>单价:</span>
+        <span class="num" id="price"></span>
+        <span class="first" id="">数量:</span>
+        <span class="num" id="quantity"></span>
+      </label>
+      <label id="">
+        <span>金额:</span>
+        <span class="num" id="jine">6</span>
+      </label> -->
+      <label id="">
+        <span>应收:</span>
+        <span class="num" id="zheqian"></span>
+        <span class="first">实收:</span>
+        <span class="num" id="zhehou"></span>
+      </label>
+      <label id="">
+        <span>找零:</span>
+        <span class="num">0</span>
+      </label>
+      <tr>
+        <!-- <td style="width: 39%">
+                <p>`+ item.barcode + `</p>
+                <p>`+ item.quantity + `</p>
+                <p>`+ item.goodsName + `</p>
+              </td>
+              <td style="width: 28%">
+                <p>`+ item.price / 100 + `</p>
+                <p>`+ item.amount / 100 + `</p>
+                <p>`+ item.spec + `</p>
+              </td>
+              <td style="width: 30%">
+                <p>1</p>
+                <p>`+ item.approvalNumber + `</p>
+                <p>`+ item.manufacturer + `</p>
+              </td> -->
+      </tr>
+      <!-- </tbody>
+        </table> -->
+      <!-- <div class="other_fee">
+        <div class="canh">
+          <label class="left">餐盒费</label>
+          <label class="right">0</label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="peis">
+          <label class="left">配送费</label>
+          <label class="right">0</label>
+          <div class="clearfix"></div>
+        </div>
+        <div class="manj">
+          <label class="left">立减优惠</label>
+          <label class="right">0</label>
+          <div class="clearfix"></div>
+        </div>
+      </div> -->
+
+      <p class="borderxing" style="border-top:1px dotted #000;margin-top: 3px;margin-bottom: 3px;"></p>
+
+      <div class="section3">
+
+        <label class="">
+          <span>咨询电话:</span>
+          <span class="num">0315-2019442</span>
+        </label> <label class="">
+          <span>收款日期:</span>
+          <span class="num" id="zhaoling">2020-06-25</span>
+        </label> <label class="">
+          <span>收款时间:</span>
+          <span class="num" id="zhaoling">10:23:19</span>
+        </label>
+        </label> <label class="">
+          <span>找零:</span>
+          <span class="num" id="zhaoling">0</span>
+        </label>
+      </div>
+
+      <div style="padding: 0 0 0 0;font-size: 10px">
+        <p>15日内可凭小票换取发票</p>
+        <p>药品售出无质量问题概不退换！</p>
+        <p>关爱健康 呵护健康！</p>
+      </div>
+    </div>
+    <div class="section5">
+      <!-- <label>姓名：小花</label>
+      <label>地址：北京</label>
+      <label>电话：67890</label> -->
+    </div>
+    <p id="bottom">.</p>
+  </div>
+
+  <!-- <a href="javascript:void()" id="print">打印</a> -->
+
+</body>
+<!-- jQuery 2.2.3 -->
+<script src="../../jquery/dist/jquery.min.js"></script>
+<script src="../../checkstand/LodopFuncs.js"></script>
+<!-- <script src="../../hiprint/polyfill.min.js"></script>
+<script src="../../hiprint/hiprint.bundle.js"></script>
+<script src="../../hiprint/jquery.hiwprint.js"></script> -->
+
+<script>
+  window.onload = function () {
+
+    var obj = {
+
+      printDolop: function () {
+        // newhiprint.print(printData)
+        if (LODOP.webskt && LODOP.webskt.readyState == 1) {
+          setTimeout(() => {
+            window.close()
+          }, 10);
+        } else {
+          obj.printDolop()
+        }
+      },
+
+      tplList: function (data) {
+        let tplList = ''
+        let money = 0
+        let payType
+        let payway
+        let payString
+        var date = new Date();
+        var year = date.getFullYear(); //获取当前年份  
+        var mon = date.getMonth() + 1; //获取当前月份  
+        if (mon < 10) {
+          m = '0' + m
+        }
+        var da = date.getDate(); //获取当前日  
+        var day = date.getDay(); //获取当前星期几  
+        var h = date.getHours(); //获取小时  
+        var m = date.getMinutes(); //获取分钟  
+        if (m < 10) {
+          m = '0' + m
+        }
+        var s = date.getSeconds(); //获取秒  
+        var d = document.getElementById('Date');
+        $.each(data.ordersDetails, function (i, item) {
+          money = money + item.amount
+          tplList += `
+            <label id="">
+              <span>名称:</span>
+              <span class="num" id="goodsName">${item.goodsName}</span>
+            </label>
+            <label id="">
+              <span>产商:</span>
+              <span class="num" id="manufa">${item.manufacturer}</span>
+            </label>
+            <label id="">
+              <span>规格:</span>
+              <span class="num" id="spec">${item.spec}</span>
+            </label>
+            <label id="">
+              <span>批号:</span>
+              <span class="num" id="approvalNumber">${item.approvalNumber}</span>
+            </label>
+            <label id="" style="margin-bottom: 5px;">
+              <span>单价:</span>
+              <span class="num" id="price">${item.price / 100}</span>
+              <span class="first" id="">数量:</span>
+              <span class="num" id="quantity">${item.quantity}</span>
+            </label>
+          `
+
+          payType = item.payType
+          payway = item.payway
+        })
+
+        $('#time1').html(new Date().toLocaleString('chinese', {
+            hour12: false
+          }).slice(0, 9))
+          $('#time').html(new Date().toLocaleString('chinese', {
+            hour12: false
+          }).slice(10))
+
+        if (payType == 1) {
+          payString = '现金：'
+        } else {
+          switch (+payway) {
+            case 1:
+              payString = '支付宝：'
+
+              break;
+            case 3:
+              payString = '微信：'
+
+              break;
+            case 4:
+              payString = '百度钱包：'
+
+              break;
+            case 5:
+              payString = '京东钱包：'
+
+              break;
+            case 6:
+              payString = 'qq钱包：'
+
+              break;
+            default:
+              break;
+          }
+        }
+
+        $('#listContent').html(tplList)
+        // $("#jine").html(payString + money / 100)
+        $('#zheqian,#zhehou').html(money / 100)
+        // $('#allmoney').html(payString + money / 100)
+        $('#idName').html(data.fullName)
+
+        $('#idNum').html(location.search.slice(11))
+
+        $('#adress').html(data.branch)
+        $('#idTime').html(year + '-' + mon + '-' + da + ' ' + h + ':' + m + ':' + s)
+        this.print()
+      },
+
+      print: function () {
+        // hiprint.init();
+        LODOP = getLodop();
+        var strBodyStyle = "<style>" + document.getElementById("style1").innerHTML + "</style>";
+        var strFormHtml = strBodyStyle + "<body>" + document.getElementById("print_container").innerHTML +
+          "</body>";
+        // hiprint.init();
+        LODOP.SET_PRINT_PAGESIZE(3, 570, 100, "")
+        LODOP.ADD_PRINT_HTM(20, 0, $('#print_container').width() - 10, $('#print_container').height() + 100,
+          strFormHtml);
+        LODOP.PRINT();
+        // LODOP.PREVIEW();
+        // var hiprintTemplate = new hiprint.PrintTemplate();
+
+        // var panel = hiprintTemplate.addPrintPanel({ width: $('#print_container').width() - 10, height: $('#print_container').height() + 100, paperFooter: 0, paperHeader: 10 , topOffset: 20 , leftOffset: 5});
+
+        // panel.addPrintHtml({ options: { width: $('#print_container').width() - 10, height: $('#print_container').height() + 100, top: 20, left: 10, content: $('#body') } });
+
+        // console.log(hiprintTemplate.getJson())
+        // hiprintTemplate.print(panel)
+        // var newhiprint = new hiprint.PrintTemplate({
+        //   options: {
+        //     template: hiprintTemplate.getJson(),
+        //     settingContainer: $('#body')
+        //   }
+        // })
+        obj.printDolop()
+      },
+
+      print2: function () {
+        hiprint.init();
+        // var hiprintTemplate = new hiprint.PrintTemplate();
+        // var panel = hiprintTemplate.addPrintPanel({ width: 100, height: 130, paperFooter: 340, paperHeader: 10 });
+        // panel.addPrintHtml({ options: { width: $('#body').width(), height: 35, top: 180, left: 20, content: $('#body') } });
+        // hiprintTemplate.design('#body');
+        // hiprintTemplate.printByHtml($('#body'))
+        // console.log(hiprintTemplate.design)
+        // var testhiprintTemplate = new hiprint.PrintTemplate({ template: $('#body').html()});
+        // testhiprintTemplate.print()
+
+      },
+
+      getData: function () {
+        let that = this
+        $.ajax({
+          method: "POST",
+          async: true, //或false,是否异步
+          url: location.pathname + "/data",
+          data: {
+            ordersNum: location.search.slice(11),
+          },
+          success: function (retData) {
+            if (retData.retCode == 200) {
+              that.tplList(retData.retEntity)
+            }
+          },
+          error: function (res) {
+
+          }
+        });
+      },
+
+      init: function () {
+        this.getData()
+        // this.print()
+      }
+    }
+
+    obj.init()
+
+  }
+</script>
+
+</html>

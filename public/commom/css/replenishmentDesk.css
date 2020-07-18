@@ -1,0 +1,67 @@
+#index-content .content-title-nav {
+  margin-bottom: 0 !important;
+}
+#index-content .content-title-nav .content-title-navlist {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#index-content .centerInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#index-content .centerInput .item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+#index-content .centerInput .item:last-child {
+  margin-right: 0;
+}
+#index-content .centerInput .item p {
+  word-break: keep-all;
+  width: 100px;
+}
+#index-content .centerInput .item > div {
+  flex: 1;
+  width: auto !important;
+}
+#index-content .centerInput .item input {
+  flex: 1;
+}
+#index-content .centerButton {
+  margin: 10px 0;
+  text-align: right;
+}
+#index-content .centetNumberList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#index-content .centetNumberList .item {
+  flex: 1;
+  margin: 10px 10px;
+  display: flex;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  align-items: center;
+  line-height: 40px;
+  color: #409eff;
+}
+#index-content .centetNumberList .item p {
+  margin-top: 20px;
+  font-size: 16px;
+}
+#index-content .centetNumberList .item p:last-child {
+  line-height: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+#index-content .bottomTabale {
+  padding-bottom: 40px;
+}

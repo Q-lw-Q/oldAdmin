@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>库存位置列表</title><link href="../../static/css/takeawayorder.css" rel="stylesheet"><link href="../../static/css/system-lib.min.css" rel="stylesheet"><link rel="stylesheet" href="../../element/element.css"><link rel="stylesheet" href="../../vue-common/adminCommon.css"></head><body><div id="vueTemplate"><header class="today-summarize" id="HeaderBackgroundColor"><topnav></topnav></header><div id="Leftcard"><leftcard></leftcard></div><commomtemplate></commomtemplate><div class="decerp-content decerpindex"><div class="center-content" id="index-content"><div class="content container-fluid"><div class="share-container"><div class="content-title-nav"><div class="content-title-navlist fl"></div><div class="fr rightButton"><button type="button" @click="openDeleteTrack" class="btn donwbtn fl">清除层轨道</button></div></div><div class="content-Secondary-nav flex"><div class="select_type"><li class="frist"><a href="javascript:void(0);" id="export_inventoryList"><i class="export_pdf-i icon-print pad"></i> <span>导出列表</span> </a><a href="/admin/adressList/h5" style="margin-left: 20px;" id=""><span>跳转到手机版本</span></a></li></div></div><div class="memberlist table-responsive inventorytable memberlistactive"><tablelisttemplate v-bind:arraydata="tableListdata"></tablelisttemplate><div id="page"></div></div></div></div></div></div><el-dialog title="收货地址" :visible.sync="dialogFormVisible"><el-form :model="form"><el-form-item label="柜子号" :label-width="formLabelWidth"><el-input v-model="form.boxCode" auto-complete="off"></el-input></el-form-item><el-form-item label="层数" :label-width="formLabelWidth"><el-input v-model="form.zAxis" auto-complete="off"></el-input></el-form-item></el-form><div slot="footer" class="dialog-footer"><el-button @click="dialogFormVisible = false">取 消</el-button><el-button type="primary" @click="submitTrack">确 定</el-button></div></el-dialog><el-dialog title="位置列表" :visible.sync="showAdressFalg"><el-table :data="adressData"><el-table-column property="barcode" label="商品编码"></el-table-column><el-table-column property="box_code" label="柜"></el-table-column><el-table-column property="z_axis" label="层"></el-table-column><el-table-column property="sort_num" label="列"></el-table-column><el-table-column property="sum" label="数量"></el-table-column></el-table></el-dialog></div></body><script src="../../jquery/dist/jquery.min.js"></script><script src="../../javascripts/xlPaging.js"></script><script src="../../vue-common/js/vue.js"></script><script src="../../element/element.js"></script><script src="../../vue-common/topLeft.js"></script><script src="../../vue-common/topNav.js"></script><script src="../../commom/js/admincommom.js"></script><script type="text/x-template" id="listtemplate"><table class="table memberlistheade table-hover">
+    <thead>
+      <tr id="rowlength">
+        <th>条码</th>
+        <th>商品名称</th>
+        <th>商品长度</th>
+        <th>商品宽度</th>
+        <th>商品高度</th>
+        <th>库存数量</th>
+        <th>商品占领轨道数量</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="ProductModifyPricelists">
+      <tr v-for="(value, key) in arraydata" v-show="arraydata" >
+        <td v-html="value.barcode"></td>
+        <td v-html="value.name"></td>
+        <td v-html="value.length"></td>
+        <td v-html="value.width"></td>
+        <td v-html="value.height"></td>
+        <td v-html="value.qty"></td>
+        <td v-html="value.count"></td>
+        <td class="edit_box">
+          <a class="fl" @click="getShopPosition(value.barcode)" href="javascript: void(0);">获取商品位置</a>
+        </td>
+      </tr>
+      <tr v-if="(arraydata.length == 0 )">
+        <td class="text-center sad" style="text-align:center" colspan="11"><i class="padd0">暂无数据</i></td>
+      </tr>
+    </tbody>
+  </table></script><script src="../../commom/js/adressList.js"></script></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>错误商品列表</title>
+  <link href="../../static/css/takeawayorder.css" rel="stylesheet" />
+  <link href="../../static/css/system-lib.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../element/element.css">
+  <link rel="stylesheet" href="../../vue-common/adminCommon.css">
+</head>
+
+<body>
+  <div id="vueTemplate">
+    <header class="today-summarize " id="HeaderBackgroundColor">
+      <Topnav></Topnav>
+    </header>
+    <div id="Leftcard">
+      <Leftcard></Leftcard>
+    </div>
+    <commomtemplate></commomtemplate>
+
+    <div class="decerp-content decerpindex">
+      <!--decerpindex-->
+      <div class="center-content" id="index-content">
+        <div class="content container-fluid">
+          <!--导航栏-->
+          <div class="share-container content-title-nav">
+            <!--操作信息栏-->
+            <!-- <div class="content-Secondary-nav flex"> -->
+            <div class="fr rightButton">
+              <button type="button" id="getShopTo" class="btn donwbtn fl  ">本地商品同步云端</button>
+            </div>
+
+            <!--搜索栏-->
+            <!-- <div class="fr search-input">
+                <i class="icon-search positionicon"></i>
+                <input type="text" name="" id="contextval" placeholder="输入编号或货号进行查询">
+                <a href="javascript: void(0);" id="query_filter_btn2" class="positionicontype">搜索</a>
+              </div> -->
+            <!--搜索栏-->
+            <!-- </div> -->
+            <!--操作信息栏-->
+
+            <!--会员列表1-->
+            <div class="memberlist table-responsive inventorytable memberlistactive">
+              <tablelisttemplate v-bind:arraydata=tableListdata></tablelisttemplate>
+              <div id="page"></div>
+            </div>
+            <!--会员列表1-->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <el-dialog title="位置列表" :visible.sync="showAdressFalg">
+      <el-table :data="adressData">
+        <el-table-column property="barcode" label="商品编码" ></el-table-column>
+        <!-- box_code 柜 -->
+        <el-table-column property="box_code" label="柜" ></el-table-column>
+        <!-- z_axis 层 -->
+        <el-table-column property="z_axis" label="层" ></el-table-column>
+        <!-- sort_num 轨道 -->
+        <el-table-column property="sort_num" label="列" ></el-table-column>
+        <!-- sum 货物数量 -->
+        <el-table-column property="sum" label="数量" ></el-table-column>
+      </el-table>
+    </el-dialog>
+
+  </div>
+</body>
+
+<!-- jQuery 2.2.3 -->
+<script src="../../jquery/dist/jquery.min.js"></script>
+<script src="../../javascripts/xlPaging.js"></script>
+<script src="../../vue-common/js/vue.js"></script>
+<script src="../../element/element.js"></script>
+<script src="../../vue-common/topLeft.js"></script>
+<script src="../../vue-common/topNav.js"></script>
+<script src="../../commom/js/admincommom.js"></script>
+<!-- 列表模板 -->
+<script type="text/x-template" id="listtemplate">
+  <table class="table memberlistheade table-hover">
+    <thead>
+      <tr id="rowlength">
+        <th>商品条码</th>
+        <th>商品名称</th>
+        <th>备注</th>
+        <th>时间</th>
+        <th>异常处理</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="ProductModifyPricelists">
+      <tr v-for="(value, key) in arraydata" v-show="arraydata" >
+        <td v-html="value.barcode"></td>
+        <td v-html="value.goodsName"></td>
+        <td v-html="value.remark"></td>
+        <td v-html="value.createdTime"></td>
+        <td v-html="value.solveStr"></td>
+        <td class="edit_box">
+          <a class="fl" @click="getShopPosition(value.barcode)" href="javascript: void(0);">获取商品位置</a>
+          <a class="fl" v-if="!value.solve" @click="setSolve(value.id)" href="javascript: void(0);">已人工处理</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+<script src="../../commom/js/shopErrorList.js"></script>
+
+</html>

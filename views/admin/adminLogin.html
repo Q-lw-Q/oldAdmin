@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>登录后台</title>
+  <link rel="stylesheet" href="../../checkstand/loaders.min.css">
+  <link rel="stylesheet" href="../../commom/css/adminLogin.css">
+  <script>
+    const index = "/admin/home"
+  </script>
+</head>
+
+<body>
+  <div class="login_pop">
+    <p class="login_title">极银登录</p>
+    <ul class="from">
+      <li class="from_item user">
+        <input type="text" class="" id="loginName" placeholder="请输入您的账号或者手机号" />
+      </li>
+      <li class="from_item password">
+        <input type="password" class="" id="loginPassword" placeholder="请输入您的密码" />
+      </li>
+      <li class="login_item" id="login_item">登录</li>
+      <li class="ison_item">
+        <span class="left">123</span>
+        <span></span>
+        <!-- <span>忘记密码？</span> -->
+      </li>
+    </ul>
+  </div>
+  <!-- loading 图层 -->
+  <div class="loadgin_mask">
+    <div class="content">
+      <div data-loader="rectangle" class="rectangle"></div>
+      <p>loading...</p>
+    </div>
+  </div>
+
+  <script src="../../jquery/dist/jquery.min.js"></script>
+  <script src="../../commom/js/adminLogin.js"></script>
+</body>
+
+</html>

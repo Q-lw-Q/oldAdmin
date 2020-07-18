@@ -1,0 +1,50 @@
+{
+  "appenders": {
+    "buildTradeLogs": {
+      "type": "dateFile",
+      "filename": "./log/buildTradeLogs/buildTradeLog.log",
+      "pattern": "yyyy-MM-dd",
+      "category": "http"
+    },
+    "tradeCallBackLogs": {
+      "type": "dateFile",
+      "filename": "./log/tradeCallBackLogs/tradeCallBack.log",
+      "pattern": "yyyy-MM-dd",
+      "category": "http"
+    },
+    "discernLogs": {
+      "type": "dateFile",
+      "filename": "./log/discernLogs/discern.log",
+      "pattern": "yyyy-MM-dd",
+      "category": "http"
+    },
+    "cheeseLogs": {
+      "type": "dateFile",
+      "filename": "./log/cheeseLogs/cheeseLog.log",
+      "pattern": "yyyy-MM-dd",
+      "category": "http"
+    },
+
+    "console": {
+      "type": "console"
+    }
+  },
+  "categories": {
+    "buildTrade": {
+      "appenders": ["buildTradeLogs","console"],
+      "level": "info"
+    },
+    "tradeCallBack": {
+      "appenders": ["tradeCallBackLogs","console"],
+      "level": "info"
+    },
+    "discernLogs": {
+      "appenders": ["discernLogs"],
+      "level": "info"
+    },
+    "default": {
+      "appenders": ["cheeseLogs"],
+      "level": "trace"
+    }
+  }
+}

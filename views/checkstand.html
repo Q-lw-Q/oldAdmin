@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>收银界面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../checkstand/com_N3.min.css">
+    <link href="../../static/css/system-lib.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../checkstand/swiper-4.2.0.min.css">
+
+    <link href="../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="http://issues.wenzhixin.net.cn/bootstrap-table/assets/bootstrap-table/src/bootstrap-table.css"> -->
+    <link href="../../bootstrap-table/1.12.1/css/bootstrap-table.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="http://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css"> -->
+    <link href="../../bootstrap-editable/1.5.1/css/bootstrap-editable.css" rel="stylesheet">
+
+    <!--lte-->
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <!-- <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css"> -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <!-- <link rel="stylesheet" href="../../datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../lte/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../lte/css/skins/_all-skins.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!--/lte-->
+    <!--select 2-->
+
+    <link href="../../select2/3.4.4/css/select2.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../checkstand/checkstand.css" />
+    <!-- <link href="https://vitalets.github.io/x-editable/assets/select2/select2-bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../../checkstand/loaders.min.css">
+    <!-- .pdf文件下载  download -->
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdn.bootcss.com/jspdf/1.3.4/jspdf.debug.js"></script>
+    <!-- jQuery 2.2.3 -->
+    <script src="../../jquery/dist/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: '微软雅黑';
+        }
+
+
+        .navbtnbox a {
+            color: #333333 !important;
+        }
+
+        .nafrigh a {
+            color: #333 !important;
+        }
+
+        /* 支付窗口 */
+        .layui-layer-setwin a {
+            width: 40px !important;
+            height: 40px !important;
+            background-position: 0 -6px !important;
+            left: 35px;
+            top: -25px;
+        }
+
+        .layui-layer-setwin a svg {
+            background: #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 29px;
+            border: 1px;
+        }
+
+        .play-settlement-box .paymemberlist1 {
+            padding-top: 30px;
+        }
+
+        .deletenum i {}
+
+        .youku1imgbox {
+            width: 70px;
+            height: 70px;
+            margin: auto;
+            background: url('../images/youkuvideo.png');
+        }
+
+        .youku1img1 {
+            background-position-y: 0px;
+        }
+
+        .youku1img2 {
+            background-position-y: -70px;
+        }
+
+        .youku1img3 {
+            background-position-y: -140px;
+        }
+
+        .youku1img4 {
+            background-position-y: -210px;
+        }
+
+        .youku1img5 {
+            background-position-y: -280px;
+        }
+
+        .youku1img6 {
+            background-position-y: -350px;
+        }
+
+        .youku1img7 {
+            background-position-y: -420px;
+        }
+
+        .youku1img8 {
+            background-position-y: -560px;
+        }
+
+        .bgColor {
+            background-color: #efefef;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        body .main-box .nafrigh2 {
+            display: flex;
+        }
+
+        body .main-box .nafrigh2 .displayproductlist {
+            flex: 1;
+        }
+
+        body .main-box .nafrigh .swiper-button-prev,
+        body .main-box .nafrigh .swiper-button-next {
+            display: flex !important;
+            z-index: 2;
+            /* position: absolute; */
+            /* top: 0; */
+            /* transform: translateY(50%); */
+        }
+
+        body .main-box .nafrigh .swiper-button-prev {
+            /* left: 0; */
+        }
+
+        body .main-box .nafrigh .swiper-button-next {
+            /* left: 0; */
+        }
+
+        body .main-box .navcenterLeft {
+            min-width: 95px;
+        }
+
+        body .productmorelist {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #productlist {
+            width: 100% !important;
+        }
+
+        .displayproductlist .Cashbotobx2 .swiper-container .productmorelist .textlistbox {
+            /* float: none;
+            display: inline-block;
+            margin-right: 13px!important; */
+        }
+
+        .play-settlement-box .col-xs-6 {
+            height: auto;
+        }
+
+        .paywaylist .active .iconfont2 .whirte {
+            display: block;
+        }
+
+        .paywaylist .active .iconfont2 .blue {
+            display: none;
+        }
+
+        .paywaylist .iconfont2 .whirte {
+            display: none;
+        }
+
+        .paywaylist .iconfont2 .blue {
+            display: block;
+        }
+
+        .swiper_shooping_list {
+            margin: 0px 22px 0 13px;
+            overflow-x: auto;
+        }
+
+        #swipers .swipers_list {
+            background: #efefef;
+            font-size: 15px;
+            text-align: center;
+            color: #113e36;
+            padding: 14px 5px;
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        #swipers .active {
+            background: #90b82d;
+            color: #fff;
+        }
+
+        #layui-layer_pop2 {
+            position: fixed;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%);
+        }
+
+        #layui-layer_pop5 {
+            position: fixed;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%);
+        }
+
+        audio {
+            /* display: none; */
+            /* opacity: 0; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 25222222;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
+
+        .loadgin_mask {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 199999999;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+        }
+
+        .loadgin_mask .content {
+            width: 100%;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .loadgin_mask .content .rectangle {
+            position: absolute;
+            top: 30%;
+            left: 49%;
+            transform: translate(-50%, -50%);
+        }
+
+        .loadgin_mask .content p {
+            font-size: 30px;
+            color: #fff;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+
+        .loadgin_mask .content #stop_speak,
+        .loadgin_mask .content #stop_pay {
+            top: 80%;
+            width: 80px;
+            height: 40px;
+            line-height: 39px;
+            text-align: center;
+            font-size: 18px;
+            background: #e87171;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .microphone {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 50px;
+            bottom: 50px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .microphone .microphone_icon {
+            width: 100%;
+            height: 100%;
+            /* background: url(../../checkstand/img/audio_button.svg) no-repeat center center / cover; */
+        }
+
+        #jieshuajie,
+        #jieshuajie2 {
+            padding-left: 5px;
+            font-weight: bold;
+        }
+
+        .CAshshuliang .selectorder_discount_type .order_discount_mon {
+            overflow: hidden;
+            font-size: 18px;
+        }
+
+        .CAshshuliang .selectorder_discount_type .order_discount_mon .discount_mon {
+            float: right;
+            font-size: 14px;
+        }
+
+        .CAshshuliang .selectorder_discount_type .commentcss_s {
+            color: orangered;
+        }
+
+        .Csjscalc .caluinew {
+            overflow: hidden;
+        }
+
+        .Csjscalc .caluinew li {
+            float: left;
+            display: block;
+            width: 69px;
+            height: 69px;
+            color: #666;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 69px;
+            margin-right: 21px;
+            margin-top: 12px;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .el-pagination {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    </style>
+    <link rel="stylesheet" href="../../checkstand/layer.css" id="layui_layer_skinlayercss" style="">
+    <link type="text/css" rel="stylesheet" href="../../checkstand/laydate.css">
+    <link type="text/css" rel="stylesheet" href="../../checkstand/laydate(1).css" id="LayDateSkin">
+    <link rel="stylesheet" href="../../checkstand/layer.ext.css" id="layui_layer_skinlayerextcss" style="">
+    <link rel="stylesheet" href="../../checkstand/print.min.css">
+    <link rel="stylesheet" href="../../vue-common/adminCommon.css">
+    <link rel="stylesheet" href="../../element/element.css">
+
+</head>
+
+
+<body style="background: #23262E" id="body">
+    <div id="cover"
+        style="background: #000; position: absolute; left: 0px; top: 0px; width: 100%; filter: alpha(opacity=30); opacity: 0.3; display: none; z-index: 100 ">
+    </div>
+
+
+    <!--新添加的漂浮气泡提示框 start <img class="shoplogoimg" id="logoid" src="/skin_N3/images/shoplogo.png" />----->
+    <div id="vueTemplate">
+        <header class="today-summarize " id="HeaderBackgroundColor">
+            <Topnav v-bind:showcollecttext=showcollect></Topnav>
+        </header>
+        <commomtemplate></commomtemplate>
+        <!--消息-->
+        <div class="newscenter" style="z-index:1000;">
+            <div class="newscenter-nav">
+                <ul id="newscenter-nav">
+                    <li class="active">业务消息</li>
+                    <li class="messageli" data-type="2">系统消息</li>
+                    <li class="messageli" data-type="5">更新日志</li>
+                </ul>
+            </div>
+            <!--业务消息-->
+            <div class="newscenter-content active">
+                <ul id="messagehtml"></ul>
+            </div>
+            <!--业务消息-->
+            <!--系统公告-->
+            <div class="newscenter-content">
+                <ul id="systemMessageList_new"></ul>
+            </div>
+            <!--系统公告-->
+            <!--升级公告-->
+            <div class="newscenter-content">
+                <ul id="logMessageList_new"></ul>
+            </div>
+            <!--升级公告-->
+
+        </div>
+
+        <!--退出登录中心-->
+        <div class="nav-content usercenter">
+            <ul>
+                <li class="text-center usercenterhref">
+                    <a id="" href="http://decerp.cc/Home/Index?software_versionid=2" class=""><i
+                            class="iconfont2 iconphoto"></i>返回旧版</a>
+                    <a id="changePwd" href="javascript:void(0);" class=""><i class="iconfont2 iconphoto"></i>修改密码</a>
+                    <a href="http://decerp.cc/home/VersionList_N3" class="" id="IsonlineRenewal"><i
+                            class="iconfont2 iconphoto"></i>在线购买</a>
+                    <a href="javascript:void(0);">
+                        <span class=""><i class="iconfont2 iconphoto"></i>修改头像</span>
+                        <input type="file" class="file" id="upLoadImg" value="">
+                    </a>
+                    <a id="handover" href="javascript:void(0);" class="handover_hide"><i
+                            class="iconfont2 iconphoto"></i>交
+                        接 班 </a>
+                    <a id="userLogOut" href="javascript:void(0);" class=""><i class="iconfont2 iconphoto"></i>退出系统</a>
+                </li>
+            </ul>
+        </div>
+
+        <!---------------------am------------------------>
+        <!---头部 end----->
+        <!--收银box-->
+
+        <div class="main-box" style="padding-top:58px;">
+            <!--左边-->
+            <div class="fl naflet" style="position: relative; z-index: 99;">
+                <!--搜索框-->
+                <div class="top top2">
+                    <i class="search-product-buy icon-th" data-name="search-product-buy"></i>
+                    <input type="text" id="queryproduct" onkeyup="queryproductChange();" maxlength="30"
+                        placeholder="商品搜索">
+                    <span class="deletebtn icon-remove-sign" id="deletebtn" onclick="deletebtn()"></span>
+                </div>
+                <!--搜索框-->
+
+                <div class="bdtext" id="bdtext" style="width: 310px">
+                    <!--操作员名字和信息-->
+
+                    <div class="padding titiels" style="height: 67px;display: flex;align-items: center;">
+                        <p class="" style="overflow:hidden;padding-bottom: 0;margin-bottom: 0;">
+                            <span class="fr" id="date_ss" style="float:left;"></span>
+                        </p>
+                        <!-- <p id="xiaoshoudanhao"> -->
+                        <!-- <span>销售单号：<text id="danhao">7</text></span> -->
+                        <!-- <span style="display:none;">牌号：<text id="catering_CateringGrade" data-tableid="0" data-withlistid="0"
+                        data-personnum="0" data-addfood="false" style="color:red;font-size:16px;"></text></span> -->
+                        <!-- </p> -->
+                    </div>
+                    <!--操作员名字和信息-->
+
+                    <!--商品列表-->
+                    <div class="cashbox maxbox">
+
+                        <ul class="Cashlefsit" id="Cashlefsit" style="height: 459px;">
+
+                        </ul>
+
+                    </div>
+                    <!--结账按钮-->
+
+                    <div class="Cashlebtn">
+                        <div class="cltop" style="background-color: white;">
+                            <div class="tiptops">
+                                <span><em>合计数量</em></span>
+                                <span><i><em id="thisProductTotalnumber">0.00</em></i></span>
+                            </div>
+
+                            <div class="tiptops">
+                                <span><em>合计金额</em></span>
+                                <span><i>¥<em id="jieshuajie"> 0.00</em></i></span>
+                            </div>
+
+                            <div class="tiptops">
+                                <span><em class="corrrred" id="Should_be_charged">应收</em></span>
+                                <span><i class="corrrred">¥<em id="jieshuajie2">0.00</em></i></span>
+                            </div>
+                        </div>
+
+                        <div class="clbtom">
+                            <input type="hidden" id="userid" name="userid" value="">
+                            <a href="javascript:void(0);" onclick="empty()" id="Cashchongzhi"
+                                style="font-family: SimHei;" class="key_select_member">清空</a>
+
+                            <a href="javascript:void(0);" onclick="closePrice()"
+                                style="border-left: 1px solid #ff8d8d;font-family: SimHei;">结算</a>
+
+                        </div>
+                    </div>
+                    <!--结账按钮-->
+                </div>
+            </div>
+
+            <!--左边-->
+            <!--右边-->
+            <div class="nafrigh nafrigh2" style="top: 58px;">
+                <!--左侧的按钮-->
+                <div class="navcenterLeft navbtnbox navbtnbox2">
+                    <nav>
+                        <a href="javascript:void(0);" onclick="dev()">删除</a>
+                        <a href="javascript:void(0);" onclick="add()" class="big bule key_add_num" alt="">+</a>
+
+                        <a href="javascript:void(0);" onclick="reduce()" class="big key_minus_num" alt=""
+                            data-name="">-</a>
+                    </nav>
+                </div>
+                <!--左侧的按钮-->
+                <!--右边商品展示框-->
+                <div class="Cashporictbox displayproductlist">
+                    <!--顶部导航栏-->
+                    <div class="Cashtopnav" style="height:50px;">
+                        <div class="swiper_shooping_list">
+                            <div class="swiper-button-prev" id="prev_button"></div>
+                            <div class="" id="swipers">
+                            </div>
+                            <div class="swiper-button-next" id="next_button"></div>
+                        </div>
+                        <!-- <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div> -->
+                    </div>
+                    <!--顶部导航栏-->
+                    <!--产品展示-->
+                    <div class="Cashbotobx2" style="padding-right: 12px;">
+                        <div class="swiper-container swiper-container-horizontal ">
+                            <ul class="swiper-wrapper productmorelist">
+
+                                <li class="swiper-slide swiper-slide-active" id="productlist">
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <el-pagination small @current-change="pageSize" :current-page.sync="shoppingIndex" background
+                        layout="prev, pager, next" :page-count="shoppingCount"
+                        :hide-on-single-page="shoppingCount == 1"></el-pagination>
+                </div>
+                <!-- 录音按钮 -->
+                <div class="microphone" id="microphone" on click="microphoneClass()">
+                    <img src="../../checkstand/img/audio_button.svg" alt="" class="microphone_icon" />
+                </div>
+            </div>
+
+            <!--产品展示-->
+            <!-- 产品信息提示-->
+
+            <!-- 产品信息提示-->
+        </div>
+
+        <!--右边商品展示框-->
+        <!--右边-->
+        <div class="" id="layui-layer_pop2" type="page" times="2" showtime="0" contype="string"
+            style="z-index: 200; left: 600px; width: 767px; margin: 0 auto; display: none;">
+            <div id="shoyin2" class="layui-layer-content"></div>
+            <span class="layui-layer-setwin" style="z-index: 1;
+    right: 30px;
+    top: 10px;"><a href="javascript:;" style="cursor: pointer;
+    background: #fff;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;" onclick="closed()"><i class="el-icon-close" style="
+    line-height: 40px;
+    font-size: 30px;
+    color: black;
+"></i></a></span>
+            <div class="play-settlement-box row">
+                <div class="paymemberlist1 col-xs-6">
+                    <input type="hidden" id="csshjsbox_window_open" value="true">
+                    <input type="hidden" id="isShowThisWindows" value="true">
+                    <input type="hidden" id="sv_user_givingtype" value="0">
+                    <!--优惠类型-->
+                    <input type="hidden" id="sv_sumobtain_value" value="0">
+                    <!--优惠值-->
+                    <input type="hidden" id="hidden_member_id" value="0">
+                    <!--会员Id-->
+                    <input type="hidden" id="hidden_member_discount" value="100">
+                    <!--会员折扣-->
+                    <input type="hidden" id="hidden_coupon_amount" value="0">
+                    <!--优惠券金额-->
+                    <input type="hidden" id="hidden_coupon_discount" value="0">
+                    <!--优惠券折扣-->
+                    <input type="hidden" id="hidden_coupon_record_id" value="0">
+                    <!--优惠券id-->
+                    <ul class="pay-settlement-input">
+                        <li><span id="xianjinname">现金</span><input id="xianjin" onkeyup="clearNoNum_collect(this)"
+                                type="text" value="0.00"><i class="icon-remove-sign clean" onclick="clear_screen()"></i>
+                        </li>
+                        <li><span id="daoshouname">待收</span><input id="daishou" type="text" readonly=""
+                                disabled="disabled" value="0.00"></li>
+                        <li><span>折扣</span><span style="float:right;">%</span><input id="ttuser_descount"
+                                style="color:#ff0000;" onkeyup="clearNoNum_descount(this)" type="text" value="100.00">
+                        </li>
+                        <li><span>找零</span><input class="huihui" id="zhaoling" value="0.00" disabled="disabled"
+                                style="position: absolute;right: 35px;"></li>
+                        <li style="height:55px">
+                            <span style="color:red;">实收</span>
+                            <input readonly="readonly" id="yinshou" onkeyup="clearNoNum_collect(this)"
+                                onchange="clearNoNum_collect(this)" style="color:#ff6a00;" type="text" value="0.00">
+                            <!-- <i class="icon-remove-sign clean"></i> -->
+                            <span id="sp_automaticchangemoney"
+                                style="position: absolute;right: 32px;top: 24px;font-size:10px;display:none">抹零￥<i
+                                    id="automaticchangemoney" style="float:none;color:#ff6666">0.00</i></span></li>
+                        <li><span>备注</span><input id="order_remark" type="text" value=""
+                                style="font-size: 11px;font-weight: normal !important;line-height: 40px;"><i
+                                class="icon-remove-sign clean" onclick="remark()"></i></li>
+                    </ul>
+                    <!-- 支付左半边 积分会员区域 -->
+                    <!-- <div class="pay-settlement-mumber" style="margin-top: 0;">
+                <div class="selectmember" style="height: 38px;">
+                  <input type="text" class="membernumber" id="txtPayselectmember" name="name" value=""
+                    placeholder="按F2刷卡或输入卡号 ">
+                  <button class="selectmemberlist" readonly="readonly" id="btnSelectmemberlist" type="button"
+                    name="name">选择会员</button>
+                </div>
+                <div class="row memberinfobox">
+                  <div class="col-xs-2 memberinfophoto">
+                    <img class="memberinfophotoimg" id="member_photo" src="/images/001.png">
+                  </div>
+                  <div class="col-xs-7" style="padding:0 0 0 5px">
+                    <p class="memberNamep" id="memberNamep"></p>
+                    <p class="memberNamenumber col-xs-6" id="memberNamenumber"></p>
+                    <p class="memberNamenumber col-xs-6" id="memberdIscount"></p>
+                  </div>
+                  <div class="col-xs-3">
+                    <p class="membercatagory" id="membercatagory"></p>
+                    <p><a class="memberrecharge" id="btnMemberRecharge" data-userid="" data-cardno=""
+                        href="javascript: void(0);">充值</a></p>
+                  </div>
+                </div>
+                <div class="memberinfonumber">
+                  <ul class="memberinfonumberul row">
+                    <li class="col-xs-3">
+                      <p>积分</p>
+                      <p id="memberintegral"></p>
+                    </li>
+                    <li class="col-xs-3">
+                      <p>余额</p>
+                      <p id="memberbalance"></p>
+                    </li>
+                    <li class="col-xs-3">
+                      <p>累计消费</p>
+                      <p id="memberconsumptiongrand"></p>
+                    </li>
+                    <li class="col-xs-3">
+                      <p>生日</p>
+                      <p id="memberbirthday"></p>
+                    </li>
+                  </ul>
+                </div>
+              </div> -->
+                    <!--积分抵现-->
+                    <div hidden="hidden" class="jiFenDiXian" style="position:relative;padding-left: 30px;">
+                        <input type="checkbox" name="name" class="checkinput" id="jiFenDiXian" style="width: 18px;height: 18px;position:absolute;left: 0px;bottom:0;top: 0;margin:auto;">
+                        <span id="jifendixiantishi">积分抵现</span>
+                    </div>
+                    <!--积分抵现-->
+                    <div class="elSexAgeSelect ">
+                        <div class="titleBox">
+                            <p class="Tips">性别</p>
+                            <div class="boxRadio one">
+                                <el-radio-group v-model="valueSex">
+                                    <el-radio :label="1">男</el-radio>
+                                    <el-radio :label="2">女</el-radio>
+                                </el-radio-group>
+                            </div>
+                        </div>
+                        <div class="titleBox">
+                            <p class="Tips">年龄层</p>
+                            <div class="boxRadio">
+                                <el-radio-group v-model="valueAge">
+                                    <el-radio :label="1">20岁以下</el-radio>
+                                    <el-radio :label="2">21-30岁</el-radio>
+                                    <el-radio :label="3">31-40岁</el-radio>
+                                    <el-radio :label="4">41-50岁</el-radio>
+                                    <el-radio :label="5">50岁以上</el-radio>
+                                </el-radio-group>
+                            </div>
+                        </div>
+                    </div>
+                    <!--满赠送-->
+                    <div id="StoredRemark" class="text-center"
+                        style="color: rgb(255, 102, 102); text-align: left; line-height: 25px; display: none;"></div>
+                    <!--满赠送-->
+                </div>
+                <div id="cash_dialog" class="paymemberlist2 col-xs-6">
+                    <ul class="calui countui">
+                        <li onclick="addnum(this)" class="borderleft borderbottom bordertop" value="7">7</li>
+                        <li onclick="addnum(this)" class="borderbottom bordertop" value="8">8</li>
+                        <li onclick="addnum(this)" class="borderbottom bordertop" value="9">9</li>
+                        <li onclick="addnum(this)" class="color2 borderright borderbottom bordertop" value="20">20</li>
+                        <li onclick="addnum(this)" class="borderleft borderbottom" value="4">4</li>
+                        <li onclick="addnum(this)" class="borderbottom" value="5">5</li>
+                        <li onclick="addnum(this)" class="borderbottom" value="6">6</li>
+                        <li onclick="addnum(this)" class="color2 borderright borderbottom" value="50">50</li>
+                        <li onclick="addnum(this)" class="borderleft borderbottom" value="1">1</li>
+                        <li onclick="addnum(this)" class="borderbottom" value="2">2</li>
+                        <li onclick="addnum(this)" class="borderbottom" value="3">3</li>
+                        <li onclick="addnum(this)" class="color2 borderright borderbottom" value="100">100</li>
+                        <li onclick="addnum(this)" class="borderleft borderbottom" value="0">0</li>
+                        <li onclick="addnum(this)" class="borderbottom" value=".">.</li>
+                        <li class="borderbottom" id="deletenum"><i class="iconfont2" style="font-size: 30px;"
+                                onclick="clear_screen()">C</i></li>
+                        <li class="backgroundff6 key_zero_price borderright borderbottom" id="lohei"
+                            style="display:none">抹零
+                        </li>
+                        <li class="backgroundff6 key_order_discount borderright borderbottom"
+                            id="order_discount_Settlement_new" onclick="openDiscountPop()">折扣
+                        </li>
+                    </ul>
+                    <ul class="paywaylist">
+                        <li class="Cashcardcombined1 Cashcardcombined nowpayType selectpaytype key_cash active borderleft bordertop"
+                            data-open="true" id="s_cashPay" bindkey="p_cashpay" onclick="selectshouqian(this)" style="display: flex;
+          align-items: center;
+          justify-content: center;">
+                            <i class="iconfont2 ">
+                                <img src="../../commom/img/icon2.svg" style="width:30px ; height: 30px;" class="blue"
+                                    alt="" />
+                                <img src="../../commom/img/icon3.svg"
+                                    style="width:20px ; height: 20px; margin-right: 5px;" class="whirte" alt="" />
+                            </i><span>现金</span>
+                        </li>
+                        <li class="Combinedpaymentmethod selectpaytype nowpayType" id="shouqianba" bindkey="p_meituan55"
+                            data-open="true" onclick="selectshouqian(this)" style="display: flex;
+        align-items: center;
+        justify-content: center;"><i class="iconfont2 ii10">
+                                <img style="width: 20px;height: 20px;" src="../../commom/img/zhaoshanglogo.jpg" alt="" />
+                            </i><span>招商支付</span></li>
+                        <li class="biglis key_print open" id="print_button" onclick="printSelect(this)"><i
+                                class="icon-ok-sign ii12 "></i>打印
+                        </li>
+                        <!-- <li id="cash_func_cashbox_mutipos" onclick="oepnPay(this)" class="opgol opgolactive borderright "><i class="icon-ok-sign ii12"></i>组合支付
+                  </li> -->
+                        <!-- <li id="cash_func_cashbox_lastpos" style="float:right;"></li>
+                  <li class="Combinedpaymentmethod selectpaytype borderleft borderbottom" id="shezhang" bindkey="p_shezhang"
+                    data-open="true"><i class="iconfont2 ii11"></i>赊账</li>
+                  <li class="key_cashbox open borderbottom" id="cash_func_cashbox"><i class="icon-inbox ii12"></i>弹钱箱</li> -->
+                        <li id="cash_func_cashbox_lastpos" style="float:right;"></li>
+                        <li id="cash_func_cashbox_lastpos" style=""></li>
+                        <li id="cash_func_cashbox_lastpos" style=""></li>
+                        <li id="isMechanicsType" :class="{ active: activeMechanicsFalg }" @click="isMechanics">
+                            <i class="icon-ok-sign ii12 "></i>
+                            <span v-html="activeMechanicsFalg ? '人工取货' : '机械出货'">机械出货</span>
+                        </li>
+                        <!-- <li id="isMechanicsType">人工取货</li> -->
+                        <li class="settlementbutton borderbottom">
+                            <p class="settlementtype ">
+                                <button class="com_key_confirm_enter" id="jieshuaanniu" freechange="0"
+                                    onclick="shouqianba()">
+                                    <!-- <i class="iconfont2 ii10"></i> -->
+                                    确定
+                                    <p style="font-size: 14px; margin-left: 5px;">结算完毕</p></button></p>
+                        </li>
+                    </ul>
+                    <p class="payTips">
+                        温馨提示：当机械故障时，才使用人工取货，
+                        人工取货时务必按急停按钮才可进入仓库。
+                    </p>
+                </div>
+                <div class="col-xs-2 paymemberlist3" style="padding-left: 0px; display: none;">
+                    <ul class="operatingMember" id="operatingMember">
+                        <!--<li>
+                                  <div class="operatinguserphoto">
+                                      <img class="" src="../../images/002.png" />
+                                  </div>
+                                  <p class="operatingusername">测试</p>
+                                  <i></i>
+                              </li>-->
+                    </ul>
+                    <i class="leftup"></i>
+                    <i class="leftdown"></i>
+                </div>
+            </div>
+        </div>
+        <!-- 设置折扣列表 -->
+        <div class="layui-layer layui-layer-page  layer-anim-05 hidden" id="layui-layer_pop5" type="page" times="5"
+            showtime="0" contype="string"
+            style="z-index: 19891017; width: 380px; height: 470px; top: 65.5px; left: 770px;">
+            <div id="" class="layui-layer-content" style="">
+                <!--结算-->
+                <div class="modal-body CAshshuliang"
+                    style="margin-top: 32px; margin-left: 20px;margin-right: 20px;padding: 0;">
+                    <div class="selectorder_discount_type">
+                        <div class="order_discount_mon">
+                            <span style="display: none;" class="money_discount">订单金额</span>
+                            <span style="display:inline-block;" class="ratio_discount">订单折扣</span>
+                            <span class="discount_mon">
+                                <!--<i  class="money_discount">￥</i>-->
+                                <input
+                                    style="outline:none; font-size:20px;font-weight:600;font-size: 20px;font-weight: 600; width: 182px;border-radius: 8px;border: 1px solid #ccc;"
+                                    type="text" id="discount_value" value="">
+                                <!--<i class="ratio_discount" style="display:none">%</i>-->
+                            </span></div>
+                        <p class="commentcss_s money_discount" style="display: none;">请输入金额</p>
+                        <p class="commentcss_s ratio_discount">请输入折扣1-99</p>
+                    </div>
+                    <div>
+                        <div>
+                            <div class="Csjscalc">
+                                <ul class="caluinew" id="calui_new_discount">
+                                    <li onclick="addDiscountNum(this)" data-val="7">7</li>
+                                    <li onclick="addDiscountNum(this)" data-val="8">8</li>
+                                    <li onclick="addDiscountNum(this)" data-val="9">9</li>
+                                    <li class="cdbule com_key_confirm_enter" onclick="clearDiscount()"
+                                        id="remove_discount" style="margin-right: 0px;background:#30c17b;color:#fff;">
+                                        <i>C</i></li>
+                                    <li onclick="addDiscountNum(this)" data-val="4">4</li>
+                                    <li onclick="addDiscountNum(this)" data-val="5">5</li>
+                                    <li onclick="addDiscountNum(this)" data-val="6">6</li>
+                                    <li style="margin-right: 0px;background:#30c17b;color:#fff;font-weight:500;"
+                                        data-show_id="money_discount" data-hide_id="ratio_discount"
+                                        href="javascript:void(0)" onclick="Update_money('money')" data-discount_type="1"
+                                        id="Update_money">改价
+                                    </li>
+                                    <li onclick="addDiscountNum(this)" data-val="1">1</li>
+                                    <li onclick="addDiscountNum(this)" data-val="2">2</li>
+                                    <li onclick="addDiscountNum(this)" data-val="3">3</li>
+                                    <li style="margin-right: 0px;background:#30c17b;color:#fff;font-weight:500;"
+                                        data-show_id="ratio_discount" data-hide_id="money_discount"
+                                        data-discount_type="0" onclick="Update_money('discount')" id="Update_discount">
+                                        折扣
+                                    </li>
+                                    <li onclick="addDiscountNum(this)" id="updateNum_en" data-val=".">.</li>
+                                    <li onclick="addDiscountNum(this)" data-val="0" id="updateNum" class="biglis">0</li>
+                                    <li class="lohei" id="woquren_discount" onclick="quren_discout()"
+                                        style="font-weight:500;margin-right:0px; width:150px;border-radius:50px;background:#30c17b;color:#fff;">
+                                        <i style="margin-top:30px;font-weight:500;">确定</i><input id="operation_type"
+                                            type="hidden" value="1">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--结算-->
+            </div>
+            <span class="layui-layer-setwin" onclick="closeDiscountPop()" style="position: absolute;
+    right: -20px;
+    top: -20px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;"><i class="el-icon-close" style="
+    line-height: 40px;
+    font-size: 30px;
+    color: black;
+"></i>
+        </div>
+
+        <div class="layui-layer-shade hidden" id="layui-layer-shade5" times="5"
+            style="z-index:15000; background-color:#000; opacity:0.6; filter:alpha(opacity=60);"></div>
+
+        <!-- loading 图层 -->
+        <div class="loadgin_mask">
+            <div class="content">
+                <div data-loader="rectangle" class="rectangle"></div>
+                <p>等待顾客支付中...</p>
+                <span id="stop_pay" onclick="stopPay()" class="hidden">取消</span>
+                <span id="stop_speak" class="hidden">停止</span>
+            </div>
+        </div>
+
+        <form enctype="multipart/form-data" class="hidden">
+            <input type="file" name="mp3">
+        </form>
+        <!-- <script type="text/javascript" src="../checkstand/com_N3.js"></script> -->
+
+        <!-- <script type="text/javascript" src="../../checkstand/phone/recorder.js"></script> -->
+
+        <audio controls="controls" id="use_pay" src="../../checkstand/mp3/hello.mp3"></audio>
+        <audio controls="controls" id="add_shopping" src="../../checkstand/mp3/addshopping.mp3"></audio>
+        <audio controls="controls" id="paySuccess" src="../../checkstand/mp3/paySuccess.mp3"></audio>
+
+        <div class="shopping_detail">
+            <div class="pop_content">
+                <div class="content_detail">
+                    <div class="content_top">
+                        <img class="shopping_img"
+                            src="https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i4/1129924524/O1CN01r4QBUN1jI2HB7t24a_!!1129924524.jpg_430x430q90.jpg" />
+                        <div class="content_bottom">
+                            <p class="content_bottom_title">货物存储信息【 条码：<span id="barcodeNum"></span>】</p>
+                            <p class="content_bottom_content" id="shoppingAddress">
+
+                            </p>
+                        </div>
+                        <div class="shopping_right">
+                            <div class="item">
+                                <p class="item_title">主治功能</p>
+                                <p class="item_content" id="effect"></p>
+                            </div>
+                            <div class="item">
+                                <p class="item_title">用法用量</p>
+                                <p class="item_content" id="dosage"></p>
+                            </div>
+                            <div class="item">
+                                <p class="item_title">禁忌</p>
+                                <p class="item_content" id="taboo"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_bottom">
+                        <p class="content_bottom_title">注意事项</p>
+                        <p class="content_bottom_content" id="attention"></p>
+                    </div>
+                </div>
+                <span class="close_shopping_detail">×</span>
+            </div>
+        </div>
+        <el-dialog title="当前订单信息：" :visible.sync="showOrderMessage" width="50%" id="orderMessagePop">
+            <div class="orderList" v-for="(item,index) in orderMessageFrom">
+                <p class="listTitle"><span v-html="(index + 1)"></span>. <span v-html="item.name"></span>*<span v-html="item.content.length"></span></p>
+                <p class="listContent" v-for="(Citem,Cindex) in item.content">请到<span v-html="Citem.boxCode"></span>号柜<span v-html="Citem.zAxis"></span>层<span v-html="Citem.sortNum"></span>列取一盒</p>
+            </div>
+            <div style="margin-top: 40px;" class="bottomTips">
+                <p>温馨提示</p>
+                <p>1. 请务必按急停后再进入仓库，以免机器伤人。</p>
+                <p>2. 请务必把商品取出，否则会影响后面补货，取商品时要从外面开始取，取药时注意不要移动其他商品位置。</p>
+
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="showOrderMessage = false">确 定 完 成</el-button>
+            </span>
+        </el-dialog>
+    </div>
+
+</body>
+
+<script src="../../bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../static/js/com_n3.min.js"></script>
+<script src="../../checkstand/swiper-4.2.0.min.js"></script>
+<script src="../../checkstand/print.min.js"></script>
+<script src="../../vue-common/js/vue.js"></script>
+<script src="../../element/element.js"></script>
+<script src="../../vue-common/topNav.js"></script>
+<script src="../../commom/js/admincommom.js"></script>
+<!-- <script src="../../checkstand/LodopFuncs.js"></script> -->
+<!-- <script src="../../vender/lazyload/lazyload.js"></script> -->
+
+<script src="../../commom/js/checkstand.js"></script>
+
+<script src="../../commom/vendors/yuyinshibie/hmac-sha256.js"></script>
+<script src="../../commom/vendors/yuyinshibie/enc-base64-min.js"></script>
+<script src="../../commom/vendors/yuyinshibie/index.js"></script>
+
+</html>

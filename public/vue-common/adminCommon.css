@@ -1,0 +1,246 @@
+@media screen and (max-width: 750px) {
+  body .sidebar .sidebar-menu li .nav-title {
+    width: 0;
+  }
+  body .center-content {
+    padding-left: 77px;
+  }
+}
+body li {
+  list-style: none;
+}
+body #sidebar .sidebar-menu li .helodao li.active {
+  background: #fff;
+}
+body #page {
+  padding: 20px 0;
+  color: #666;
+  display: block;
+  text-align: center;
+  background: #fff;
+}
+body #page li {
+  display: inline-block;
+  min-width: 30px;
+  height: 28px;
+  cursor: pointer;
+  color: #666;
+  font-size: 13px;
+  line-height: 28px;
+  background-color: #f9f9f9;
+  border: 1px solid #dce0e0;
+  text-align: center;
+  margin: 0 4px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+body #page .xl-disabled {
+  opacity: 0.5;
+  cursor: no-drop;
+}
+body #page .xl-active {
+  background-color: #31c17b;
+  border-color: #31c17b;
+  color: #FFF;
+}
+body #page .xl-nextPage,
+body #page .xl-prevPage {
+  width: 60px;
+  color: #0073A9;
+  height: 28px;
+}
+body #rowlength th:first-child {
+  width: auto;
+}
+body .memberlistactive table tbody tr td.button_box {
+  display: flex;
+}
+body .memberlistactive table tbody tr td.button_box a {
+  padding-right: 15px;
+}
+body .memberlistactive table tbody tr td.edit_box {
+  display: flex;
+}
+body .memberlistactive table tbody tr td.edit_box a {
+  margin-right: 10px;
+}
+body .memberlistactive table tbody tr:last-child {
+  border-bottom: 1px solid #e5e5e5 !important;
+}
+body #HeaderBackgroundColor section #smalllogoimg {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+}
+body #HeaderBackgroundColor section #smalllogoimg::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(../commom/img/admin_homt.svg) no-repeat center center / cover;
+  margin-right: 10px;
+}
+body #HeaderBackgroundColor section .usercenter ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body #HeaderBackgroundColor section .usercenter ul li a i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body #HeaderBackgroundColor section .usercenter ul li a i::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+}
+body #HeaderBackgroundColor section .usercenter ul li a.handover_hide i::before {
+  background: url(img/change.svg) no-repeat center center / cover;
+}
+body #HeaderBackgroundColor section .usercenter ul li a#userLogOut i::before {
+  background: url(img/loginout.svg) no-repeat center center / cover;
+}
+body #HeaderBackgroundColor section .topAllMessage {
+  line-height: 46px;
+  color: #fff;
+}
+body #HeaderBackgroundColor section .topAllMessage em {
+  font-style: normal;
+  margin-right: 10px;
+}
+body #HeaderBackgroundColor section .el-alert--error {
+  width: 60%;
+  display: flex;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+body #HeaderBackgroundColor section .topSelectShowZeor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  margin: 0;
+  line-height: 46px;
+  color: #fff;
+  cursor: pointer;
+}
+body #HeaderBackgroundColor section .topSelectShowZeor input {
+  margin: 0 2px;
+}
+body #HeaderBackgroundColor section .topSelectShowZeor input:checked {
+  background: #ccc url(../static/images/checkinputbg.png) no-repeat center / 100%;
+  border-color: #ccc;
+}
+body #HeaderBackgroundColor section .topSelectShowZeor p {
+  line-height: 46px;
+  margin: 0;
+}
+body #bill_content {
+  max-height: 350px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+body #bill_content .title {
+  width: 100%;
+  line-height: 20px;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+}
+body #bill_content .bill_detail {
+  border-top: 1px #aaa dashed;
+  font-size: 14px;
+  color: #666;
+  padding: 0 20px;
+}
+body #bill_content .bill_detail .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+}
+body #bill_content .bill_detail .item:last-child {
+  border-bottom: none;
+}
+body .btnf {
+  margin-left: 0 !important;
+}
+body .btnf:hover {
+  background: #0ea849;
+}
+body .whiteList {
+  padding: 20px 25px;
+  background-color: #fff;
+  height: auto;
+  padding-bottom: 30px;
+}
+body .whiteList .savabtnbox {
+  padding-left: 15px;
+}
+body .whiteList .savabtnbox .savebtn {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #31c17b;
+  color: #fff;
+}
+body .decerpindex .content-Secondary-nav {
+  justify-content: space-between;
+}
+body .decerpindex .content-Secondary-nav .btn {
+  margin-top: 0;
+}
+body .decerpindex .content-Secondary-nav.flex .search-input {
+  margin-top: 0;
+}
+body .decerpindex .content-Secondary-nav .select_type {
+  display: flex;
+}
+body .decerpindex .content-Secondary-nav .select_type > div {
+  margin-left: 5px;
+}
+body .decerpindex .content-Secondary-nav .select_type > div:first-child {
+  margin-left: 0;
+}
+body .decerpindex .content-Secondary-nav .select_type .el-range-separator {
+  width: 10%;
+}
+body .rightButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+}
+body .rightButton .select_input {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+}
+body .rightButton .select_input input {
+  margin: 0 5px 0 0;
+  position: relative;
+}
+body .rightButton button {
+  margin: 0;
+  color: #fff !important;
+  background: #409eff;
+  margin-left: 20px !important;
+}
+body .rightButton button.stop {
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

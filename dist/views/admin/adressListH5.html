@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="format-detection" content="telephone=no"><meta name="format-detection" content="email=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="full-screen" content="yes"><meta name="browsermode" content="application"><meta name="x5-orientation" content="portrait"><meta name="x5-fullscreen" content="true"><meta name="x5-page-mode" content="app"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui"><title>库存位置列表</title><link rel="stylesheet" href="../../element/element.css"><link rel="stylesheet" href="../../commom/css/adressListH5.css"><link rel="stylesheet" href="../../commom/css/h5Commom.css"><style>.el-alert {
+      position: fixed;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+
+    #showIcon {
+      display: none;
+    }</style><script>(function (doc, win, undefined) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (clientWidth === undefined) return;
+          docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+        };
+      if (doc.addEventListener === undefined) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false)
+    })(document, window);</script></head><body><div class="" id="vueTemplate"><div class="itemContent"><div class="item" v-for="item in pageContent" @click="showDetail(item.barcode,item.name)"><div class="itemLeft"><img v-bind:src="['/servicepictures/'+item.barcode+'.jpg']" alt="" onerror="this.src='/static/images/uploadbg.png';"></div><div class="itemRight"><p class="topTitle" v-html="item.name"></p><p class="middleBarcode" v-html="item.barcode"></p><div class="bottomMessage"><p class="leftSum" v-html="'库存数量：'+item.qty"></p><p class="rightNum" v-html="'商品占领轨道：'+item.count"></p></div></div></div></div><div class="page"><el-pagination small layout="prev, pager, next" :hide-on-single-page="pageCount == 1" :page-count="pageCount" @current-change="pageSize"></el-pagination></div></div></body><script src="../../vue-common/js/vue.js"></script><script src="../../element/element.js"></script><script src="../../vender/axios/axios.min.js"></script><script>let obj = {
+    initPage: function (page) {
+      let that = this
+      axios
+        .get('//' + location.host + '/admin/adressList/data', {
+          params: {
+            pageNum: page,
+            pageIndex: page,
+            pageSize: 20,
+          }
+        })
+        .then(function (response) {
+          if (page == 1) {
+            that.vueThat.pageCount = Math.ceil(response.data.retEntity.totalCount / 20)
+          }
+          response.data.retEntity.content
+          that.vueThat.pageContent = response.data.retEntity.content.map(item => {
+            return {
+              barcode: item.barcode, //商品 barcode
+              name: item.name, //商品 名称
+              length: item.length,
+              qty: item.qty ? item.qty : 0,
+              count: item.count ? item.count : 0
+            }
+          })
+          window.scrollTo(0, 0)
+        })
+        .catch(function (error) { // 请求失败处理
+          console.log(error);
+        });
+    },
+    initVue: function () {
+      let that = this
+      that.vueThat = new Vue({
+        el: '#vueTemplate',
+        data() {
+          return {
+            pageCount: 1,
+            pageContent: [],
+          }
+        },
+        methods: {
+          pageSize: function (val) {
+            // console.log(val)
+            obj.initPage(val)
+          },
+          showDetail: function (id, name) {
+            let that = this
+            axios
+              .get('/checkstand/get/shopping/address', {
+                params: {
+                  barcode: id,
+                }
+              })
+              .then(function (response) {
+                that.openTips(response.data.retEntity, name)
+              })
+              .catch(function (error) { // 请求失败处理
+                console.log(error);
+              });
+          },
+          openTips: function (data, name) {
+            let tpl = name + ' '
+            console.log(data)
+            data.content.forEach(element => {
+              tpl += element.box_code + '柜' + element.z_axis + '层' + element.sort_num + '列' + element.sum + '个 '
+            });
+            this.$message({
+              showClose: true,
+              message: tpl,
+              type: 'success',
+              duration: 0
+            });
+          }
+        },
+        mounted: function () {
+
+        },
+        watch: {
+
+        }
+      });
+    },
+    init: function () {
+      this.initPage(1)
+      this.initVue()
+    }
+  }
+
+  window.onload = function () {
+    obj.init()
+  }</script></html>

@@ -1,0 +1,223 @@
+body {
+  #productlist {
+    .textlistbox {
+      >a {
+        display: flex;
+
+        .teitext {
+          overflow: hidden;
+          width: 97%;
+          height: 80px;
+          color: #666;
+          padding-left: 0px;
+          /* left: 85px; */
+          position: static;
+          /* top: 0; */
+          /* box-sizing: border-box; */
+          flex: 1;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .shopping_detail {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: none;
+
+    .pop_content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      max-height: 500px;
+      width: 600px;
+      background: #fff;
+      border-radius: 4px;
+
+      .close_shopping_detail {
+        position: absolute;
+        right: 8px;
+        top: -8px;
+        font-size: 36px;
+        cursor: pointer;
+        color: #ccc;
+      }
+
+      .content_detail {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        max-height: 500px;
+
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: #eee;
+          -webkit-border-radius: 2em;
+          -moz-border-radius: 2em;
+          border-radius: 2em;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #8c8c8c;
+          -webkit-border-radius: 2em;
+          -moz-border-radius: 2em;
+          border-radius: 2em;
+        }
+
+        .content_top {
+
+          //display: flex;
+          .shopping_img {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto 0;
+            display: block;
+            // float: left;
+          }
+
+          .shopping_right {
+            //flex: 1;
+            padding: 0 0 30px;
+            display: flex;
+            flex-direction: column;
+
+            .item {
+
+              //padding-bottom: 20px;
+              .item_title {
+                font-size: 18px;
+                color: #333;
+                text-align: center;
+                margin: 0;
+                font-weight: bold;
+              }
+
+              .item_content {
+                text-align: center;
+                font-size: 14px;
+                color: #666;
+                padding: 10px 0;
+                margin: 0;
+              }
+            }
+          }
+        }
+
+        .content_bottom {
+
+          // display: flex;
+          // flex-direction: column;
+          .content_bottom_title {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            font-weight: bold;
+          }
+
+          .content_bottom_content {
+            font-size: 14px;
+            color: #666;
+            padding: 10px 30px 20px 30px;
+            margin: 0;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  #layui-layer_pop2 {
+    #cash_dialog {
+      .paywaylist {
+        border-bottom: 1px solid #ececec;
+        border-top: 1px solid #ececec;
+
+        #isMechanicsType {
+          height: 60px;
+          position: relative;
+          line-height: 60px;
+          text-align: center;
+          width: 25%;
+          float: left;
+          color: #666;
+          font-size: 12px;
+          cursor: pointer;
+          border: 1px solid #ececec;
+          color: #fff;
+          // background: #ccc;
+          // position: absolute;
+          // bottom: 0;
+          // right: 0;
+          color: #666;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &.active {
+            color: #288ad6;
+
+            .ii12 {
+              color: #288ad6;
+            }
+          }
+        }
+
+        .settlementbutton {
+          top: 0;
+          bottom: auto;
+        }
+      }
+
+      .payTips {
+        padding-top: 10px;
+        color: red;
+        font-size: 12px;
+      }
+    }
+
+    .elSexAgeSelect {
+      display: flex;
+
+      .titleBox {
+        // flex: 1;
+        padding: 5px;
+
+        .boxRadio {
+          .el-radio-group {
+            display: grid;
+            grid-template-rows: 50% 50%;
+            grid-template-columns: 50% 50%;
+          }
+        }
+      }
+    }
+  }
+
+  #orderMessagePop {
+    .orderList {
+      .listContent {
+        padding-left: 40px;
+      }
+    }
+
+    .bottomTips {
+      margin-top: 40px;
+
+      p {
+        color: red;
+        font-size: 14px;
+      }
+    }
+  }
+}

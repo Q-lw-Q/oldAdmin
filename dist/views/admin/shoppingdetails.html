@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>商品尺寸列表</title><link href="../../static/css/takeawayorder.css" rel="stylesheet"><link href="../../static/css/system-lib.min.css" rel="stylesheet"><link rel="stylesheet" href="../../element/element.css"><link rel="stylesheet" href="../../vue-common/adminCommon.css"><style>.avatar-uploader .el-upload {
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-uploader .el-upload:hover {
+      border-color: #409EFF;
+    }
+
+    .avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 178px;
+      height: 178px;
+      line-height: 178px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 178px;
+      height: 178px;
+      display: block;
+    }</style></head><body><div id="vueTemplate"><header class="today-summarize" id="HeaderBackgroundColor"><topnav></topnav></header><div id="Leftcard"><leftcard></leftcard></div><commomtemplate></commomtemplate><div class="decerp-content decerpindex"><div class="center-content" id="index-content"><div class="content container-fluid"><div class="share-container"><div class="content-Secondary-nav"><div class="fl rightButton"><button type="button" id="addNewProduct" class="btn donwbtn fl btnf">添加商品</button></div><div class="fr search-input"><i class="icon-search positionicon"></i> <input type="text" name="" id="contextval" placeholder="输入商品编码进行查询"> <a href="javascript: void(0);" id="query_filter_btn2" class="positionicontype">搜索</a></div></div><div class="memberlist table-responsive inventorytable memberlistactive"><tablelisttemplate v-bind:arraydata="tableListdata"></tablelisttemplate><div id="page"></div></div></div></div></div></div><el-dialog title="商品信息" :visible.sync="dialogFormVisible"><el-form ref="messageform" :model="messageform" :rules="formrules"><el-form-item label="条形码" :label-width="formLabelWidth" prop="barcode"><el-input v-model="messageform.barcode" @blur="blurTest" autocomplete="off" placeholder="请输入条形码"></el-input></el-form-item><el-form-item label="商品名称" :label-width="formLabelWidth" prop="goodsName"><el-input v-model="messageform.goodsName" autocomplete="off" placeholder="请输入商品名称"></el-input></el-form-item><el-form-item label="规格" :label-width="formLabelWidth" prop="spec"><el-input v-model="messageform.spec" autocomplete="off" placeholder="请输入规格"></el-input></el-form-item><el-form-item label="商品单位" :label-width="formLabelWidth" prop="unit"><el-input v-model="messageform.unit" autocomplete="off" placeholder="请输入商品单位"></el-input></el-form-item><el-form-item label="批准文号" :label-width="formLabelWidth" prop="approvalNumber"><el-input v-model="messageform.approvalNumber" autocomplete="off" placeholder="请输入批准文号"></el-input></el-form-item><el-form-item label="生产厂家" :label-width="formLabelWidth" prop="manufacturer"><el-input v-model="messageform.manufacturer" autocomplete="off" placeholder="请输入生产厂家"></el-input></el-form-item><el-form-item label="主治疾病	" :label-width="formLabelWidth" prop="efficiency"><el-input v-model="messageform.efficiency" autocomplete="off" placeholder="请输入主治疾病"></el-input></el-form-item><el-form-item label="上传图片" :label-width="formLabelWidth" prop="barcode"><el-upload class="avatar-uploader" action="/admin/shopping/upload" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload"><img v-if="imageUrl" :src="imageUrl" class="avatar"> <i v-else class="el-icon-plus avatar-uploader-icon"></i></el-upload></el-form-item><el-form-item label="药品类型" :label-width="formLabelWidth" prop="isOtc"><el-select v-model="messageform.isOtc" placeholder="请选择活动区域"><el-option label="处方药" value="0"></el-option><el-option label="OTC" value="1"></el-option><el-option label="保健食品" value="2"></el-option><el-option label="成人用品" value="3"></el-option><el-option label="医疗器械" value="4"></el-option><el-option label="其他" value="5"></el-option></el-select></el-form-item><el-form-item label="用法用量" :label-width="formLabelWidth" prop="dosage"><el-input v-model="messageform.dosage" autocomplete="off" placeholder="请输入用法用量"></el-input></el-form-item><el-form-item label="禁忌" :label-width="formLabelWidth" prop="taboo"><el-input v-model="messageform.taboo" autocomplete="off" placeholder="请输入禁忌"></el-input></el-form-item><el-form-item label="功效" :label-width="formLabelWidth" prop="effect"><el-input v-model="messageform.effect" autocomplete="off" placeholder="请输入功效"></el-input></el-form-item><el-form-item label="注意事项" :label-width="formLabelWidth" prop="attention"><el-input v-model="messageform.attention" autocomplete="off" placeholder="请输入注意事项"></el-input></el-form-item><el-form-item label="说明书" :label-width="formLabelWidth" prop="attributes"><el-input v-model="messageform.attributes" autocomplete="off" placeholder="请输入说明书"></el-input></el-form-item><el-form-item label="药品治疗常用语言" :label-width="formLabelWidth" prop="efficacySearch"><el-input v-model="messageform.efficacySearch" autocomplete="off" placeholder="请输入药品治疗常用语言"></el-input></el-form-item><el-form-item label="商品长度/mm" :label-width="formLabelWidth" prop="length"><el-input v-model="messageform.length" autocomplete="off" placeholder="请输入商品长度"></el-input></el-form-item><el-form-item label="商品宽度/mm" :label-width="formLabelWidth" prop="width"><el-input v-model="messageform.width" autocomplete="off" placeholder="请输入商品宽度"></el-input></el-form-item><el-form-item label="商品高度/mm" :label-width="formLabelWidth" prop="height"><el-input v-model="messageform.height" autocomplete="off" placeholder="请输入商品高度"></el-input></el-form-item></el-form><div slot="footer" class="dialog-footer"><el-button @click="closedialogFrom()">取 消</el-button><el-button type="primary" @click="checkFrom()" v-html="isedit === false ? '确 定' : '修 改'">确 定</el-button></div></el-dialog><div class></div></div></body><script src="../../jquery/dist/jquery.min.js"></script><script src="../../javascripts/xlPaging.js"></script><script src="../../vue-common/js/vue.js"></script><script src="../../element/element.js"></script><script src="../../vue-common/topLeft.js"></script><script src="../../vue-common/topNav.js"></script><script src="../../commom/js/admincommom.js"></script><script type="text/x-template" id="listtemplate"><el-table
+  :data="arraydata"
+  style="width: 100%">
+  <el-table-column
+    prop="goodsId"
+    label="id"
+    show-overflow-tooltip
+    width="150">
+  </el-table-column>
+  <el-table-column
+  prop="goodsName"
+  label="名称"
+  show-overflow-tooltip
+  width="150">
+</el-table-column>
+  <el-table-column
+    prop="spec"
+    label="规格"
+    show-overflow-tooltip
+    width="120">
+  </el-table-column>
+  <el-table-column
+    prop="unit"
+    label="单位"
+    show-overflow-tooltip
+    width="120">
+  </el-table-column>
+  <el-table-column
+    prop="barcode"
+    label="条形码"
+    show-overflow-tooltip
+    width="120">
+  </el-table-column>
+  <el-table-column
+    prop="isOtc"
+    label="药品类型"
+    show-overflow-tooltip
+    :formatter="formatOtc"
+    width="150">
+  </el-table-column>
+  <el-table-column
+    prop="effect"
+    label="功效"
+    show-overflow-tooltip
+    width="150">
+  </el-table-column>
+  <el-table-column
+  prop="taboo"
+  label="禁忌"
+  show-overflow-tooltip
+  width="180">
+</el-table-column>
+<el-table-column
+prop="attention"
+label="注意事项"
+show-overflow-tooltip
+width="180">
+</el-table-column>
+<el-table-column
+prop="dosage"
+label="用法用量"
+show-overflow-tooltip
+width="180">
+</el-table-column>
+  <el-table-column
+    fixed="right"
+    label="操作"
+    width="120">
+    <template slot-scope="scope">
+      <a class="fl refundmoney" @click="editShoppint(scope.row)"  href="javascript: void(0);">修改商品</a>
+    </template>
+  </el-table-column>
+</el-table></script><script src="../../commom/js/shoppingdetails.js"></script></html>

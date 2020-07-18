@@ -1,0 +1,296 @@
+html {
+  // overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  padding: 29px00;
+  font: 12px"\5B8B\4F53", sans-serif;
+  background: #ffffff;
+}
+
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+blockquote,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+table,
+td,
+tr,
+th {
+  font-size: 12px;
+}
+
+li {
+  list-style-type: none;
+}
+
+img {
+  vertical-align: top;
+  border: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+address,
+cite,
+code,
+em,
+th {
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+
+  body {
+    font-family: 微软雅黑;
+    background: url(../img/login_bg2.png) no-repeat center center / cover;
+
+    .login_pop {
+      // width: 340px;
+      // height: 300px;
+      position: fixed;
+      top: 44%;
+      left: 30%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+
+      .login_title {
+        padding-top: 30px;
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .from {
+        padding: 0 25px 30px;
+        .from_item {
+          width: 285px;
+          height: 40px;
+          margin-top: 20px;
+          position: relative;
+
+          &.user,
+          &.password {
+            &::before {
+              content: "";
+              width: 25px;
+              height: 25px;
+              display: inline-block;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              left: 5px;
+            }
+          }
+
+          &.user {
+            &::before {
+              background: url(../img/cc-user.svg) no-repeat center center / cover;
+            }
+          }
+
+          &.password {
+            &::before {
+              background: url(../img/password.svg) no-repeat center center / cover;
+            }
+          }
+
+          input {
+            width: 100%;
+            height: 100%;
+            color: #333;
+            font-size: 15px;
+            padding-left: 35px;
+            -webkit-appearance: none;
+            /*去除阴影边框*/
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            /*点击高亮的颜色*/
+            border: 1px solid #ccc;
+
+            &::-webkit-input-placeholder {
+              /* Chrome/Opera/Safari */
+              color: #ccc;
+            }
+
+            &::-moz-placeholder {
+              /* Firefox 19+ */
+              color: #ccc;
+            }
+
+            &:-ms-input-placeholder {
+              /* IE 10+ */
+              color: #ccc;
+            }
+
+            &:-moz-placeholder {
+              /* Firefox 18- */
+              color: #ccc;
+            }
+          }
+        }
+
+        .login_item {
+          width: 320px;
+          height: 45px;
+          line-height: 45px;
+          text-align: center;
+          color: #fff;
+          font-size: 16px;
+          background: #25ba5e;
+          margin-top: 20px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: all .5s;
+
+          &:hover {
+            background: #0ea849;
+            letter-spacing: 5px;
+          }
+        }
+
+        .ison_item {
+          display: flex;
+          margin-top: 15px;
+          width: 320px;
+          justify-content: space-between;
+
+          .left {
+            color: red;
+            display: none;
+          }
+
+          span {
+            color: #30c17b;
+            font-size: 13px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.loadgin_mask {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 199999999;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+.loadgin_mask .content {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loadgin_mask .content .rectangle {
+  position: absolute;
+  top: 30%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+}
+
+.loadgin_mask .content p {
+  font-size: 30px;
+  color: #fff;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+}
+
+.loadgin_mask .content #stop_speak {
+  top: 80%;
+  width: 80px;
+  height: 40px;
+  line-height: 39px;
+  text-align: center;
+  font-size: 18px;
+  background: #e87171;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+// @vm_fontsize: 75;
+
+// @function rem($px) {
+
+//   @return ($px / $vm_fontsize) * 1rem;
+// }
+
+// @vm_design: 750;
+
+// html {
+//   font-size: (@vm_fontsize / (@vm_design / 2)) * 100vw;
+
+//   @media screen and (max-width: 320px) {
+//     font-size:
+//       64px;
+//   }
+
+//   @media screen and (min-width: 540px) {
+//     font-size:
+//       108px;
+//   }
+// }
+
+// body 也增加最大最小宽度限制，避免默认100%宽度的 block 元素跟随 body 而过大过小
+body {
+  max-width:
+    540px;
+  min-width:
+    320px;
+}

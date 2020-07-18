@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>异常订单处理</title>
+  <link href="../../static/css/takeawayorder.css" rel="stylesheet" />
+  <link href="../../static/css/system-lib.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../element/element.css">
+  <link rel="stylesheet" href="../../vue-common/adminCommon.css">
+</head>
+
+<body>
+  <div id="vueTemplate">
+    <header class="today-summarize " id="HeaderBackgroundColor">
+      <Topnav></Topnav>
+    </header>
+    <div id="Leftcard">
+      <Leftcard></Leftcard>
+    </div>
+    <commomtemplate></commomtemplate>
+    <div class="decerp-content decerpindex">
+      <!--decerpindex-->
+      <div class="center-content" id="index-content">
+        <div class="content container-fluid">
+          <!--导航栏-->
+          <div class="share-container">
+            <!--操作信息栏-->
+            <div class="content-Secondary-nav flex">
+              <div class="fl rightButton">
+                <button type="button" @click="relieveFnc" id="relieveBJ" class="btn donwbtn fl btnf">解除报警</button>
+              </div>
+              <div class="right_type">
+                <!--搜索栏-->
+                <!-- <div class="fr search-input"> -->
+                <!-- <i class="icon-search positionicon"></i> -->
+                <!-- <input type="text" name="" id="contextval" placeholder="输入订单号进行查询"> -->
+                <!-- <a href="javascript: void(0);" id="query_filter_btn2" class="positionicontype">搜索</a> -->
+                <!-- </div> -->
+              </div>
+              <!--搜索栏-->
+            </div>
+            <!--操作信息栏-->
+            <!--会员列表1-->
+            <div class="memberlist table-responsive inventorytable memberlistactive">
+              <!-- <td class="text-center sad" style="text-align:center" colspan="8"><img
+                    src="../../vue-common/img/sad.png"><i class="padd0">暂无数据</i></td> -->
+              <tablelisttemplate v-bind:arraydata=tableListdata></tablelisttemplate>
+              <div id="page"></div>
+            </div>
+            <!--会员列表1-->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <el-dialog title="商品详情" :visible.sync="dialogTableVisible">
+      <el-table :data="gridData">
+        <el-table-column property="name" label="商品名"></el-table-column>
+        <el-table-column property="barcode" label="条码"></el-table-column>
+        <el-table-column property="money" label="单价"></el-table-column>
+        <el-table-column property="num" label="数量"></el-table-column>
+        <el-table-column property="outQuantity" label="已出货数量"></el-table-column>
+        <el-table-column property="allmoney" label="总计"></el-table-column>
+      </el-table>
+    </el-dialog>
+    <el-dialog title="轨道列表详情" :visible.sync="FreezeVisible">
+      <el-table :data="FreezeList">
+        <el-table-column property="goodsName" label="药品名"></el-table-column>
+        <el-table-column property="barcode" label="商品编码"></el-table-column>
+        <el-table-column property="qyt" label="轨道剩余库存"></el-table-column>
+        <el-table-column property="boxCode" label="柜号"></el-table-column>
+        <el-table-column property="zaxis" label="柜层"></el-table-column>
+        <el-table-column property="sortNum" label="柜列"></el-table-column>
+        <el-table-column fixed="right" label="操作">
+          <template slot-scope="scope">
+            <el-button v-show="!FreezeList[scope.$index].whether" @click.native.prevent="editBoxCode(FreezeList[scope.$index].id,scope.$index)" type="text" size="small">
+              解除冻结
+            </el-button>
+            <el-button v-show="FreezeList[scope.$index].whether" type="text" size="small">
+                已解冻成功
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-dialog>
+  </div>
+</body>
+
+<!-- jQuery 2.2.3 -->
+<script src="../../jquery/dist/jquery.min.js"></script>
+<script src="../../javascripts/xlPaging.js"></script>
+<script src="../../vue-common/js/vue.js"></script>
+<script src="../../element/element.js"></script>
+<script src="../../vue-common/topLeft.js"></script>
+<script src="../../vue-common/topNav.js"></script>
+<script src="../../commom/js/admincommom.js"></script>
+<script type="text/x-template" id="listtemplate">
+  <table class="table memberlistheade table-hover">
+    <thead>
+      <tr id="rowlength">
+        <!-- <th>网点</th> -->
+        <th>购药方式</th>
+        <th>订单号</th>
+        <th>支付来源</th>
+        <th>总金额</th>
+        <th>支付方式</th>
+        <th>订单备注</th>
+        <th>销售时间</th>
+        <th>出货状态</th>
+        <th class="button_box">操作</th>
+      </tr>
+    </thead>
+    <tbody id="ProductModifyPricelists">
+      <tr v-for="(value, key) in arraydata" v-show="arraydata" >
+        <!-- <td v-html="value.storeName"></td> -->
+        <td v-html="value.operations == 1 ? '店内购药' : value.operations == 2 ? '自助购药' : '远程问诊' "></td>
+        <td v-html="value.ordersNum"></td>
+        <td v-html="value.sqbSn"></td>
+        <td v-html="value.totalAmount / 100"></td>
+        <td v-html="value.paymoneytype"></td>
+        <td v-html="value.remark"></td>
+        <td v-html="value.datatime"></td>
+        <td v-html="value.finished == true ? '已出货' : '未出货'"></td>
+        <td class="button_box">
+          <a class="fl refundmoney"  @click="openMessage(value.ordersId,value.totalAmount / 100)" href="javascript: void(0);">发起退款</a>
+          <a class="fl seedetails" @click="seeDetail(value.ordersId,value.ordersNum)" href="javascript: void(0);">查看详情</a>
+          <a @click="processingFreeze(value.ordersNum)" href="javascript:void(0);">轨道冻结详情</a>
+        </td>
+      </tr>
+      <tr v-if="(arraydata.length == 0 )">
+        <td class="text-center sad" style="text-align
+        :center" colspan="11"><i class="padd0">暂无数据</i></td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+<!-- (value.payType == 3) &&  -->
+<script src="../../commom/js/abnormalList.js"></script>
+
+
+
+</html>
