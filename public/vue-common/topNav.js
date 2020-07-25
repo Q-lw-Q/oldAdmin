@@ -44,7 +44,7 @@ var template = `
             <a id="handover" href="javascript:void(0);" @click="showChange()" class="handover_hide">
                 <i class="iconfont2 iconphoto"></i>交接班&nbsp;&nbsp;&nbsp;
             </a>
-            <a id="userLogOut" href="javascript:void(0);" class="">
+            <a id="userLogOut" @click="out" href="javascript:void(0);" class="">
                 <i class="iconfont2 iconphoto"></i>退出系统
             </a>
         </li>
@@ -251,6 +251,19 @@ Vue.component("Topnav", {
         },
         error: function (res) {
           
+        }
+      })
+    },
+    out() {
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '/admin/home/loginOut',
+        success: function (res) {
+          window.location.href = '/adminLogin'
+        },
+        error: function (res) {
+          console.log(res)
         }
       })
     }

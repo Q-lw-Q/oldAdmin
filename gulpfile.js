@@ -15,6 +15,10 @@ let jsArray = [
     distname: './dist/public/commom/js'
   },
   {
+    dirname: './public/commom/deskJs/**.js',
+    distname: './dist/public/commom/deskJs'
+  },
+  {
     dirname: './routes/admin/**.js',
     distname: './dist/routes/admin'
   },

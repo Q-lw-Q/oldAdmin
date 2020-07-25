@@ -351,7 +351,7 @@ function sum() {
     totalprice += +price;
 
   });
-  var num = Math.round(totalprice * 100) / 100
+  var num = Math.round(totalprice * 100000000) / 100000000
   $("#thisProductTotalnumber").html(totalnum);
   $("#jieshuajie").html(num);
   $("#jieshuajie2").html(num);
@@ -387,13 +387,14 @@ function closePrice(number) {
       yinshouMoney = number
       $("#yinshou").val(number);
       $("#xianjin").val(number)
-      $("#daishou").val(0);
+      $("#daishou,#zhaoling").val(0);
     } else {
       yinshouMoney = money
       $("#yinshou").val(money);
       $("#xianjin").val(money)
-      $("#daishou").val(0);
+      $("#daishou,#zhaoling").val(0);
     }
+    $("#ttuser_descount").val("100")
   }
 }
 
@@ -417,18 +418,19 @@ function clearNoNum_collect() {
   var yinshou = $("#yinshou").val();
 
   var mon = $("#xianjin").val();
-  var shou = yinshou - mon;
-  var num = Math.round(shou * 100) / 100
+  var shou = mon - yinshou;
+  console.log(shou)
+  var num = Math.round(shou * 100000000) / 100000000
   if (shou == 0) {
 
-    $("#daishou").val("0.00");
+    $("#daishou,#zhaoling").val("0.00");
   } else if (shou < 0) {
 
-    $("#zhaoling").val(Math.abs(num));
-    $("#daishou").val("0.00");
+    $("#daishou").val(Math.abs(num));
+    $("#zhaoling").val("0.00");
   } else {
-    $("#zhaoling").val(0);
-    $("#daishou").val(num);
+    $("#daishou").val(0);
+    $("#zhaoling").val(num);
   }
 
 
@@ -446,13 +448,16 @@ function clearNoNum_descount() {
   var ttuser_descount = $("#ttuser_descount").val();
   //取出应收价钱
   var yinshou = yinshouMoney;
-  var descount = (ttuser_descount * yinshou) / 100;
+  console.log(yinshouMoney)
+  var descount = (ttuser_descount * (yinshou * 100)) / 10000;
   //保留两位小数
-  var num = Math.round(descount * 100) / 100
-  $("#zhaoling").val("0.00");
-  $("#xianjin").val("");
+  var num = Math.round(descount * 100000000) / 100000000
+  // console.log(yinshou, descount, num);
+  // $("#xianjin").val("");
   $("#yinshou").val(num);
   $("#daishou").val(num);
+  clearNoNum_collect()
+  // $("#zhaoling").val($("#xianjin").val());
 }
 
 //清空备注
@@ -565,6 +570,7 @@ function shouqianbaluoji(type) {
     $('.loadgin_mask').show()
     $('.loadgin_mask .content p').html('等待出货中...')
   } else {
+    data.xianjin = yinshou;
     $('.loadgin_mask').show()
     $('.loadgin_mask .content p').html('加载中...')
   }
@@ -621,7 +627,7 @@ function shouqianbaluoji(type) {
 }
 
 function successPrint(data) {
-  alert('调用打印')
+  // alert('调用打印')
   // 打印
   var tempwindow = window.open(); // 先打开页面
   tempwindow.location = location.protocol + '/' + '/' + location.host + '/print?ordersNum=' + data; // 后更改页面地址

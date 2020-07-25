@@ -1,4 +1,4 @@
-const javaBasicUrl = "jpqayp3l.xiaomy.net"
+const javaBasicUrl = "192.168.0.15:8082"
 // 交接班模板
 const commomTemplate = `
 <el-dialog
@@ -199,19 +199,19 @@ var vueObj = {
 
   bindEvent: function () {
     let that = this
-    $('body').on('click', '#userLogOut', function () {
-      $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: '/admin/home/loginOut',
-        success: function (res) {
-          window.location.href = '/adminLogin'
-        },
-        error: function (res) {
-          console.log(res)
-        }
-      })
-    })
+    // $('body').on('click', '#userLogOut', function () {
+    //   $.ajax({
+    //     type: 'POST',
+    //     dataType: 'json',
+    //     url: '/admin/home/loginOut',
+    //     success: function (res) {
+    //       window.location.href = '/adminLogin'
+    //     },
+    //     error: function (res) {
+    //       console.log(res)
+    //     }
+    //   })
+    // })
   },
 
   selectPage: function (pageNum, pageSize, first, callback) {

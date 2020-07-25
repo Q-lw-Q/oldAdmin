@@ -85,6 +85,7 @@ var rengongpanku = require('./routes/deskadmin/rengongpanku');
 var deskDetailOrder = require('./routes/deskadmin/deskDetailOrder');
 var deskDetail = require('./routes/deskadmin/deskDetail');
 var soketDetail = require('./routes/deskadmin/soketDetail');
+var beOverdueShop = require('./routes/deskadmin/beOverdueShop');
 
 
 
@@ -277,6 +278,7 @@ app.use('/deskadmin/stock', rengongpanku) //补货台
 app.use('/deskadmin/deskDetailOrder', deskDetailOrder) //补货台
 app.use('/deskadmin/soketDetail', soketDetail) //补货台
 app.use('/deskadmin/deskDetail', deskDetail) //补货台
+app.use('/deskadmin/beOverdueShop', beOverdueShop) //补货台
 
 //模板 star
 app.set('', path.join(__dirname, 'views'));

@@ -24,27 +24,11 @@ var template = `
         <input type="hidden" id="userid" name="userid" value="48406207">
     </li>
     </ul>
-    <li id="systemInformation"  @click=shownewcenter() class=" fr" style="padding-right: 10px;"><div id="Messagenumberbox" class="message"><i class="iconfont2 icon1 el-icon-message-solid"></i></div></li>
-    <a class="fr showcollect" id="showcollect" v-bind:href="showcollecttext == '前台收银' ? '/checkstand' : '/admin/home'" >
-    <i style="font-size: 18px;" class="indexIconfont el-icon-s-finance" v-bind:class= "showcollecttext == '进入后台' ? 'indexIconfont el-icon-s-cooperation' : 'indexIconfont el-icon-s-finance'"  ></i>
-    {{showcollecttext}}
-    </a>
-    <a class="fr showcollect" id="showcollect" href="/admin/orderManagement" >
-      <i style="font-size: 18px;" class="indexIconfont iconfont icon-nav i2"   ></i>
-      查询订单
-    </a>
-    <label class="topSelectShowZeor fr hidden " >
-      <input type="checkbox" class="checkinput" @click="editShowZero" id="checkShowprescription" />
-      <p>不显示零库存药品</p>
-    </label>
 </div>
 <div class="nav-content usercenter" style="right: 20px;">
     <ul style="margin: 0;padding: 8px 0;">
         <li class="text-center usercenterhref">
-            <a id="handover" href="javascript:void(0);" @click="showChange()" class="handover_hide">
-                <i class="iconfont2 iconphoto"></i>交接班&nbsp;&nbsp;&nbsp;
-            </a>
-            <a id="userLogOut" href="javascript:void(0);" class="">
+            <a id="userLogOut" @click="out" href="javascript:void(0);" class="">
                 <i class="iconfont2 iconphoto"></i>退出系统
             </a>
         </li>
@@ -251,6 +235,19 @@ Vue.component("Topnav", {
         },
         error: function (res) {
           
+        }
+      })
+    },
+    out() {
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '/admin/home/loginOut',
+        success: function (res) {
+          window.location.href = '/deskadminLogin'
+        },
+        error: function (res) {
+          console.log(res)
         }
       })
     }

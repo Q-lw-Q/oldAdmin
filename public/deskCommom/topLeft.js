@@ -23,6 +23,12 @@ var template = `
                 <li><a href="/deskadmin/deskDetail">补货明细</a></li>
             </ul>
         </li>
+        <li>
+            <a href="/deskadmin/beOverdueShop" class="sidleabtn">
+                <i class="iconfont icon-nav i2"></i>
+                <span class="nav-title">临期药查询</span>
+            </a>
+        </li>
     </ul>
 
 </section>

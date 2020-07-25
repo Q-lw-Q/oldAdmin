@@ -1,5 +1,5 @@
 {
-    "host": "http://jpqayp3l.xiaomy.net:19536",
+    "host": "127.0.0.1",
     "port": 6379,
     "max_clients": 50,
     "perform_checks": false,

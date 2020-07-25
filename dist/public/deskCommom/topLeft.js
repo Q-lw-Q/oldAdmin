@@ -16,12 +16,18 @@ var template = `
         <li>
             <a href="javascript:void(0);" class="sidleabtn">
                 <i class="iconfont icon-nav i2"></i>
-                <span class="nav-title">盘库列表</span>
+                <span class="nav-title">补货列表</span>
             </a>
             <ul class="two-menu helodao">
                 <li><a href="/deskadmin/soketDetail">库存详细</a></li>
                 <li><a href="/deskadmin/deskDetail">补货明细</a></li>
             </ul>
+        </li>
+        <li>
+            <a href="/deskadmin/beOverdueShop" class="sidleabtn">
+                <i class="iconfont icon-nav i2"></i>
+                <span class="nav-title">临期药查询</span>
+            </a>
         </li>
     </ul>
 
