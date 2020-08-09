@@ -193,6 +193,13 @@ router.get('/remove/callPoliceErrBoxIn', function (req, res, next) {
 })
 
 
+router.get('/origin', function (req, res, next) {
+    commonReq.singleRequest(contModules.javaBasicUrl + '/backstage/origin', true, 'get', req, res, function (retData) {
+        res.send(retData);
+    })
+})
+
+
 const WebSocket = require('ws');
 var server = http.createServer(express);
 const wss = new WebSocket.Server({server})

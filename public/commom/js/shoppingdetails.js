@@ -96,7 +96,7 @@ var obj = {
           if (!value) {
             return callback(new Error('不能为空'));
           } else {
-            const reg = /^[1-9]\d*$/g
+            const reg = /^[+-]?(0|([1-9]\d*))(\.\d+)?$/g;
             if (reg.test(value)) {
               callback();
             } else {
@@ -114,6 +114,24 @@ var obj = {
             height: '',
             goodsPackSizeId: '',
           },
+          unitArr: [
+            {
+              value: "盒",
+              label: "盒"
+            },
+            {
+              value: "瓶",
+              label: "瓶"
+            },
+            {
+              value: "支",
+              label: "支"
+            },
+            {
+              value: "袋",
+              label: "袋"
+            }
+          ],
           formrules: {
             barcode: [
               { required: true, message: '商品编码不能为空', trigger: 'blur' },

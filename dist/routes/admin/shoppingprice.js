@@ -80,6 +80,12 @@ router.post('/add/shopping', function (req, res, next) {
   })
 })
 // //获取商品基本信息
+router.post('/edit/shopping', function (req, res, next) {
+  commonReq.singleRequest(contModules.javaBasicUrl + '/goodsDepot/updateGoodsGDepot', false, 'post', req, res, function (retData) {
+    res.send(retData);
+  })
+})
+// //获取商品基本信息
 router.post('/Modifyclassification', function (req, res, next) {
   commonReq.singleRequest(contModules.javaBasicUrl + '/goodsDepot/Modifyclassification', false, 'post', req, res, function (retData) {
     res.send(retData);

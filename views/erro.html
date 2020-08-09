@@ -20,6 +20,10 @@
 
 <body class="hold-transition sidebar-mini" <% if($data.type == 2) { %>
     onload="Load('/admin/home')">
+  <% } else if($data.type == 1) { %>
+    onload="Load('/adminLogin')">
+  <% } else if($data.type == 3) { %>
+    onload="Load('/deskadminLogin')">
   <% } else { %>
     onload="Load('/adminLogin')">
   <% } %>

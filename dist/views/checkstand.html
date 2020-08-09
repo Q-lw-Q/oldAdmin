@@ -1,318 +1,373 @@
 <!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>收银界面</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="stylesheet" href="../../checkstand/com_N3.min.css"><link href="../../static/css/system-lib.min.css" rel="stylesheet"><link rel="stylesheet" href="../../checkstand/swiper-4.2.0.min.css"><link href="../../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"><link href="../../bootstrap-table/1.12.1/css/bootstrap-table.css" rel="stylesheet"><link href="../../bootstrap-editable/1.5.1/css/bootstrap-editable.css" rel="stylesheet"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"><link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css"><link rel="stylesheet" href="../../Ionicons/css/ionicons.min.css"><link rel="stylesheet" href="../../lte/css/AdminLTE.min.css"><link rel="stylesheet" href="../../lte/css/skins/_all-skins.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"><link href="../../select2/3.4.4/css/select2.css" rel="stylesheet"><link rel="stylesheet" href="../../checkstand/checkstand.css"><link rel="stylesheet" href="../../checkstand/loaders.min.css"><script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script><script src="https://cdn.bootcss.com/jspdf/1.3.4/jspdf.debug.js"></script><script src="../../jquery/dist/jquery.min.js"></script><style>body {
-            font-family: '微软雅黑';
-        }
+      font-family: '微软雅黑';
+    }
 
 
-        .navbtnbox a {
-            color: #333333 !important;
-        }
+    .navbtnbox a {
+      color: #333333 !important;
+    }
 
-        .nafrigh a {
-            color: #333 !important;
-        }
+    .nafrigh a {
+      color: #333 !important;
+    }
 
-        /* 支付窗口 */
-        .layui-layer-setwin a {
-            width: 40px !important;
-            height: 40px !important;
-            background-position: 0 -6px !important;
-            left: 35px;
-            top: -25px;
-        }
+    /* 支付窗口 */
+    .layui-layer-setwin a {
+      width: 40px !important;
+      height: 40px !important;
+      background-position: 0 -6px !important;
+      left: 35px;
+      top: -25px;
+    }
 
-        .layui-layer-setwin a svg {
-            background: #fff;
-            border-radius: 50%;
-            width: 30px;
-            height: 29px;
-            border: 1px;
-        }
+    .layui-layer-setwin a svg {
+      background: #fff;
+      border-radius: 50%;
+      width: 30px;
+      height: 29px;
+      border: 1px;
+    }
 
-        .play-settlement-box .paymemberlist1 {
-            padding-top: 30px;
-        }
+    .play-settlement-box .paymemberlist1 {
+      padding-top: 30px;
+    }
 
-        .deletenum i {}
+    .deletenum i {}
 
-        .youku1imgbox {
-            width: 70px;
-            height: 70px;
-            margin: auto;
-            background: url('../images/youkuvideo.png');
-        }
+    .youku1imgbox {
+      width: 70px;
+      height: 70px;
+      margin: auto;
+      background: url('../images/youkuvideo.png');
+    }
 
-        .youku1img1 {
-            background-position-y: 0px;
-        }
+    .youku1img1 {
+      background-position-y: 0px;
+    }
 
-        .youku1img2 {
-            background-position-y: -70px;
-        }
+    .youku1img2 {
+      background-position-y: -70px;
+    }
 
-        .youku1img3 {
-            background-position-y: -140px;
-        }
+    .youku1img3 {
+      background-position-y: -140px;
+    }
 
-        .youku1img4 {
-            background-position-y: -210px;
-        }
+    .youku1img4 {
+      background-position-y: -210px;
+    }
 
-        .youku1img5 {
-            background-position-y: -280px;
-        }
+    .youku1img5 {
+      background-position-y: -280px;
+    }
 
-        .youku1img6 {
-            background-position-y: -350px;
-        }
+    .youku1img6 {
+      background-position-y: -350px;
+    }
 
-        .youku1img7 {
-            background-position-y: -420px;
-        }
+    .youku1img7 {
+      background-position-y: -420px;
+    }
 
-        .youku1img8 {
-            background-position-y: -560px;
-        }
+    .youku1img8 {
+      background-position-y: -560px;
+    }
 
-        .bgColor {
-            background-color: #efefef;
-        }
+    .bgColor {
+      background-color: #efefef;
+    }
 
-        body {
-            overflow: hidden;
-        }
+    body {
+      overflow: hidden;
+    }
 
-        body .main-box .nafrigh2 {
-            display: flex;
-        }
+    body .main-box .nafrigh2 {
+      display: flex;
+    }
 
-        body .main-box .nafrigh2 .displayproductlist {
-            flex: 1;
-        }
+    body .main-box .nafrigh2 .displayproductlist {
+      flex: 1;
+    }
 
-        body .main-box .nafrigh .swiper-button-prev,
-        body .main-box .nafrigh .swiper-button-next {
-            display: flex !important;
-            z-index: 2;
-            /* position: absolute; */
-            /* top: 0; */
-            /* transform: translateY(50%); */
-        }
+    body .main-box .nafrigh .swiper-button-prev,
+    body .main-box .nafrigh .swiper-button-next {
+      display: flex !important;
+      z-index: 2;
+      /* position: absolute; */
+      /* top: 0; */
+      /* transform: translateY(50%); */
+    }
 
-        body .main-box .nafrigh .swiper-button-prev {
-            /* left: 0; */
-        }
+    body .main-box .nafrigh .swiper-button-prev {
+      /* left: 0; */
+    }
 
-        body .main-box .nafrigh .swiper-button-next {
-            /* left: 0; */
-        }
+    body .main-box .nafrigh .swiper-button-next {
+      /* left: 0; */
+    }
 
-        body .main-box .navcenterLeft {
-            min-width: 95px;
-        }
+    body .main-box .navcenterLeft {
+      min-width: 95px;
+    }
 
-        body .productmorelist {
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
+    body .productmorelist {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
 
-        #productlist {
-            width: 100% !important;
-        }
+    #productlist {
+      width: 100% !important;
+    }
 
-        .displayproductlist .Cashbotobx2 .swiper-container .productmorelist .textlistbox {
-            /* float: none;
+    .displayproductlist .Cashbotobx2 .swiper-container .productmorelist .textlistbox {
+      /* float: none;
             display: inline-block;
             margin-right: 13px!important; */
-        }
+    }
 
-        .play-settlement-box .col-xs-6 {
-            height: auto;
-        }
+    .play-settlement-box .col-xs-6 {
+      height: auto;
+    }
 
-        .paywaylist .active .iconfont2 .whirte {
-            display: block;
-        }
+    .paywaylist .active .iconfont2 .whirte {
+      display: block;
+    }
 
-        .paywaylist .active .iconfont2 .blue {
-            display: none;
-        }
+    .paywaylist .active .iconfont2 .blue {
+      display: none;
+    }
 
-        .paywaylist .iconfont2 .whirte {
-            display: none;
-        }
+    .paywaylist .iconfont2 .whirte {
+      display: none;
+    }
 
-        .paywaylist .iconfont2 .blue {
-            display: block;
-        }
+    .paywaylist .iconfont2 .blue {
+      display: block;
+    }
 
-        .swiper_shooping_list {
-            margin: 0px 22px 0 13px;
-            overflow-x: auto;
-        }
+    .swiper_shooping_list {
+      margin: 0px 22px 0 13px;
+      overflow-x: auto;
+    }
 
-        #swipers .swipers_list {
-            background: #efefef;
-            font-size: 15px;
-            text-align: center;
-            color: #113e36;
-            padding: 14px 5px;
-            cursor: pointer;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            display: inline-block;
-        }
+    #swipers .swipers_list {
+      background: #efefef;
+      font-size: 15px;
+      text-align: center;
+      color: #113e36;
+      padding: 14px 5px;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+    }
 
-        #swipers .active {
-            background: #90b82d;
-            color: #fff;
-        }
+    #swipers .active {
+      background: #90b82d;
+      color: #fff;
+    }
 
-        #layui-layer_pop2 {
-            position: fixed;
-            left: 50% !important;
-            top: 50% !important;
-            transform: translate(-50%, -50%);
-        }
+    #layui-layer_pop2 {
+      position: fixed;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%);
+    }
 
-        #layui-layer_pop5 {
-            position: fixed;
-            left: 50% !important;
-            top: 50% !important;
-            transform: translate(-50%, -50%);
-        }
+    #layui-layer_pop5 {
+      position: fixed;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%);
+    }
 
-        audio {
-            /* display: none; */
-            /* opacity: 0; */
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 25222222;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-        }
+    audio {
+      /* display: none; */
+      /* opacity: 0; */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 25222222;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
 
-        .loadgin_mask {
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 199999999;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-        }
+    .loadgin_mask {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 199999999;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+    }
 
-        .loadgin_mask .content {
-            width: 100%;
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    .loadgin_mask .content {
+      width: 100%;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        .loadgin_mask .content .rectangle {
-            position: absolute;
-            top: 30%;
-            left: 49%;
-            transform: translate(-50%, -50%);
-        }
+    .loadgin_mask .content .rectangle {
+      position: absolute;
+      top: 30%;
+      left: 49%;
+      transform: translate(-50%, -50%);
+    }
 
-        .loadgin_mask .content p {
-            font-size: 30px;
-            color: #fff;
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    .loadgin_mask .content p {
+      font-size: 30px;
+      color: #fff;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
 
 
-        .loadgin_mask .content #stop_speak,
-        .loadgin_mask .content #stop_pay {
-            top: 80%;
-            width: 80px;
-            height: 40px;
-            line-height: 39px;
-            text-align: center;
-            font-size: 18px;
-            background: #e87171;
-            border-radius: 4px;
-            cursor: pointer;
-            color: #fff;
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    .loadgin_mask .content #stop_speak,
+    .loadgin_mask .content #stop_pay {
+      top: 80%;
+      width: 80px;
+      height: 40px;
+      line-height: 39px;
+      text-align: center;
+      font-size: 18px;
+      background: #e87171;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #fff;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        .microphone {
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            right: 50px;
-            bottom: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 2;
-        }
+    .microphone {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      right: 50px;
+      bottom: 50px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2;
+    }
 
-        .microphone .microphone_icon {
-            width: 100%;
-            height: 100%;
-            /* background: url(../../checkstand/img/audio_button.svg) no-repeat center center / cover; */
-        }
+    .microphone .microphone_icon {
+      width: 100%;
+      height: 100%;
+      /* background: url(../../checkstand/img/audio_button.svg) no-repeat center center / cover; */
+    }
 
-        #jieshuajie,
-        #jieshuajie2 {
-            padding-left: 5px;
-            font-weight: bold;
-        }
+    #jieshuajie,
+    #jieshuajie2 {
+      padding-left: 5px;
+      font-weight: bold;
+    }
 
-        .CAshshuliang .selectorder_discount_type .order_discount_mon {
-            overflow: hidden;
-            font-size: 18px;
-        }
+    .CAshshuliang .selectorder_discount_type .order_discount_mon {
+      overflow: hidden;
+      font-size: 18px;
+    }
 
-        .CAshshuliang .selectorder_discount_type .order_discount_mon .discount_mon {
-            float: right;
-            font-size: 14px;
-        }
+    .CAshshuliang .selectorder_discount_type .order_discount_mon .discount_mon {
+      float: right;
+      font-size: 14px;
+    }
 
-        .CAshshuliang .selectorder_discount_type .commentcss_s {
-            color: orangered;
-        }
+    .CAshshuliang .selectorder_discount_type .commentcss_s {
+      color: orangered;
+    }
 
-        .Csjscalc .caluinew {
-            overflow: hidden;
-        }
+    .Csjscalc .caluinew {
+      overflow: hidden;
+    }
 
-        .Csjscalc .caluinew li {
-            float: left;
-            display: block;
-            width: 69px;
-            height: 69px;
-            color: #666;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 69px;
-            margin-right: 21px;
-            margin-top: 12px;
-            background: #f5f5f5;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-        }
+    .Csjscalc .caluinew li {
+      float: left;
+      display: block;
+      width: 69px;
+      height: 69px;
+      color: #666;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 69px;
+      margin-right: 21px;
+      margin-top: 12px;
+      background: #f5f5f5;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+    }
 
-        .el-pagination {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }</style><link rel="stylesheet" href="../../checkstand/layer.css" id="layui_layer_skinlayercss" style=""><link type="text/css" rel="stylesheet" href="../../checkstand/laydate.css"><link type="text/css" rel="stylesheet" href="../../checkstand/laydate(1).css" id="LayDateSkin"><link rel="stylesheet" href="../../checkstand/layer.ext.css" id="layui_layer_skinlayerextcss" style=""><link rel="stylesheet" href="../../checkstand/print.min.css"><link rel="stylesheet" href="../../vue-common/adminCommon.css"><link rel="stylesheet" href="../../element/element.css"></head><body style="background: #23262E" id="body"><div id="cover" style="background: #000; position: absolute; left: 0px; top: 0px; width: 100%; filter: alpha(opacity=30); opacity: 0.3; display: none; z-index: 100"></div><div id="vueTemplate"><header class="today-summarize" id="HeaderBackgroundColor"><topnav v-bind:showcollecttext="showcollect"></topnav></header><commomtemplate></commomtemplate><div class="newscenter" style="z-index:1000;"><div class="newscenter-nav"><ul id="newscenter-nav"><li class="active">业务消息</li><li class="messageli" data-type="2">系统消息</li><li class="messageli" data-type="5">更新日志</li></ul></div><div class="newscenter-content active"><ul id="messagehtml"></ul></div><div class="newscenter-content"><ul id="systemMessageList_new"></ul></div><div class="newscenter-content"><ul id="logMessageList_new"></ul></div></div><div class="nav-content usercenter"><ul><li class="text-center usercenterhref"><a id="" href="http://decerp.cc/Home/Index?software_versionid=2" class=""><i class="iconfont2 iconphoto"></i>返回旧版</a> <a id="changePwd" href="javascript:void(0);" class=""><i class="iconfont2 iconphoto"></i>修改密码</a> <a href="http://decerp.cc/home/VersionList_N3" class="" id="IsonlineRenewal"><i class="iconfont2 iconphoto"></i>在线购买</a> <a href="javascript:void(0);"><span class=""><i class="iconfont2 iconphoto"></i>修改头像</span> <input type="file" class="file" id="upLoadImg" value=""> </a><a id="handover" href="javascript:void(0);" class="handover_hide"><i class="iconfont2 iconphoto"></i>交 接 班 </a><a id="userLogOut" href="javascript:void(0);" class=""><i class="iconfont2 iconphoto"></i>退出系统</a></li></ul></div><div class="main-box" style="padding-top:58px;"><div class="fl naflet" style="position: relative; z-index: 99;"><div class="top top2"><i class="search-product-buy icon-th" data-name="search-product-buy"></i> <input type="text" id="queryproduct" onkeyup="queryproductChange();" maxlength="30" placeholder="商品搜索"> <span class="deletebtn icon-remove-sign" id="deletebtn" onclick="deletebtn()"></span></div><div class="bdtext" id="bdtext" style="width: 310px"><div class="padding titiels" style="height: 67px;display: flex;align-items: center;"><p class="" style="overflow:hidden;padding-bottom: 0;margin-bottom: 0;"><span class="fr" id="date_ss" style="float:left;"></span></p></div><div class="cashbox maxbox"><ul class="Cashlefsit" id="Cashlefsit" style="height: 459px;"></ul></div><div class="Cashlebtn"><div class="cltop" style="background-color: white;"><div class="tiptops"><span><em>合计数量</em></span> <span><i><em id="thisProductTotalnumber">0.00</em></i></span></div><div class="tiptops"><span><em>合计金额</em></span> <span><i>¥<em id="jieshuajie"> 0.00</em></i></span></div><div class="tiptops"><span><em class="corrrred" id="Should_be_charged">应收</em></span> <span><i class="corrrred">¥<em id="jieshuajie2">0.00</em></i></span></div></div><div class="clbtom"><input type="hidden" id="userid" name="userid" value=""> <a href="javascript:void(0);" onclick="empty()" id="Cashchongzhi" style="font-family: SimHei;" class="key_select_member">清空</a> <a href="javascript:void(0);" onclick="closePrice()" style="border-left: 1px solid #ff8d8d;font-family: SimHei;">结算</a></div></div></div></div><div class="nafrigh nafrigh2" style="top: 58px;"><div class="navcenterLeft navbtnbox navbtnbox2"><nav><a href="javascript:void(0);" onclick="dev()">删除</a> <a href="javascript:void(0);" onclick="add()" class="big bule key_add_num" alt="">+</a> <a href="javascript:void(0);" onclick="reduce()" class="big key_minus_num" alt="" data-name="">-</a></nav></div><div class="Cashporictbox displayproductlist"><div class="Cashtopnav" style="height:50px;"><div class="swiper_shooping_list"><div class="swiper-button-prev" id="prev_button"></div><div class="" id="swipers"></div><div class="swiper-button-next" id="next_button"></div></div></div><div class="Cashbotobx2" style="padding-right: 12px;"><div class="swiper-container swiper-container-horizontal"><ul class="swiper-wrapper productmorelist"><li class="swiper-slide swiper-slide-active" id="productlist"></li></ul></div></div><el-pagination small @current-change="pageSize" :current-page.sync="shoppingIndex" background layout="prev, pager, next" :page-count="shoppingCount" :hide-on-single-page="shoppingCount == 1"></el-pagination></div><div class="microphone" id="microphone" on click="microphoneClass()"><img src="../../checkstand/img/audio_button.svg" alt="" class="microphone_icon"></div></div></div><div class="" id="layui-layer_pop2" type="page" times="2" showtime="0" contype="string" style="z-index: 200; left: 600px; width: 767px; margin: 0 auto; display: none;"><div id="shoyin2" class="layui-layer-content"></div><span class="layui-layer-setwin" style="z-index: 1;
+    .el-pagination {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .qrcode_pop {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100000;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+    }
+
+    .qrcode_pop .close_qrcode_pop{
+      color: #fff;
+      font-size: 100px;
+      position: fixed;
+      right: 50px;
+      top: -25px;
+      cursor: pointer;
+    }
+
+    .qrcode_pop .pop_content {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qrcode_pop .pop_content #qrcode {
+      width: 250px;
+      height: 250px;
+      background: #fff;
+      position: relative;
+    }
+
+    .qrcode_pop .pop_content img {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .qrcode_pop .pop_content p {
+      font-size: 26px;
+      color: #fff;
+      padding-top: 20px;
+    }</style><link rel="stylesheet" href="../../checkstand/layer.css" id="layui_layer_skinlayercss" style=""><link type="text/css" rel="stylesheet" href="../../checkstand/laydate.css"><link type="text/css" rel="stylesheet" href="../../checkstand/laydate(1).css" id="LayDateSkin"><link rel="stylesheet" href="../../checkstand/layer.ext.css" id="layui_layer_skinlayerextcss" style=""><link rel="stylesheet" href="../../checkstand/print.min.css"><link rel="stylesheet" href="../../vue-common/adminCommon.css"><link rel="stylesheet" href="../../element/element.css"></head><body style="background: #23262E" id="body"><div id="cover" style="background: #000; position: absolute; left: 0px; top: 0px; width: 100%; filter: alpha(opacity=30); opacity: 0.3; display: none; z-index: 100"></div><div id="vueTemplate"><header class="today-summarize" id="HeaderBackgroundColor"><topnav v-bind:showcollecttext="showcollect"></topnav></header><commomtemplate></commomtemplate><div class="newscenter" style="z-index:1000;"><div class="newscenter-nav"><ul id="newscenter-nav"><li class="active">业务消息</li><li class="messageli" data-type="2">系统消息</li><li class="messageli" data-type="5">更新日志</li></ul></div><div class="newscenter-content active"><ul id="messagehtml"></ul></div><div class="newscenter-content"><ul id="systemMessageList_new"></ul></div><div class="newscenter-content"><ul id="logMessageList_new"></ul></div></div><div class="nav-content usercenter"><ul><li class="text-center usercenterhref"><a id="" href="http://decerp.cc/Home/Index?software_versionid=2" class=""><i class="iconfont2 iconphoto"></i>返回旧版</a> <a id="changePwd" href="javascript:void(0);" class=""><i class="iconfont2 iconphoto"></i>修改密码</a> <a href="http://decerp.cc/home/VersionList_N3" class="" id="IsonlineRenewal"><i class="iconfont2 iconphoto"></i>在线购买</a> <a href="javascript:void(0);"><span class=""><i class="iconfont2 iconphoto"></i>修改头像</span> <input type="file" class="file" id="upLoadImg" value=""> </a><a id="handover" href="javascript:void(0);" class="handover_hide"><i class="iconfont2 iconphoto"></i>交 接 班 </a><a id="userLogOut" href="javascript:void(0);" class=""><i class="iconfont2 iconphoto"></i>退出系统</a></li></ul></div><div class="main-box" style="padding-top:58px;"><div class="fl naflet" style="position: relative; z-index: 99;"><div class="top top2"><i class="search-product-buy icon-th" data-name="search-product-buy"></i> <input type="text" id="queryproduct" onkeyup="queryproductChange();" maxlength="30" placeholder="商品搜索"> <span class="deletebtn icon-remove-sign" id="deletebtn" onclick="deletebtn()"></span></div><div class="bdtext" id="bdtext" style="width: 310px"><div class="padding titiels" style="height: 67px;display: flex;align-items: center;"><p class="" style="overflow:hidden;padding-bottom: 0;margin-bottom: 0;"><span class="fr" id="date_ss" style="float:left;"></span></p></div><div class="cashbox maxbox"><ul class="Cashlefsit" id="Cashlefsit" style="height: 459px;"></ul></div><div class="Cashlebtn"><div class="cltop" style="background-color: white;"><div class="tiptops"><span><em>合计数量</em></span> <span><i><em id="thisProductTotalnumber">0.00</em></i></span></div><div class="tiptops"><span><em>合计金额</em></span> <span><i>¥<em id="jieshuajie"> 0.00</em></i></span></div><div class="tiptops"><span><em class="corrrred" id="Should_be_charged">应收</em></span> <span><i class="corrrred">¥<em id="jieshuajie2">0.00</em></i></span></div></div><div class="clbtom"><input type="hidden" id="userid" name="userid" value=""> <a href="javascript:void(0);" onclick="empty()" id="Cashchongzhi" style="font-family: SimHei;" class="key_select_member">清空</a> <a href="javascript:void(0);" onclick="closePrice()" style="border-left: 1px solid #ff8d8d;font-family: SimHei;">结算</a></div></div></div></div><div class="nafrigh nafrigh2" style="top: 58px;"><div class="navcenterLeft navbtnbox navbtnbox2"><nav><a href="javascript:void(0);" onclick="dev()">删除</a> <a href="javascript:void(0);" onclick="add()" class="big bule key_add_num" alt="">+</a> <a href="javascript:void(0);" onclick="reduce()" class="big key_minus_num" alt="" data-name="">-</a></nav></div><div class="Cashporictbox displayproductlist"><div class="Cashtopnav" style="height:50px;"><div class="swiper_shooping_list"><div class="swiper-button-prev" id="prev_button"></div><div class="" id="swipers"></div><div class="swiper-button-next" id="next_button"></div></div></div><div class="Cashbotobx2" style="padding-right: 12px;"><div class="swiper-container swiper-container-horizontal"><ul class="swiper-wrapper productmorelist"><li class="swiper-slide swiper-slide-active" id="productlist"></li></ul></div></div><el-pagination small @current-change="pageSize" :current-page.sync="shoppingIndex" background layout="prev, pager, next" :page-count="shoppingCount" :hide-on-single-page="shoppingCount == 1"></el-pagination></div><div class="microphone" id="microphone" on click="microphoneClass()"><img src="../../checkstand/img/audio_button.svg" alt="" class="microphone_icon"></div></div></div><div class="" id="layui-layer_pop2" type="page" times="2" showtime="0" contype="string" style="z-index: 200; left: 600px; width: 767px; margin: 0 auto; display: none;"><div id="shoyin2" class="layui-layer-content"></div><span class="layui-layer-setwin" style="z-index: 1;
     right: 30px;
     top: 10px;"><a href="javascript:;" style="cursor: pointer;
     background: #fff;
@@ -335,4 +390,4 @@
     line-height: 40px;
     text-align: center;"><i class="el-icon-close" style="line-height: 40px;
     font-size: 30px;
-    color: black;"></i></span></div><div class="layui-layer-shade hidden" id="layui-layer-shade5" times="5" style="z-index:15000; background-color:#000; opacity:0.6; filter:alpha(opacity=60);"></div><div class="loadgin_mask"><div class="content"><div data-loader="rectangle" class="rectangle"></div><p>等待顾客支付中...</p><span id="stop_pay" onclick="stopPay()" class="hidden">取消</span> <span id="stop_speak" class="hidden">停止</span></div></div><form enctype="multipart/form-data" class="hidden"><input type="file" name="mp3"></form><audio controls="controls" id="use_pay" src="../../checkstand/mp3/hello.mp3"></audio><audio controls="controls" id="add_shopping" src="../../checkstand/mp3/addshopping.mp3"></audio><audio controls="controls" id="paySuccess" src="../../checkstand/mp3/paySuccess.mp3"></audio><div class="shopping_detail"><div class="pop_content"><div class="content_detail"><div class="content_top"><img class="shopping_img" src="https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i4/1129924524/O1CN01r4QBUN1jI2HB7t24a_!!1129924524.jpg_430x430q90.jpg"><div class="content_bottom"><p class="content_bottom_title">货物存储信息【 条码：<span id="barcodeNum"></span>】</p><p class="content_bottom_content" id="shoppingAddress"></p></div><div class="shopping_right"><div class="item"><p class="item_title">主治功能</p><p class="item_content" id="effect"></p></div><div class="item"><p class="item_title">用法用量</p><p class="item_content" id="dosage"></p></div><div class="item"><p class="item_title">禁忌</p><p class="item_content" id="taboo"></p></div></div></div><div class="content_bottom"><p class="content_bottom_title">注意事项</p><p class="content_bottom_content" id="attention"></p></div></div><span class="close_shopping_detail">×</span></div></div><el-dialog title="当前订单信息：" :visible.sync="showOrderMessage" width="50%" id="orderMessagePop"><div class="orderList" v-for="(item,index) in orderMessageFrom"><p class="listTitle"><span v-html="(index + 1)"></span>. <span v-html="item.name"></span>*<span v-html="item.content.length"></span></p><p class="listContent" v-for="(Citem,Cindex) in item.content">请到<span v-html="Citem.boxCode"></span>号柜<span v-html="Citem.zAxis"></span>层<span v-html="Citem.sortNum"></span>列取一盒</p></div><div style="margin-top: 40px;" class="bottomTips"><p>温馨提示</p><p>1. 请务必按急停后再进入仓库，以免机器伤人。</p><p>2. 请务必把商品取出，否则会影响后面补货，取商品时要从外面开始取，取药时注意不要移动其他商品位置。</p></div><span slot="footer" class="dialog-footer"><el-button type="primary" @click="showOrderMessage = false">确 定 完 成</el-button></span></el-dialog></div></body><script src="../../bootstrap/dist/js/bootstrap.min.js"></script><script src="../../static/js/com_n3.min.js"></script><script src="../../checkstand/swiper-4.2.0.min.js"></script><script src="../../checkstand/print.min.js"></script><script src="../../vue-common/js/vue.js"></script><script src="../../element/element.js"></script><script src="../../vue-common/topNav.js"></script><script src="../../commom/js/admincommom.js"></script><script src="../../commom/js/checkstand.js"></script><script src="../../commom/vendors/yuyinshibie/hmac-sha256.js"></script><script src="../../commom/vendors/yuyinshibie/enc-base64-min.js"></script><script src="../../commom/vendors/yuyinshibie/index.js"></script></html>
+    color: black;"></i></span></div><div class="layui-layer-shade hidden" id="layui-layer-shade5" times="5" style="z-index:15000; background-color:#000; opacity:0.6; filter:alpha(opacity=60);"></div><div class="loadgin_mask"><div class="content"><div data-loader="rectangle" class="rectangle"></div><p>等待顾客支付中...</p><span id="stop_pay" onclick="stopPay()" class="hidden">取消</span> <span id="stop_speak" class="hidden">停止</span></div></div><form enctype="multipart/form-data" class="hidden"><input type="file" name="mp3"></form><audio controls="controls" id="use_pay" src="../../checkstand/mp3/hello.mp3"></audio><audio controls="controls" id="add_shopping" src="../../checkstand/mp3/addshopping.mp3"></audio><audio controls="controls" id="paySuccess" src="../../checkstand/mp3/paySuccess.mp3"></audio><div class="shopping_detail"><div class="pop_content"><div class="content_detail"><div class="content_top"><img class="shopping_img" src="https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i4/1129924524/O1CN01r4QBUN1jI2HB7t24a_!!1129924524.jpg_430x430q90.jpg"><div class="content_bottom"><p class="content_bottom_title">货物存储信息【 条码：<span id="barcodeNum"></span>】</p><p class="content_bottom_content" id="shoppingAddress"></p></div><div class="shopping_right"><div class="item"><p class="item_title">主治功能</p><p class="item_content" id="effect"></p></div><div class="item"><p class="item_title">用法用量</p><p class="item_content" id="dosage"></p></div><div class="item"><p class="item_title">禁忌</p><p class="item_content" id="taboo"></p></div></div></div><div class="content_bottom"><p class="content_bottom_title">注意事项</p><p class="content_bottom_content" id="attention"></p></div></div><span class="close_shopping_detail">×</span></div></div><el-dialog title="当前订单信息：" :visible.sync="showOrderMessage" width="50%" id="orderMessagePop"><div class="orderList" v-for="(item,index) in orderMessageFrom"><p class="listTitle"><span v-html="(index + 1)"></span>. <span v-html="item.name"></span>*<span v-html="item.content.length"></span></p><p class="listContent" v-for="(Citem,Cindex) in item.content">请到<span v-html="Citem.boxCode"></span>号柜<span v-html="Citem.zAxis"></span>层<span v-html="Citem.sortNum"></span>列取一盒</p></div><div style="margin-top: 40px;" class="bottomTips"><p>温馨提示</p><p>1. 请务必按急停后再进入仓库，以免机器伤人。</p><p>2. 请务必把商品取出，否则会影响后面补货，取商品时要从外面开始取，取药时注意不要移动其他商品位置。</p></div><span slot="footer" class="dialog-footer"><el-button type="primary" @click="showOrderMessage = false">确 定 完 成</el-button></span></el-dialog></div><div class="qrcode_pop"><span class="close_qrcode_pop">×</span><div class="pop_content" id="qrcodeBox"><div id="qrcode"></div><p>请用支付宝或者微信支付...</p></div></div></body><script src="../../bootstrap/dist/js/bootstrap.min.js"></script><script src="../../static/js/com_n3.min.js"></script><script src="../../checkstand/swiper-4.2.0.min.js"></script><script src="../../checkstand/print.min.js"></script><script src="../../vue-common/js/vue.js"></script><script src="../../element/element.js"></script><script src="../../vue-common/topNav.js"></script><script src="../../commom/js/admincommom.js"></script><script src="../../javascripts/qrcode.min.js"></script><script src="../../commom/js/checkstand.js"></script><script src="../../commom/vendors/yuyinshibie/hmac-sha256.js"></script><script src="../../commom/vendors/yuyinshibie/enc-base64-min.js"></script><script src="../../commom/vendors/yuyinshibie/index.js"></script></html>

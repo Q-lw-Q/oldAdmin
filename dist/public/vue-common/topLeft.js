@@ -64,7 +64,7 @@ var template = `
             <ul class="two-menu helodao">
                 <li><a href="/admin/userManagement" sv_func_id="4530">用户列表</a></li>
                 <li><a href="/admin/records/">交接班记录</a></li>
-                <li><a href="/admin/rtctoken">用户认证</a></li>
+                <li><a href="/admin/rtctoken">排序设置</a></li>
             </ul>
             <i class="caretactive"></i>
         </li>

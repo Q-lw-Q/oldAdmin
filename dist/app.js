@@ -126,8 +126,8 @@ app.all('*', function (req, res, next) {
   // 然后得到request的cookie，根据cookie得到当前登陆的用户
   // 判断用户对应url的权限
   // console.log(123)
-    // next();
-    // return;
+  // next();
+  // return;
 
   var jsPattern = /\.js$/;
   var url = req._parsedUrl.pathname; // req.originalUrl;
@@ -225,9 +225,14 @@ app.all('*', function (req, res, next) {
         retMsg: ''
       });
     } else { //页面请求則返回错误页。
+      let type = '1';
+
+      if(url.indexOf("deskadmin") !== -1) {
+        type = '3'
+      }
       res.render("erro", {
         msg: '请先登录',
-        type: '1',
+        type: type,
         pageName: "登录页"
       });
     }

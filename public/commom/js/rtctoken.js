@@ -4,19 +4,19 @@ var obj = {
   id: "",
   bindEvent: function () {
     let that = this
-    $('#btnSavePayInfo').on('click',function(){
-      that.getData({
-        data: $('#sv_merchant_name').val()
-      })
-    })
+    // $('#btnSavePayInfo').on('click',function(){
+    //   that.getData({
+    //     data: $('#sv_merchant_name').val()
+    //   })
+    // })
 
-    $('#setshouqian').on('click',function(){
-      that.getSetsqb({
-        sn: $('#setsn').val(),
-        key: $('#setkey').val(),
-        id: that.id
-      })
-    })
+    // $('#setshouqian').on('click',function(){
+    //   that.getSetsqb({
+    //     sn: $('#setsn').val(),
+    //     key: $('#setkey').val(),
+    //     id: that.id
+    //   })
+    // })
     
   },
 
@@ -137,8 +137,8 @@ var obj = {
   init: function () {
     this.initVue()
     this.bindEvent()
-    this.getData()
-    this.getsqb()
+    // this.getData()
+    // this.getsqb()
     this.getAilistId()
   }
 }

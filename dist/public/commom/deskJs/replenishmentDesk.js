@@ -1,4 +1,3 @@
-
 var obj = {
   initVue: function () {
     let that = this
@@ -17,7 +16,8 @@ var obj = {
             sourceCode: ''
           },
           falgQuesion: true,
-          joinTable: []
+          joinTable: [],
+          submitTimer: ""
         }
       },
       watch: {
@@ -120,31 +120,39 @@ var obj = {
           };
         },
         onSubmit: function () {
-          if (!this.nowDeskFlag) {
-            this.$message.error('请先开始补货模式')            
-            return
-          }
-          if (!this.postForm.barcode) {
-            return
-          }
-          // 补货
-          axios.post(location.pathname + '/get/desk', {
-            "barcode": this.postForm.barcode
-          })
-            .then((res) => {
-              this.tableData = res.data.retEntity
-              console.log(this.tableData)
+          clearTimeout(this.submitTimer)
+          this.submitTimer = setTimeout(() => {
+            if (!this.nowDeskFlag) {
+              this.$message.error('请先开始补货模式')            
+              return
+            }
+            if (!this.postForm.barcode) {
+              return
+            }
+            // 补货
+            axios.post(location.pathname + '/get/desk', {
+              "barcode": this.postForm.barcode
             })
-            .catch((res) => {
-              this.$message.error('网络连接错误')
-            })
+              .then((res) => {
+                const data = res.data.retEntity;
+                if (!data.length || !data.width || !data.height) {
+                  this.$message.error('商品长宽高信息未录入完全,请补全信息后再进行补货..')
+                  return;
+                }
+                this.tableData = data
+                console.log(this.tableData)
+              })
+              .catch((res) => {
+                this.$message.error('网络连接错误')
+              })
+          }, 1000);
         },
         inputFocus: function(e) {
           this.$refs.customerInput.$el.querySelector('input').focus();
         },
         focusCanl: function(e){
           e.stopPropagation();
-          console.log(123)
+          // console.log(123)
         },
         getCookie: (name) => {
           var strcookie = document.cookie; //获取cookie字符串

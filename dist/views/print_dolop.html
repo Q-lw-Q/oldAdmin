@@ -215,7 +215,7 @@
 
     label .first {
       margin-left: 5px;
-    }</style></head><body style="background-color:#fff;" id="body"><div class="print_container" id="print_container"><h1 style="font-size: 18px;text-align: center;"></h1><div class="section1"></div><div class="section3"><label><span id="adress">国药乐仁堂文化路店</span></label> <label id=""><span>收银员:</span> <span class="num" id="idName"></span></label> <label id=""><span>流水号:</span> <span class="num" id="idNum"></span></label></div><p class="borderxing" style="border-top:1px dotted #000;margin-top: 3px;margin-bottom: 3px;"></p><div class="section3"><div id="listContent"></div><label id=""><span>应收:</span> <span class="num" id="zheqian"></span> <span class="first">实收:</span> <span class="num" id="zhehou"></span></label> <label id=""><span>找零:</span> <span class="num">0</span></label><tr></tr><p class="borderxing" style="border-top:1px dotted #000;margin-top: 3px;margin-bottom: 3px;"></p><div class="section3"><label class=""><span>咨询电话:</span> <span class="num">0315-2019442</span></label> <label class=""><span>收款日期:</span> <span class="num" id="zhaoling">2020-06-25</span></label> <label class=""><span>收款时间:</span> <span class="num" id="zhaoling">10:23:19</span></label> <label class=""><span>找零:</span> <span class="num" id="zhaoling">0</span></label></div><div style="padding: 0 0 0 0;font-size: 10px"><p>15日内可凭小票换取发票</p><p>药品售出无质量问题概不退换！</p><p>关爱健康 呵护健康！</p></div></div><div class="section5"></div><p id="bottom">.</p></div></body><script src="../../jquery/dist/jquery.min.js"></script><script src="../../checkstand/LodopFuncs.js"></script><script>window.onload = function () {
+    }</style></head><body style="background-color:#fff;" id="body"><div class="print_container" id="print_container"><h1 style="font-size: 18px;text-align: center;"></h1><div class="section1"></div><div class="section3"><label><span id="adress">国药乐仁堂文化路店</span></label> <label id=""><span>收银员:</span> <span class="num" id="idName"></span></label> <label id=""><span>流水号:</span> <span class="num" id="idNum"></span></label></div><p class="borderxing" style="border-top:1px dotted #000;margin-top: 3px;margin-bottom: 3px;"></p><div class="section3"><div id="listContent"></div><label id=""><span>金额:</span> <span class="num" id="zheqian2"></span></label> <label id=""><span>应收:</span> <span class="num" id="zheqian1"></span> <span class="first">实收:</span> <span class="num" id="zhehou"></span></label> <label id=""><span>找零:</span> <span class="num" id="zhaolingmoney">0</span></label><tr></tr><p class="borderxing" style="border-top:1px dotted #000;margin-top: 3px;margin-bottom: 3px;"></p><div class="section3"><label class=""><span>咨询电话:</span> <span class="num">0315-2019442</span></label> <label class=""><span>收款日期:</span> <span class="num" id="zhaoling">2020-06-25</span></label> <label class=""><span>收款时间:</span> <span class="num" id="zhaoling">10:23:19</span></label></div><div style="padding: 0 0 0 0;font-size: 10px"><p>15日内可凭小票换取发票</p><p>药品售出无质量问题概不退换！</p><p>关爱健康 呵护健康！</p></div></div><div class="section5"></div><p id="bottom">.</p></div></body><script src="../../jquery/dist/jquery.min.js"></script><script src="../../checkstand/LodopFuncs.js"></script><script>window.onload = function () {
 
     var obj = {
 
@@ -254,23 +254,23 @@
         $.each(data.ordersDetails, function (i, item) {
           money = money + item.amount
           tplList += `
-            <label id="">
+            <label id="" style="padding-top: 0px;">
               <span>名称:</span>
               <span class="num" id="goodsName">${item.goodsName}</span>
             </label>
-            <label id="">
+            <label id="" style="padding-top: 0px;">
               <span>产商:</span>
               <span class="num" id="manufa">${item.manufacturer}</span>
             </label>
-            <label id="">
+            <label id="" style="padding-top: 0px;">
               <span>规格:</span>
               <span class="num" id="spec">${item.spec}</span>
             </label>
-            <label id="">
+            <label id="" style="padding-top: 0px;">
               <span>批号:</span>
               <span class="num" id="approvalNumber">${item.approvalNumber}</span>
             </label>
-            <label id="" style="margin-bottom: 5px;">
+            <label id="" style="padding-top: 0px;margin-bottom: 10px;">
               <span>单价:</span>
               <span class="num" id="price">${item.price / 100}</span>
               <span class="first" id="">数量:</span>
@@ -320,7 +320,9 @@
 
         $('#listContent').html(tplList)
         // $("#jine").html(payString + money / 100)
-        $('#zheqian,#zhehou').html(money / 100)
+        $('#zheqian2,#zheqian1').html(data.discount.yinshou)
+        $("#zhehou").html(data.discount.xianjin)
+        $("#zhaolingmoney").html((+data.discount.xianjin * 10000 - +data.discount.yinshou * 10000) / 10000)
         // $('#allmoney').html(payString + money / 100)
         $('#idName').html(data.fullName)
 

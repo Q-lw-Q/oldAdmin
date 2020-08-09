@@ -83,7 +83,7 @@
       </div>
     </div>
     <!-- 添加账号表单 -->
-    <el-dialog title="商品信息" :visible.sync="dialogFormVisible">
+    <el-dialog title="商品信息" :close-on-click-modal="false" :visible.sync="dialogFormVisible">
       <el-form :model="form">
         <el-form-item label="输入条码" :label-width="formLabelWidth">
           <el-input v-model="form.barcode" @blur="searchBarcode" @keyup.enter.native="searchBarcode" autocomplete="off"></el-input>
@@ -133,13 +133,13 @@
           </el-select>
         </el-form-item>
         <el-form-item label="请选择分类" :label-width="formLabelWidth">
-          <el-select v-model="form.classIfyArray" multiple placeholder="请选择">
+          <el-select :disabled="!addStatus" v-model="form.classIfyArray" multiple placeholder="请选择">
             <el-option v-for="item in typeOption" :key="item.categoryId" :label="item.name" :value="item.categoryId">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="货道容量" :label-width="formLabelWidth">
-          <el-input v-model="form.capacity" autocomplete="off"></el-input>
+          <el-input :disabled=true v-model="form.capacity" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="最大库存容量" :label-width="formLabelWidth">
           <el-input v-model="form.maxNumber" autocomplete="off"></el-input>
@@ -233,7 +233,7 @@ width="100"
   >
   </el-table-column>
   <el-table-column
-  prop="lower"
+  prop="deleted"
   label="商品是否下架"
   show-overflow-tooltip
   :formatter="formatlower"
@@ -250,8 +250,9 @@ width="100">
     fixed="right"
     label="操作">
     <template slot-scope="scope">
-        <a class="fl refundmoney" @click="editShoppint(scope.row)"  href="javascript: void(0);">修改分类</a>
-        <a class="fl refundmoney" @click="editMoney(scope.row)"  href="javascript: void(0);">修改价格</a>
+        <a class="fl refundmoney" style="margin-right: 10px;" @click="editShoppint(scope.row)"  href="javascript: void(0);">修改分类</a>
+        <a class="fl refundmoney" style="margin-right: 10px;" @click="editMoney(scope.row)"  href="javascript: void(0);">修改价格</a>
+        <a class="fl refundmoney" @click="editAll(scope.row)"  href="javascript: void(0);">修改</a>
       </template>
   </el-table-column>
 </el-table>

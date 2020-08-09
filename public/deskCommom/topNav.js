@@ -12,6 +12,7 @@ var template = `
       <em>药品库存数量：0</em>
     </span>
     <ul class="header-right-nav" id="headermove">
+    <el-button size="small" type="" @click="restart" >原点复位</el-button>
     <li class="username active">
         <div class="message">
         <div class="fl" style="height:46px;display: flex;flex-direction: column;align-items: center;">
@@ -248,6 +249,23 @@ Vue.component("Topnav", {
         },
         error: function (res) {
           console.log(res)
+        }
+      })
+    },
+    restart() {
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/admin/home/origin',
+        success: function (res) {
+          if (res.retCode == 200) {
+            obj.vueThat.successMessage(res.retMsg || "成功")
+            return
+          }
+          obj.vueThat.warningMessage(res.retMsg || "失败")
+        },
+        error: function (res) {
+          obj.vueThat.errMessage('网络连接错误')
         }
       })
     }

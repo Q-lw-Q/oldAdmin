@@ -149,7 +149,7 @@ var obj = {
       legend: {
         orient: 'vertical',
         left: 'left',
-        data: ['现金收入','收钱吧收入','收银收入']
+        data: ['现金收入','二维码收入','收银收入']
       },
       series : [
         {
@@ -193,7 +193,7 @@ var obj = {
         success: function (res) {
           let data = [
             {value:res.retEntity.xj, name:'现金收入'},
-            {value:res.retEntity.sqb, name:'收钱吧收入'},
+            {value:res.retEntity.sqb, name:'二维码收入'},
             {value:res.retEntity.zd, name:'收银收入'}
           ]
           resolve(data)

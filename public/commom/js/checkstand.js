@@ -17,7 +17,7 @@ var timeout = ""
 let dayinpaysuccess = false
 let dayinpayData = ''
 let sqTimer
-
+let queryproductChangeTimer = ""
 // var recorder = new Recorder({
 //   sampleRate: 44100, //采样频率，默认为44100Hz(标准MP3采样率)
 //   bitRate: 128, //比特率，默认为128kbps(标准MP3质量)
@@ -122,29 +122,32 @@ function initShoppingCount (count,sum) {
 }
 
 function queryproductChange() {
-  //取值
-  var queryproduct = $("#queryproduct").val();
-  // 如果值为空 不进行搜索
-  if (!queryproduct) {
-    $("#swipers > div").eq(0).click()
-    return
-  }
-  $.ajax({
-    method: "POST",
-    async: true,    //或false,是否异步
-    url: "/checkstand/seek",
-    data: {
-      seek: queryproduct,
-    },
-    success: function (retData) {
-      obj.vueThat.shoppingCount = 1
-      //插入商品
-      shoppingListTpl(retData.retEntity)
-    },
-    error: function (XMLHttpRequest, tetStatus, errorThrown) {
-      layer.msg("商品查询错误!")
+  clearTimeout(queryproductChangeTimer)
+  queryproductChangeTimer = setTimeout(() => {
+      //取值
+    var queryproduct = $("#queryproduct").val();
+    // 如果值为空 不进行搜索
+    if (!queryproduct) {
+      $("#swipers > div").eq(0).click()
+      return
     }
-  });
+    $.ajax({
+      method: "POST",
+      async: true,    //或false,是否异步
+      url: "/checkstand/seek",
+      data: {
+        seek: queryproduct,
+      },
+      success: function (retData) {
+        obj.vueThat.shoppingCount = 1
+        //插入商品
+        shoppingListTpl(retData.retEntity)
+      },
+      error: function (XMLHttpRequest, tetStatus, errorThrown) {
+        layer.msg("商品查询错误!")
+      }
+    });
+  }, 1000);
 }
 
 function shoppintList(item) {
@@ -411,6 +414,7 @@ function clear_screen() {
   var yinshou = $("#yinshou").val();
   $("#daishou").val(yinshou);
   $("#zhaoling").val("0.00");
+  clearNoNum_collect();
 }
 
 function clearNoNum_collect() {
@@ -433,6 +437,11 @@ function clearNoNum_collect() {
     $("#zhaoling").val(num);
   }
 
+  if ($("#shouqianba").hasClass('active')) {
+    var ttuser_descount = $("#ttuser_descount").val();
+    $("#zhaoling,#daishou").val("0.00");
+    $("#xianjin").val(yinshou)
+  } 
 
 }
 
@@ -492,8 +501,11 @@ function addnum(obj) {
 function selectshouqian(obj) {
   if (!$('#cash_func_cashbox_mutipos').hasClass('open')) {
     if ($(obj).attr('id') === 'shouqianba') {
-      $('#xianjinname').html('收钱吧')
+      $("#xianjin").attr("disabled","true")
+      $('#xianjinname').html('收取价钱')
+      clearNoNum_collect()
     } else if ($(obj).attr('id') === 's_cashPay') {
+      $("#xianjin").removeAttr("disabled")
       $('#xianjinname').html('现金')
     }
     $('.nowpayType').removeClass('active')
@@ -793,7 +805,7 @@ function oepnPay(node) {
     $('#s_cashPay').addClass('active')
   } else {
     $(node).addClass('open')
-    $('#daoshouname').html('收钱吧')
+    $('#daoshouname').html('收取价钱')
     $('.nowpayType').addClass('active')
   }
   $('#xianjinname').html('现金')
@@ -894,6 +906,38 @@ function see_detail(barcode) {
   window.event ? window.event.cancelBubble = true : e.stopPropagation();
 }
 
+function timerInver() {
+  var qrcode = new QRCode("qrcode",{
+      text: "http://www.baidu.com",
+      width: 150,
+      height: 150,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      typeNumber:4,
+      correctLevel : QRCode.CorrectLevel.H
+  });
+
+  $('.close_qrcode_pop').on("click", function() {
+    localStorage.removeItem('payStatusShou');
+    $('.qrcode_pop').hide()
+  })
+
+  timer = setInterval(() => {
+    // 检测需要是否二维码
+    if (localStorage.payStatusShou === "true") {
+      if (window.localStorage.payUrl) {
+        qrcode.clear(); // 清除代码
+        qrcode.makeCode(window.localStorage.payUrl); // 生成另外一个二维码
+        // var imgUrl = window.localStorage.payUrl
+        // $('.qrcode_pop .pop_content img').attr('src', imgUrl)
+        $('.qrcode_pop').show()
+      }
+    } else {
+      $('.qrcode_pop').hide()
+    }
+  }, 3000);
+}
+
 
 window.onload = function () {
   obj.init()
@@ -957,6 +1001,7 @@ window.onload = function () {
     $('.swiper_shooping_list').animate({ scrollLeft: $('.swiper_shooping_list').scrollLeft() - 600 }, 200)
   })
 
+  timerInver()
 
 };
 

@@ -27,6 +27,7 @@ Vue.component('tablelisttemplate', {
           .then((res) => {
             if (res.data.retCode == 200) {
               this.$message.success(res.data.retMsg)
+              vueObj.initPage()
               return
             }
             this.$message.error(res.data.retMsg)
@@ -40,6 +41,28 @@ Vue.component('tablelisttemplate', {
           message: '取消输入'
         });       
       });
+    },
+    editAll(item) {
+      obj.vueThat.addStatus = false
+      const itemList = {...item}
+      let recommend = +itemList.recommend
+      let inMedicine = +itemList.inMedicine
+      let classIfyArray = itemList.classIfyArray.map(item => item.categoryMerchantId)
+      let capacity  = Math.floor(itemList.capacity)
+      obj.vueThat.form = {
+        ...itemList,
+        isRecommend: (recommend).toString(),
+        inMedicine: (inMedicine).toString(),
+        classIfyArray: classIfyArray,
+        price: itemList.price / 100,
+        cost: itemList.cost / 100,
+        discount: itemList.discount / 100,
+        capacity: capacity,
+
+      }
+      // console.log(item)
+      // obj.vueThat.getFormData(item.barcode);
+      obj.vueThat.dialogFormVisible = true
     },
     formatOtc(row, column, cellValue) {
       if (cellValue == "1") {
@@ -163,9 +186,14 @@ var obj = {
             .then((res) => {
               console.log(res)
               if (res.data.retCode == 200) {
-                this.form = res.data.retEntity
-                this.form.maxNumber = 4
+                let capacity  = Math.floor(res.data.retEntity.capacity)
+                this.form = {
+                  ...res.data.retEntity,
+                  capacity: capacity,
+                  maxNumber: capacity * 2
+                }
                 this.form.minNumber = 1
+                return
               }
               this.$message.error(res.data.retMsg)
               return
@@ -185,14 +213,21 @@ var obj = {
         },
         async setShopping(formdata) {
           let url
+          const form = {
+            ...formdata
+            // "Recommend": formdata.isRecommend
+          }
           if (this.addStatus){
             url = '/add/shopping'
+          } else {
+            url = '/edit/shopping'
           }
-          await axios.post(location.pathname + url,formdata)
+          await axios.post(location.pathname + url,form)
           .then((res) => {
             if (res.data.retCode == 200) {
               this.dialogFormVisible = false
               this.$message.success(res.data.retMsg)
+              vueObj.initPage()
               return
             }
             this.$message.error(res.data.retMsg)
@@ -260,7 +295,7 @@ var obj = {
         },
         quesionForm() {
           let formData = JSON.parse(JSON.stringify(this.form))
-          formData.isRecommend = +formData.isRecommend
+          formData.recommend = +formData.isRecommend
           if (formData.classIfyArray) {
             formData.classIfyArray = formData.classIfyArray.join(',')
           }

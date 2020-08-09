@@ -169,11 +169,10 @@ Vue.component("Topnav", {
     },
     openshipment(num, type) {
       let that = this
-      obj.vueThat.$confirm('确认现在立即出货?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        // type: 'warning'
-      }).then(() => {
+      // obj.vueThat.$confirm('确认现在立即出货?', '提示', {
+      //   confirmButtonText: '确定',
+      //   cancelButtonText: '取消',
+      // }).then(() => {
         obj.vueThat.openFullScreen()
         $.ajax({
           type: 'GET',
@@ -205,15 +204,15 @@ Vue.component("Topnav", {
             });
           }
         })
-      }).catch(() => {
-        if (this.$message) {
-          this.$message({
-            type: 'info',
-            message: '已取消出货'
-          });
-        }
+      // }).catch(() => {
+      //   if (this.$message) {
+      //     this.$message({
+      //       type: 'info',
+      //       message: '已取消出货'
+      //     });
+      //   }
 
-      });
+      // });
     },
     showPliceAlt(title,des) {
       this.showPlice = true
@@ -248,6 +247,7 @@ Vue.component("Topnav", {
         url: '/checkstand/editZero',
         success: function (res) {
           $('#allshopping').click()
+          window.location.reload();
         },
         error: function (res) {
           
