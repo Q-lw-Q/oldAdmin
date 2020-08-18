@@ -29,7 +29,10 @@
           <div class="content-title-nav">
             <div class="content-title-navlist">
               <p>人工盘库</p>
-              <el-button size="small" type="primary" v-html="statusTest" @click="startStock">开始盘库</el-button>
+              <div>
+                <el-button size="small" type="primary"  @click="startStock">开始盘库</el-button>
+                <el-button size="small" type="primary"  @click="stopStock">停止盘库</el-button>
+              </div>
             </div>
             <div class="centetNumberList">
               <div class="item">

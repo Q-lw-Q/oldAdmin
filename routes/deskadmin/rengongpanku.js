@@ -22,6 +22,14 @@ router.get('/postStock', function (req, res, next) {
 })
 
 //开始盘库
+router.get('/stopStock', function (req, res, next) {
+    console.log(req.body)
+    commonReq.singleRequest(contModules.javaBasicUrl + '/check/stopCheck', true, 'get', req, res, function (retData) {
+        res.send(retData);
+    })
+})
+
+//开始盘库
 router.post('/post/check', function (req, res, next) {
     console.log(req.body)
     commonReq.singleRequest(contModules.javaBasicUrl + '/check/correction', false, 'post', req, res, function (retData) {
