@@ -63,6 +63,18 @@
             </div>
           </div> -->
           <div class="boxrtclist">
+            <div class="content-title-nav">绑定打印机</div>
+            <div class="share-container whiteList">
+              <div class="listInput">
+                <p class="text">SN号：</p>
+                <el-input placeholder="请输入内容" v-model="comSN" clearable>
+                </el-input>
+              </div>
+              <el-button @click="setCom">开始绑定</el-button>
+              <el-button type="danger" @click="relieveCom">解除绑定</el-button>
+            </div>
+          </div>
+          <div class="boxrtclist">
             <div class="content-title-nav">智能排序</div>
             <div class="share-container whiteList">
               <ul class="sharestyle" id="pay_ul">
@@ -104,6 +116,7 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="../../jquery/dist/jquery.min.js"></script>
+<script src="../../vender/axios/axios.min.js"></script>
 <script src="../../vue-common/js/vue.js"></script>
 <script src="../../element/element.js"></script>
 <script src="../../vue-common/topLeft.js"></script>

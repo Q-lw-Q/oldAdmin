@@ -23,7 +23,7 @@ router.get('/data', function (req, res, next) {
 
 //退款
 router.post('/refund', function (req, res, next) {
-  commonReq.singleRequest(contModules.javaBasicUrl + '/backstage/zsRefund', false, 'post', req, res, function (retData) {
+  commonReq.singleRequest(contModules.javaBasicUrl + '/backstage/refund', false, 'post', req, res, function (retData) {
       res.send(retData);
   })
 });
@@ -42,4 +42,16 @@ router.get('/orderShipment', function (req, res, next) {
     })
 });
 
+// 对账
+router.post('/getcashie', function (req, res, next) {
+  commonReq.singleRequest(contModules.javaBasicUrl + '/backstage/reconciliation', false, 'post', req, res, function (retData) {
+      res.send(retData);
+  })
+});
 
+//打印
+router.post('/dayin', function (req, res, next) {
+  commonReq.singleRequest(contModules.javaBasicUrl + '/shangmi/information', false, 'post', req, res, function (retData) {
+      res.send(retData);
+  })
+});

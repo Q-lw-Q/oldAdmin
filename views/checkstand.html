@@ -570,8 +570,8 @@
           <nav>
             <a href="javascript:void(0);" onclick="dev()">删除</a>
             <a href="javascript:void(0);" onclick="add()" class="big bule key_add_num" alt="">+</a>
-
             <a href="javascript:void(0);" onclick="reduce()" class="big key_minus_num" alt="" data-name="">-</a>
+            <el-button type="success" @click="showTrace" style="width: 100%;height: 51px;border: none;">效期查询</el-button>
           </nav>
         </div>
         <!--左侧的按钮-->
@@ -787,15 +787,31 @@
                   class="whirte" alt="" />
               </i><span>现金</span>
             </li>
-            <li class="Combinedpaymentmethod selectpaytype nowpayType" id="shouqianba" bindkey="p_meituan55"
+            <!-- <li class="Combinedpaymentmethod selectpaytype nowpayType" id="zhaoshan" bindkey="p_meituan55"
               data-open="true" onclick="selectshouqian(this)" style="display: flex;
         align-items: center;
         justify-content: center;"><i class="iconfont2 ii10">
                 <img style="width: 20px;height: 20px;" src="../../commom/img/zhaoshanglogo.jpg" alt="" />
-              </i><span>招商支付</span></li>
-            <li class="biglis key_print open" id="print_button" onclick="printSelect(this)"><i
-                class="icon-ok-sign ii12 "></i>打印
+              </i><span>招商支付</span>
+            </li> -->
+            <li class="Combinedpaymentmethod selectpaytype nowpayType" id="zhifubao" bindkey="p_meituan55"
+              data-open="true" onclick="selectshouqian(this)" style="display: flex;
+        align-items: center;
+        justify-content: center;"><i class="iconfont2 ii10">
+                <img style="width: 20px;height: 20px;" src="../../commom/img/zhifubao.png" alt="" />
+              </i><span>支付宝</span>
             </li>
+            <li class="Combinedpaymentmethod selectpaytype nowpayType" id="wechat" bindkey="p_meituan55"
+            data-open="true" onclick="selectshouqian(this)" style="display: flex;
+      align-items: center;
+      justify-content: center;"><i class="iconfont2 ii10">
+              <img style="width: 20px;height: 20px;" src="../../commom/img/wechat.png" alt="" />
+            </i><span>微信</span>
+          </li>
+            <!-- <li id="cash_func_cashbox_lastpos" style="float:right;"></li> -->
+            <!-- <li class="biglis key_print open" id="print_button" onclick="printSelect(this)"><i
+                class="icon-ok-sign ii12 "></i>打印
+            </li> -->
             <!-- <li id="cash_func_cashbox_mutipos" onclick="oepnPay(this)" class="opgol opgolactive borderright "><i class="icon-ok-sign ii12"></i>组合支付
                   </li> -->
             <!-- <li id="cash_func_cashbox_lastpos" style="float:right;"></li>
@@ -803,8 +819,20 @@
                     data-open="true"><i class="iconfont2 ii11"></i>赊账</li>
                   <li class="key_cashbox open borderbottom" id="cash_func_cashbox"><i class="icon-inbox ii12"></i>弹钱箱</li> -->
             <li id="cash_func_cashbox_lastpos" style="float:right;"></li>
-            <li id="cash_func_cashbox_lastpos" style=""></li>
-            <li id="cash_func_cashbox_lastpos" style=""></li>
+            <li class="Cashcardcombined1 Cashcardcombined nowpayType selectpaytype key_cash borderleft bordertop"
+              data-open="true" id="pos" bindkey="p_cashpay" onclick="selectshouqian(this)" style="display: flex;
+          align-items: center;
+          justify-content: center;">
+              <i class="iconfont2 el-icon-bank-card" style="font-size: 20px; margin-right: 5px; margin-top: 5px;">
+              </i><span>pos机</span>
+            </li>
+            <li class="Cashcardcombined1 Cashcardcombined nowpayType selectpaytype key_cash borderleft bordertop"
+              data-open="true" id="yibao" bindkey="p_cashpay" onclick="selectshouqian(this)" style="display: flex;
+          align-items: center;
+          justify-content: center;">
+              <i class="iconfont2 el-icon-postcard" style="font-size: 20px; margin-right: 5px; margin-top: 5px;"></i>
+              <span>医保</span>
+            </li>
             <li id="isMechanicsType" :class="{ active: activeMechanicsFalg }" @click="isMechanics">
               <i class="icon-ok-sign ii12 "></i>
               <span v-html="activeMechanicsFalg ? '人工取货' : '机械出货'">机械出货</span>
@@ -990,18 +1018,56 @@
         <el-button type="primary" @click="showOrderMessage = false">确 定 完 成</el-button>
       </span>
     </el-dialog>
+
+    <el-dialog title="溯源码查询" :visible.sync="dialogFormVisibleTrace">
+      <el-form :model="traceForm">
+        <el-form-item label="溯源码" @keyup.enter.native="onSubmit" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.traceCode" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="药品名称" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.physicName" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="包装规格" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.pkgSpecCrit" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="剂型" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.prepnTypeDesc" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="剂型规格" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.prepnSpec" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="批准文号" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.approvalLicenceNo" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="生产厂家" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.entName" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="生产日期" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.produceDateStr" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="有效期至" :label-width="formLabelWidth">
+          <el-input v-model="traceForm.expireDate" :disabled="true" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="hideTrace">取 消</el-button>
+        <el-button type="primary" @click="hideTrace">确 定</el-button>
+      </div>
+    </el-dialog>
+
   </div>
   <div class="qrcode_pop">
     <span class="close_qrcode_pop">×</span>
     <div class="pop_content" id="qrcodeBox">
       <div id="qrcode">
-
+        <img alt="" id="qrcodeImg" />
       </div>
       <p>请用支付宝或者微信支付...</p>
     </div>
   </div>
 </body>
 
+<script src="../../vender/axios/axios.min.js"></script>
 <script src="../../bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../../static/js/com_n3.min.js"></script>
 <script src="../../checkstand/swiper-4.2.0.min.js"></script>

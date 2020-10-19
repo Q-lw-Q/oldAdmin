@@ -274,6 +274,13 @@ router.post('/cancelorder', function (req, res, next) {
     })
 });
 
+//溯源码
+router.post('/getTrace', function (req, res, next) {
+    commonReq.singleRequest(contModules.javaBasicUrl + '/trace/display', false, 'post', req, res, function (data) {
+        res.send(data);
+    })
+});
+
 
 
 // var server = ws.createServer(function(conn){

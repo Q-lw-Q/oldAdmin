@@ -1,4 +1,4 @@
-const javaBasicUrl = "192.168.0.15:8082"
+const javaBasicUrl = "192.168.3.12:8082"
 // 交接班模板
 const commomTemplate = `
 <el-dialog

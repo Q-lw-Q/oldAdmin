@@ -30,3 +30,18 @@
 .integralRules ul li label input {
   margin: 0 5px 0 0;
 }
+
+.listInput{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.listInput .text{
+  width: 60px;
+}
+
+.listInput input {
+  width: 400px;
+}

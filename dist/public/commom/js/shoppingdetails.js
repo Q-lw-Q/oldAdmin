@@ -169,13 +169,21 @@ var obj = {
         },
         checkFrom: function () {
           let _that = this
-          _that.messageform.logo = _that.imageUrl
+          const messageform = { ..._that.messageform };
+          messageform.logo = _that.imageUrl
+          if(!((messageform.otcType == 1 || messageform.otcType == 2) && +messageform.isOtc == 1) || (+messageform.isOtc == 0)) {
+            delete messageform.goodsType;
+          }
+          if (!(+messageform.isOtc == 1)){
+            delete messageform.otcType
+          }
+          return
           _that.openFullScreen()
           $.ajax({
             type: 'POST',
             dataType: 'json',
             url: location.pathname + _that.checkUrl,
-            data: _that.messageform,
+            data: messageform,
             success: function (res) {
               if (res.retCode == 200) {
                 that.vueThat.dialogFormVisible = false

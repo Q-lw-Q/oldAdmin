@@ -10,7 +10,7 @@
   <link href="../../static/css/system-lib.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../element/element.css">
   <link rel="stylesheet" href="../../vue-common/adminCommon.css">
-  <link rel="stylesheet" href="../../public/commom/css/orderManagement.css">
+  <link rel="stylesheet" href="../../commom/css/orderManagement.css">
 </head>
 
 <body>
@@ -27,33 +27,39 @@
       <div class="center-content" id="index-content">
         <div class="content container-fluid">
           <div class="content-title-nav">
-              <div class="content-title-navlist fl">
-                  <div class="select_type ">
-                    <el-date-picker v-model="timer" type="datetimerange" size="mini" range-separator="至" start-placeholder="开始日期"
-                      end-placeholder="结束日期" :clearable=false value-format="yyyy-MM-dd HH:mm:ss" @change="pickerNumber">
-                    </el-date-picker>
-    
-                    <el-select v-model="selectTypeValue" placeholder="请选择" size="mini"  @change="changeSelect">
-                      <el-option v-for="item in selectType" :key="item.value" :label="item.label" :value="item.value">
-                      </el-option>
-                    </el-select>
-    
-                    <el-select v-model="selectPayValue" placeholder="请选择" size="mini"  @change="changePaySelect">
-                      <el-option v-for="item in selectPay" :key="item.value" :label="item.label" :value="item.value">
-                      </el-option>
-                    </el-select>
-                  </div>
+            <div class="content-title-navlist fl">
+              <div class="select_type ">
+                <div>
+                  <el-date-picker v-model="timer" type="datetimerange" size="mini" range-separator="至"
+                  start-placeholder="开始日期" end-placeholder="结束日期" :clearable=false value-format="yyyy-MM-dd HH:mm:ss"
+                  @change="pickerNumber">
+                  </el-date-picker>
+
+                  <el-select v-model="selectTypeValue" placeholder="请选择" size="mini" @change="changeSelect">
+                    <el-option v-for="item in selectType" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+
+                  <el-select v-model="selectPayValue" placeholder="请选择" size="mini" @change="changePaySelect">
+                    <el-option v-for="item in selectPay" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                  </el-select>
+                </div>
+
+                <el-button type="primary" style="float: right;" @click="CashierShow">收银对账</el-button>
+
               </div>
+            </div>
           </div>
           <!--导航栏-->
           <div class="share-container">
             <!--操作信息栏-->
             <div class="content-Secondary-nav flex">
               <div class="select_type">
-                  <div class="memberlistnav">
-                    <span class="titleleft bordercolor">汇总金额：</span>
-                    <span id="allmoney">0元</span>
-                  </div>
+                <div class="memberlistnav">
+                  <span class="titleleft bordercolor">汇总金额：</span>
+                  <span id="allmoney">0元</span>
+                </div>
               </div>
               <div class="right_type">
                 <!--搜索栏-->
@@ -90,10 +96,30 @@
         <el-table-column property="allmoney" label="总计"></el-table-column>
       </el-table>
     </el-dialog>
+    <el-dialog title="收银对账单" class="CashierReconciliation" :visible.sync="CashierReconciliation
+    " width="45%">
+      <div class="block">
+        <div id="bill_content">
+          <p class="title">收银对账单</p>
+          <p class="title" v-html=""></p>
+          <div class="bill_detail">
+            <div class="item" v-for="(v, k) in CashData">
+              <p class="item_left" v-html="v.name"></p>
+              <p class="item_right" v-html="v.right"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="CashierReconciliation = false">取 消</el-button>
+        <el-button type="primary" @click="CashierAction">确认打印</el-button>
+      </span>
+    </el-dialog>
   </div>
 </body>
 
 <!-- jQuery 2.2.3 -->
+<script src="../../vender/axios/axios.min.js"></script>
 <script src="../../jquery/dist/jquery.min.js"></script>
 <script src="../../javascripts/xlPaging.js"></script>
 <script src="../../vue-common/js/vue.js"></script>

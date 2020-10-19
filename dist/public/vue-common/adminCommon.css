@@ -167,6 +167,12 @@ body #bill_content .bill_detail .item {
   padding: 10px 0;
   border-bottom: 1px dashed #ccc;
 }
+body #bill_content .bill_detail .item .item_right{
+  display: flex;
+}
+body #bill_content .bill_detail .item .item_right span{
+  width: 150px;
+}
 body #bill_content .bill_detail .item:last-child {
   border-bottom: none;
 }

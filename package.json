@@ -40,7 +40,7 @@
     "log4js": "^5.2.2",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
-    "multiparty": "^4.2.1",
+    "multiparty": "^4.2.2",
     "nodejs-websocket": "^1.7.2",
     "qr-image": "^3.2.0",
     "read-chunk": "^3.2.0",

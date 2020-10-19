@@ -518,15 +518,27 @@ function shouqianba() {
   if (timeout) {
     clearInterval(timeout)
   }
-  if ($('.nowpayType.active').attr('id') === 'shouqianba') {
+  if ($('.nowpayType.active').attr('id') === 'zhaoshan') {
     shouqianbaluoji(2)
+  }
+  else if ($('.nowpayType.active').attr('id') === 'zhifubao') {
+    shouqianbaluoji(2, 1)
+  } else if ($('.nowpayType.active').attr('id') === 'wechat') {
+    shouqianbaluoji(2, 3)
   } else {
-    shouqianbaluoji(1)
+    if ($('.nowpayType.active').attr('id') === 'pos'){
+      shouqianbaluoji(1, 4)
+      return
+    } else if ($('.nowpayType.active').attr('id') === 'yibao'){
+      shouqianbaluoji(1, 5)
+      return
+    }
+    shouqianbaluoji(1, 1)
   }
 }
 
 // 收钱吧收钱 逻辑
-function shouqianbaluoji(type) {
+function shouqianbaluoji(type, paytype) {
   //代收金额
   var money = $("#daishou").val();
   //订单备注
@@ -577,6 +589,9 @@ function shouqianbaluoji(type) {
   data.sex = obj.vueThat.valueSex
   obj.vueThat.valueSex = 1
   obj.vueThat.valueAge = 1
+  if (paytype) {
+    data.payType = paytype;
+  }
   if (type === 1) {
     data.change = $('#zhaoling').val()
     $('.loadgin_mask').show()
@@ -603,7 +618,15 @@ function shouqianbaluoji(type) {
           if ($('#print_button').hasClass('open')) {
             dayinpaysuccess = true
           }
-          layer.msg('现金 交易成功')
+          if (paytype == 5) {
+            layer.msg('医保 交易成功')
+          }
+          if (paytype == 4){
+            layer.msg('pos机 交易成功')
+          }
+          if (paytype == 1) {
+            layer.msg('现金 交易成功')
+          }
           setTimeout(() => {
             obj.paysuccess(retData)
           }, 2000);
@@ -907,15 +930,15 @@ function see_detail(barcode) {
 }
 
 function timerInver() {
-  var qrcode = new QRCode("qrcode",{
-      text: "http://www.baidu.com",
-      width: 150,
-      height: 150,
-      colorDark : "#000000",
-      colorLight : "#ffffff",
-      typeNumber:4,
-      correctLevel : QRCode.CorrectLevel.H
-  });
+  // var qrcode = new QRCode("qrcode",{
+  //     text: "http://www.baidu.com",
+  //     width: 150,
+  //     height: 150,
+  //     colorDark : "#000000",
+  //     colorLight : "#ffffff",
+  //     typeNumber:4,
+  //     correctLevel : QRCode.CorrectLevel.H
+  // });
 
   $('.close_qrcode_pop').on("click", function() {
     localStorage.removeItem('payStatusShou');
@@ -926,10 +949,10 @@ function timerInver() {
     // 检测需要是否二维码
     if (localStorage.payStatusShou === "true") {
       if (window.localStorage.payUrl) {
-        qrcode.clear(); // 清除代码
-        qrcode.makeCode(window.localStorage.payUrl); // 生成另外一个二维码
+        // qrcode.clear(); // 清除代码
+        // qrcode.makeCode(window.localStorage.payUrl); // 生成另外一个二维码
         // var imgUrl = window.localStorage.payUrl
-        // $('.qrcode_pop .pop_content img').attr('src', imgUrl)
+        $('#qrcodeBox #qrcodeImg').attr('src', window.localStorage.payUrl)
         $('.qrcode_pop').show()
       }
     } else {
@@ -1019,37 +1042,14 @@ var obj = {
           shoppingIndex: 1,
           activeMechanicsFalg: false,
           showOrderMessage: false,
-          orderMessageFrom: [
-            // {
-            //   name: '盐酸左氧沙星胶囊',
-            //   content: [
-            //     {
-            //       z: 3,
-            //       y: 4
-            //     },
-            //     {
-            //       z: 2,
-            //       y: 1
-            //     }
-            //   ]
-            // },
-            // {
-            //   name: '对乙酰氨基酚混滴剂（泰诺林）',
-            //   barcode: "1234567",
-            //   content: [
-            //     {
-            //       z: 3,
-            //       y: 4
-            //     },
-            //     {
-            //       z: 2,
-            //       y: 1
-            //     }
-            //   ]
-            // }
-          ],
+          orderMessageFrom: [],
           valueSex: 1,
-          valueAge: 1
+          valueAge: 1,
+          formLabelWidth: "140px",
+          dialogFormVisibleTrace: false,
+          traceForm: {
+            traceCode: ""
+          },
         }
       },
       methods: {
@@ -1062,6 +1062,48 @@ var obj = {
         },
         isMechanics: function() {
           this.activeMechanicsFalg = !this.activeMechanicsFalg
+        },
+        showTrace: function() {
+          this.dialogFormVisibleTrace = true;
+        },
+        hideTrace: function() {
+          this.dialogFormVisibleTrace = false
+          this.traceForm = {
+            traceCode: ""
+          }
+        },
+        async onSubmit(){
+          if (this.traceForm.traceCode) {
+              await axios.post(location.pathname + 'getTrace', {
+                traceCode: this.traceForm.traceCode
+              })
+                .then((res) => {
+                  if (res.data.retCode == 200) {
+                    let msg = res.data.retEntity[0];
+                    const data = {
+                      traceCode: this.traceForm.traceCode,
+                      ...msg.codeProduceInfoDTO.produceInfoList[0],
+                      ...msg.codeStatusTypeDTO.codeStatus,
+                      ...msg.drugEntBaseDTO,
+                      ...msg.pUserEntDTO,
+                      ...msg.packageLevel,
+                    }
+                    this.traceForm = { 
+                      ...data,
+                      expireDate: this.filtTimer(data.expireDate)
+                     }
+                    return
+                  }
+                  this.$message.error(res.data.retMsg)
+                })
+                .catch((res) => {
+                  this.$message.error('网络连接错误')
+                })
+          }
+        },
+        filtTimer: function(timer) {
+          const time = timer.toString();
+          return time.slice(0,4) + "-" + time.slice(4,6) + "-" + time.slice(6)
         }
       },
       mounted: function () {

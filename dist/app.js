@@ -126,8 +126,8 @@ app.all('*', function (req, res, next) {
   // 然后得到request的cookie，根据cookie得到当前登陆的用户
   // 判断用户对应url的权限
   // console.log(123)
-  // next();
-  // return;
+  next();
+  return;
 
   var jsPattern = /\.js$/;
   var url = req._parsedUrl.pathname; // req.originalUrl;
@@ -196,7 +196,6 @@ app.all('*', function (req, res, next) {
     //     })
     //   }
     // }
-    console.log(123)
     //验证是否有访问权限
     commonReq.singleRequest(contModules.javaBasicUrl + '/sysRolesFunctions/selectFuncByRoleKey', true, 'get', verifyReq, verifyRes, function (data) {
       console.log(123456,data)

@@ -88,18 +88,20 @@ var obj = {
           document.cookie = c_name + "=" + escape(value);
         },
         async startStock() {
+          this.loadding = this.$loading({
+            lock: true,
+            text: '盘库中...请稍后',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
           // 开始盘库
           // if (!this.startStatus) {
             this.tableData = []
             await axios.get(location.pathname + '/postStock')
               .then((res) => {
+                this.loadding.close();
                 if (res.data.retCode == 200) {
-                  // this.loadding = this.$loading({
-                  //   lock: true,
-                  //   text: '盘库中...请稍后',
-                  //   spinner: 'el-icon-loading',
-                  //   background: 'rgba(0, 0, 0, 0.7)'
-                  // });
+                  
                   this.startStatus = true
                   this.$message.success('开始盘库')
                   this.soketLink()
@@ -108,24 +110,26 @@ var obj = {
                 this.$message.error(res.data.retMsg)
               })
               .catch((res) => {
+                this.loadding.close();
                 this.$message.error('网络连接错误')
               })
           // }
           // 停止盘库
         },
         async stopStock() {
+          this.loadding = this.$loading({
+            lock: true,
+            text: '停止中...请稍后',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
           // 开始盘库
           // if (!this.startStatus) {
             // this.tableData = []
             await axios.get(location.pathname + '/stopStock')
               .then((res) => {
+                this.loadding.close();
                 if (res.data.retCode == 200) {
-                  this.loadding = this.$loading({
-                    lock: true,
-                    text: '停止中...请稍后',
-                    spinner: 'el-icon-loading',
-                    background: 'rgba(0, 0, 0, 0.7)'
-                  });
                   this.$message.success('停止成功')
                   // this.soketLink()
                   return
@@ -133,6 +137,7 @@ var obj = {
                 this.$message.error(res.data.retMsg)
               })
               .catch((res) => {
+                this.loadding.close();
                 this.$message.error('网络连接错误')
               })
           // }

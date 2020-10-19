@@ -34,10 +34,25 @@ router.post('/get/desk', function (req, res, next) {
     })
 })
 
+//设置溯源码
+router.post('/get/sourceCode', function (req, res, next) {
+    commonReq.singleRequest(contModules.javaBasicUrl + '/goods/sourceCode', false, 'post', req, res, function (retData) {
+        res.send(retData);
+    })
+})
+
 //发送补货
 router.post('/post/desk', function (req, res, next) {
     console.log(req.body)
     commonReq.singleRequest(contModules.javaBasicUrl + '/goods/replenishmentGoods', false, 'post', req, res, function (retData) {
+        res.send(retData);
+    })
+})
+
+//发送补货
+router.post('/disc/linaGood', function (req, res, next) {
+    console.log(req.body)
+    commonReq.singleRequest(contModules.deskHost + '/disc/linaGoods', false, 'post', req, res, function (retData) {
         res.send(retData);
     })
 })

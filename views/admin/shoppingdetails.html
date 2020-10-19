@@ -122,13 +122,29 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="药品类型" :label-width="formLabelWidth" prop="isOtc">
-          <el-select v-model="messageform.isOtc" placeholder="请选择活动区域">
+          <el-select v-model="messageform.isOtc" placeholder="请选择药品类型">
             <el-option label="处方药" value=0></el-option>
             <el-option label="OTC" value=1></el-option>
             <el-option label="保健食品" value=2></el-option>
+            <el-option label="医疗器械" value=3></el-option>
+            <!-- <el-option label="成人用品" value=4></el-option>
+            <el-option label="其他" value=5></el-option> -->
+          </el-select>
+          <el-select v-model="messageform.otcType" v-if="+messageform.isOtc == 1" placeholder="请选择药品类型">
+            <!-- <el-option label="处方药" value=0></el-option> -->
+            <el-option label="红OTC" value=1></el-option>
+            <el-option label="绿OTC" value=2></el-option>
+            <!-- <el-option label="成人用品" value=3></el-option>
+            <el-option label="医疗器械" value=4></el-option>
+            <el-option label="其他" value=5></el-option> -->
+          </el-select>
+          <el-select v-model="messageform.goodsType" v-if="((messageform.otcType == 1 || messageform.otcType == 2) && +messageform.isOtc == 1) || (+messageform.isOtc == 0)" placeholder="请选择药品类型">
+            <el-option label="口服" value=1></el-option>
+            <el-option label="外用" value=2></el-option>
+            <!-- <el-option label="保健食品" value=2></el-option>
             <el-option label="成人用品" value=3></el-option>
             <el-option label="医疗器械" value=4></el-option>
-            <el-option label="其他" value=5></el-option>
+            <el-option label="其他" value=5></el-option> -->
           </el-select>
         </el-form-item>
         <el-form-item label="用法用量" :label-width="formLabelWidth" prop="dosage">

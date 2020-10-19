@@ -1,9 +1,8 @@
 module.exports = {
-
-  javaBasicUrl: 'http://192.168.3.11:8082',
-  nodeBasicUrl: 'http://192.168.3.11:9008', // 手动补货 请求
-  orderBasicUrl: 'http://192.168.3.11:3015', // 支付页面 生成订单请求 url
-  imbaseurl: 'http://192.168.3.11:3015', 
+  javaBasicUrl: 'http://127.0.0.1:8082',
+  nodeBasicUrl: 'http://127.0.0.1:9008', // 手动补货 请求
+  orderBasicUrl: 'http://127.0.0.1:3015', // 支付页面 生成订单请求 url
+  imbaseurl: 'http://127.0.0.1:3015', 
   imageurl: 'tmerchant.jekjk.com', 
   // immerchant: 'tmerchant.jekjk.com',
   immerchant:"http://app.jekjk.com",
@@ -16,7 +15,7 @@ module.exports = {
   uploadPri: 'private',//非公开文件
   uploadDir: '', //本地
   defaultPageSize: 20,
-  redisHost: 'http://192.168.3.11:6379',            
+  redisHost: 'http://127.0.0.1:6379',            
   keyPrefix:
   {
     orderPayStatus:'payStatus'  //redis内保存订单支付状态 key的前缀
@@ -29,7 +28,8 @@ module.exports = {
     paySuccess: 5, //订单支付成功 调用出货
   },
   // qrcodeHost:"http://app.jekjk.com"
-  qrcodeHost:"http://192.168.3.11:3015",
-  shoppingHost: "http://192.168.3.11:9008", //商品库存 host
+  qrcodeHost:"http://127.0.0.1:3015",
+  shoppingHost: "http://127.0.0.1:9008", //商品库存 host
+  deskHost: "http://127.0.0.1:9010", //补货台 host
   merchantHost: "http://tmerchant.jekjk.com", // 商户后台链接
 }

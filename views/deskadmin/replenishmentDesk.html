@@ -58,8 +58,8 @@
                   <el-input ref="customerInput" v-model="postForm.barcode" @keyup.enter.native="onSubmit" placeholder="请输入条形码"></el-input>
                 </div>
                 <div class="item" @click.stop>
-                  <p>批号填写：</p>
-                  <el-input v-model="postForm.batchNumber" class="inputTest" placeholder="请输入批号"></el-input>
+                  <p>电子监管码：</p>
+                  <el-input ref="customerInputCode" v-model="postForm.sourceCode" class="inputTest" @keyup.enter.native="onSubmitsourceCode" placeholder="请输入电子监管码"></el-input>
                 </div>
               </div>
               <div class="centerInput">
@@ -74,14 +74,31 @@
                   <!-- <el-input v-model="postForm.expiryDate" class="inputTest" placeholder="请选择日期"></el-input> -->
                 </div>
                 <div class="item" @click.stop>
-                  <p>电子监管码：</p>
-                  <el-input v-model="postForm.sourceCode" class="inputTest" placeholder="请输入电子监管码"></el-input>
+                  <p>批号填写：</p>
+                  <el-input v-model="postForm.batchNumber" class="inputTest" placeholder="请输入批号"></el-input>
                 </div>
               </div>
               <div class="centerButton">
                 <el-button size="small" type="primary" @click="quesionDesk">确认补货</el-button>
               </div>
+              <div class="bottomTable">
+                <el-collapse>
+                  <el-collapse-item title="待补货队列" name="1">
+                    <el-table :data="lineupTable" style="width: 100%">
+                      <el-table-column prop="barcode" label="条码">
+                      </el-table-column>
+                      <el-table-column prop="name" label="商品名称">
+                      </el-table-column>
+                      <el-table-column prop="createTime" :formatter="dateFormat" label="补货时间">
+                      </el-table-column>
+                    </el-table>
+                  </el-collapse-item>
+                </el-collapse>
+              </div>
               <div class="bottomTabale">
+                <div class="content-title-navlist">
+                  <p>补货信息</p>
+                </div>
                 <el-table :data="joinTable" style="width: 100%">
                   <el-table-column prop="barcode" label="条码">
                   </el-table-column>
@@ -93,12 +110,12 @@
                   </el-table-column>
                   <el-table-column prop="reparableQuantity" label="可补容量">
                   </el-table-column>
-                  <el-table-column prop="length" label="商品长度">
+                  <!-- <el-table-column prop="length" label="商品长度">
                   </el-table-column>
                   <el-table-column prop="width" label="商品宽度">
                   </el-table-column>
                   <el-table-column prop="height" label="商品高度">
-                  </el-table-column>
+                  </el-table-column> -->
                 </el-table>
               </div>
             </div>

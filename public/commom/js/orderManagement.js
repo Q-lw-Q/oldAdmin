@@ -290,6 +290,8 @@ var obj = {
           }],
           selectTypeValue: '全部订单',
           selectPayValue: '全部',
+          CashierReconciliation: false,
+          CashData: []
         }
       },
       methods: {
@@ -316,6 +318,46 @@ var obj = {
           }
           that.initTable()
         },
+        async CashierShow() {
+          await axios.post(location.pathname + '/getcashie', {
+            starttime: that.data.starttime,
+            endtime: that.data.endtime
+          })
+            .then((res) => {
+              if (res.data.retCode == 200){
+                this.CashData = res.data.retEntity
+                this.CashData.map(item => {
+                  let list = "<span>成交笔数：" + item.total + "</span>"
+                  list += "<span>营收：" + (item.money ? item.money : "0") + "</span>"
+                  item.right = list
+                  return item
+                })
+                this.CashierReconciliation = true;
+                return
+              }
+              this.$message.error(res.data.retCode)
+            })
+            .catch((res) => {
+              this.$message.error('网络连接错误')
+            })
+        },
+        async CashierAction() {
+          await axios.post(location.pathname + '/dayin', {
+            starttime: that.data.starttime,
+            endtime: that.data.endtime
+          })
+            .then((res) => {
+              if (res.data.retCode == 200){
+                this.$message.success("打印成功")
+                this.CashierReconciliation = false;
+                return
+              }
+              this.$message.error(res.data.retCode)
+            })
+            .catch((res) => {
+              this.$message.error('网络连接错误')
+            })
+        }
       },
       mounted: function () {
         

@@ -26,10 +26,24 @@ var obj = {
       el: '#vueTemplate',
       data() {
         return {
-          
+          comSN: ""
         }
       },
       methods: {
+        async getInit(){
+          console.log(123)
+          axios.post(location.pathname + '/getCom')
+            .then((res) => {
+              console.log(res)
+              if (res.data.retCode == 200) {
+                this.comSN = res.data.retEntity.msn
+              }
+              // this.$message.error(res.data.retMsg)
+            })
+            .catch((res) => {
+              // this.$message.error('网络连接错误')
+            })
+        },
         setAiList: function(){
           let that = this
           console.log(123)
@@ -49,10 +63,38 @@ var obj = {
       
               }
           })
+        },
+        relieveCom: function() {
+          axios.post(location.pathname + '/removal')
+            .then((res) => {
+              if (res.data.retCode == 200) {
+                this.$message.success(res.data.retMsg);
+                return
+              }
+              this.$message.error(res.data.retMsg)
+            })
+            .catch((res) => {
+              this.$message.error('网络连接错误')
+            })
+        },
+        setCom: function() {
+          axios.post(location.pathname + '/setval', {
+            msn: this.comSN
+          })
+            .then((res) => {
+              if (res.data.retCode == 200) {
+                this.$message.success(res.data.retMsg);
+                return
+              }
+              this.$message.error(res.data.retMsg)
+            })
+            .catch((res) => {
+              this.$message.error('网络连接错误')
+            })
         }
       },
       mounted: function () {
-
+        this.getInit()
       },
       watch: {
         tableListdata: function () {

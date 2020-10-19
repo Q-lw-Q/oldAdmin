@@ -100,3 +100,23 @@ router.get('/setSorting', function (req, res, next) {
         
     })
 })
+
+router.post('/removal', function (req, res, next) {
+    commonReq.singleRequest(contModules.javaBasicUrl + '/shangmi/removal', false, 'post', req, res, function (retData) {
+        res.send(retData);
+    })
+})
+
+router.post('/setval', function (req, res, next) {
+    commonReq.singleRequest(contModules.javaBasicUrl + '/shangmi/binding', false, 'post', req, res, function (retData) {
+        res.send(retData);
+    })
+})
+
+router.post('/getCom', function (req, res, next) {
+    commonReq.singleRequest(contModules.javaBasicUrl + '/shangmi/display', false, 'post', req, res, function (retData) {
+        res.send(retData);
+    })
+})
+
+
