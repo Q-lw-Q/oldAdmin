@@ -27,7 +27,7 @@
     "gulp-zip": "^5.0.1",
     "http-errors": "^1.7.3",
     "stream-to-promise": "^2.2.0",
-    "ws": "^7.2.0"
+    "ws": "^7.4.6"
   },
   "dependencies": {
     "art-template": "^4.13.2",
