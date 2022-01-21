@@ -37,7 +37,7 @@
     "express-art-template": "^1.0.1",
     "file-type": "^12.3.0",
     "gulp-remove-use-strict": "^1.0.0",
-    "log4js": "^5.2.2",
+    "log4js": "^6.4.0",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "multiparty": "^4.2.2",
